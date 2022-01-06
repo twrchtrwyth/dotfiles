@@ -1,0 +1,436 @@
+" source $VIMRUNTIME/defaults.vim
+
+" My vimrc is sourced from here.
+" ~/.vim/vimrc
+
+" ----------------------------------------------------------------------------
+" PLUGINS
+" ----------------------------------------------------------------------------
+
+" Specifies a directory for plugins.
+call plug#begin('~/.vim/plugged')
+
+" Installs Monokai Pro theme.
+Plug 'phanviet/vim-monokai-pro'
+
+" Installs Zenburn theme.
+Plug 'jnurmine/Zenburn'
+
+" Automated bullet lists.
+Plug 'dkarter/bullets.vim'
+
+" Powerful search command.
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Distraction-free mode.
+Plug 'junegunn/goyo.vim'
+
+" Dims lines not under cursor.
+Plug 'junegunn/limelight.vim'
+
+" Alternative fuzzy finder.
+" Plug 'junegunn/fzf.vim'
+
+" Enhanced Python indentation.
+Plug 'vim-scripts/indentpython.vim'
+
+" Markdown preview.
+" Plug 'iamcco/markdown-preview.nvim'
+
+" Adds ability to quickly comment out lines.
+Plug 'preservim/nerdcommenter'
+
+" Adds a tree explorer sidebar when called.
+Plug 'preservim/nerdtree'
+
+" A light statusline (based on vim powerline).
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Improves folding of python code.
+Plug 'tmhedberg/SimpylFold'
+
+" Allows text filtering and alignment.
+Plug 'godlygeek/tabular'
+
+" Syntax and style checker for python (run with <F7>).
+Plug 'nvie/vim-flake8'
+
+" Git wrapper for vim.
+Plug 'tpope/vim-fugitive'
+
+" Lightweight git branch viewer that integrates with fugitive.
+Plug 'rbong/vim-flog'
+
+" Markdown plugin.
+Plug 'plasticboy/vim-markdown'
+
+" Adds tabs to NERDTree.
+" No longer maintained.
+" Plug jistr/vim-nerdtree-tabs
+
+" Adds multiple language support.
+Plug 'sheerun/vim-polyglot'
+
+" Allows copying to system clipboard with <cp>,
+" and pasting from system clipboard with <cv>.
+Plug 'christoomey/vim-system-copy'
+
+" LaTeX syntax plugin.
+Plug 'lervag/vimtex'
+
+" Adds ability to easily create links between files in the wiki directory.
+" Plug 'vimwiki/vimwiki'
+
+" Code-completion engine.
+ Plug 'ycm-core/YouCompleteMe'
+
+" Adds a tree structure to the change history.
+Plug 'mbbill/undotree'
+
+" Shows indentations as characters - useful for python.
+Plug 'Yggdroot/indentLine'
+
+" Highlights unique characters on a line to help with `f` and `t` commands
+Plug 'unblevable/quick-scope'
+
+" Adds syntax highlighting to Python's regex strings. Various other
+" configuration options too.
+Plug 'Galicarnax/vim-regex-syntax'
+
+" Adds a minimap to the right side of the screen.
+" Call using <leader>mm, dismiss with <leader>mc.
+" Plug 'severin-lemaignan/vim-minimap'
+
+" Initialise plugin system.
+call plug#end()
+
+" ----------------------------------------------------------------------------
+" / END OF PLUGINS
+" ----------------------------------------------------------------------------
+
+
+" ----------------------------------------------------------------------------
+" GENERAL SETTINGS
+" ----------------------------------------------------------------------------
+
+" Sets Zenburn theme from the zenburn plugin.
+set termguicolors
+colorscheme zenburn
+
+" This will 'ward off unexpected things that your distro might have made'.
+set nocompatible
+
+" Highlight cursor line.
+set cursorline
+
+" Attempt to determine file type based on name and possibly contents.
+" Allows intelligent auto-indenting for each filetype, and 
+" for plugins that are filetype-specific.
+filetype indent plugin on
+
+" Enable syntax highlighing.
+syntax on
+
+" Allows switching between unsaved buffers within the same window.
+" set hidden
+
+" Better command-line completion.
+set wildmenu
+
+" Show partial commands in the last line of the screen.
+set showcmd
+
+" Highlight searches (use <Ctrl-L> to temporarily turn off).
+set hlsearch
+
+" Use case-insensitive search, except when using capital letters.
+set ignorecase
+set smartcase
+
+" Set incremental search
+set incsearch
+
+" Allow backspacing over autoindent, line breaks and start of
+" insert action. Without `start`, cannot delete anything with
+" backspace except new text inserted when in insert mode.
+set backspace=indent,eol,start
+
+" When opening a new line and no filetype-specific indenting is on,
+" keep the same indent as the line you're currently on.
+set autoindent
+
+" Stop certain movements from always going to the first character of a line.
+set nostartofline
+
+" Display cursor position in the last line of the window.
+set ruler
+
+" Always display the status line, even if only one window displayed.
+set laststatus=2
+
+" Instead of failing a command because of unsaved changes, instead raise a
+" dialogue asking if you wish to save changed files.
+" set confirm
+
+" Use visual bell instead of beeping when doing something wrong.
+" I have disabled this as it's like a bloody lightning storm inside my
+" laptop.
+" set visualbell
+
+" Enable use of the mouse for all modes.
+set mouse=a
+
+" Set the command window height to 2 lines. This avoids many cases of
+" having to press <Enter> to continue.
+" set cmdheight=2
+
+" Display line numbers on the left.
+set number
+
+" Make line number background transparent, and set number colour to dark grey.
+highlight clear LineNr 
+highlight LineNr ctermfg=DarkGrey
+
+" Quickly time out on keycodes, but never time out on mappings.
+set notimeout ttimeout ttimeoutlen=200
+
+" Use <F10> to toggle between 'paste' and 'nopaste'
+set pastetoggle=<F10>
+
+" Enable folding
+set foldmethod=indent  " Sets folds based on line indents.
+set foldlevel=99
+
+" Enables persistent undo. Undo files are stored in the specified directory.
+set undodir=~/.vim/undodir
+set undofile
+
+" ----------------------------------------------------------------------------
+" / END OF GENERAL SETTINGS 
+" ----------------------------------------------------------------------------
+
+
+" ----------------------------------------------------------------------------
+" SYNTAX-SPECIFIC SETTINGS
+" ----------------------------------------------------------------------------
+
+" MARKDOWN
+" --------
+
+" Treat all .md files as Markdown files.
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+
+" Highlight the line that the cursor is on.
+autocmd FileType markdown set cursorline
+
+" Hide and format markdown elements like **bold**.
+autocmd FileType markdown set conceallevel=2
+
+" Enable spellchecker in Markdown files.
+autocmd FileType markdown setlocal spell spelllang=en_gb
+
+" Set lines to wrap instead of continuing off screen.
+" Using `linebreak` ensures that whole words are wrapped.
+autocmd FileType markdown set linebreak
+
+" Converts tabs to spaces.
+autocmd FileType markdown set expandtab
+
+" Use two spaces instead of default four for tabs.
+autocmd FileType markdown set tabstop=2
+
+" Use two spaces instead of default four for indents.
+autocmd FileType markdown set shiftwidth=2
+
+" Keeps the cursor in the middle of screen (ish).
+autocmd FileType markdown set scrolloff=12
+
+
+" PYTHON
+" ------
+
+" General Python settings.
+au BufRead, BufNewFile *.py 
+	\ set tabstop=4
+	\ set softtabstop=4
+	\ set shiftwidth=4
+	\ set expandtab
+	\ set autoindent
+	\ set fileformat=unix
+	\ set encoding=utf-8
+
+" Flag extraneous whitespace.
+" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" Highlight column at specified width.
+" Superseded by the `execute` command below
+" au BufRead,BufNewFile *.py set colorcolumn=80
+
+" Wrap text after specified width.
+" Actually moves text to new line, doesn't wrap.
+" au BufRead,BufNewFile *.py set textwidth=79
+
+" Highlight line under cursor.
+autocmd FileType python set cursorline
+
+" Not *entirely* sure what this does, but involved in `making code look pretty`.
+let python_highlight_all=1
+
+" Binds <F5> to run the currently open program.
+" Excellent explanation here:
+" http://stackoverflow.com/questions/18948491/ddg#18948530
+autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
+" Highlights columns past 79 to help compliance with usual standards.
+" I have no idea how this works.
+autocmd FileType python execute "set colorcolumn=" . join(range(80,335), ',')
+
+" HTML, CSS & JAVASCRIPT
+" ----------------------
+
+au BufNewFile,BufRead *.js,*.html,*.css
+	\ set tabstop=2
+	\ set softtabstop=2
+	\ set shiftwidth=2
+
+
+" GROFF
+" -----
+
+" Enable groff syntax highlighting.
+au BufNewFile,BufRead *.groff,*.mom set filetype=groff
+" Wrap whole words at edge of page, rather than mid-word.
+autocmd FileType groff set linebreak
+" Enable spellcheck for groff files.
+autocmd FileType groff setlocal spell spelllang=en_gb
+
+" ----------------------------------------------------------------------------
+" / END OF SYNTAX-SPECIFIC SETTINGS
+" ----------------------------------------------------------------------------
+
+
+" ----------------------------------------------------------------------------
+" PLUGIN CONFIGURATION
+" ----------------------------------------------------------------------------
+
+" VIM MARKDOWN
+let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_math = 1
+let g:vim_markdown_toml_frontmatter = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_strikethrough = 1
+let g:vim_markdown_autowrite = 1  " Writes file if link followed.
+let g:vim_markdown_edit_url_in = 'tab'
+let g:vim_markdown_follow_anchor = 1
+let g:vim_markdown_new_list_item_indent = 2
+" let g:vim_markdown_conceal = 2
+
+" SIMPYLFOLD
+let g:SimpylFold_docstring_preview=1  " Shows docstrings for folded code.
+
+" YOUCOMPLETEME
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" NERDTREE
+let NERDTreeIgnore=['\.pyc$', '\~$']
+
+" BULLETS
+let g:bullets_enabled_file_types = ['markdown']
+
+" CTRLP
+" Tells ctrlp plugin to ignore pdf files.
+let g:ctrlp_custom_ignore = {'file': '\v\.(pdf)$'}
+
+" VIMWIKI
+" Sets vimwiki syntax to Markdown.
+" let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
+" VIM-AIRLINE
+" Enable the list of buffers.
+" let g:airline#extensions#tabline#enabled = 1
+" Show only the filename, rather than full path.
+" let g:airline#extensions#tabline#fnamemod = ':t'
+
+" QUICK SCOPE
+" Only display highlights when the specified keys are pressed.
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" ----------------------------------------------------------------------------
+" / END OF PLUGIN CONFIGURATION
+" ----------------------------------------------------------------------------
+
+
+" ----------------------------------------------------------------------------
+" CUSTOM MAPPINGS
+" ----------------------------------------------------------------------------
+
+" nnoremap is used to map one key combination to another.
+" The `no` part means `remap the key in normal mode` (as opposed to visual).
+" <leader> is `\` by default.
+
+" Automatically enclose text with the specified bracket type.
+" Press a motion key after typing to execute.
+" Parentheses, to end of current word.
+:map <leader>p i(<Esc>ea)<Esc>
+" Parentheses, to end of line.
+:map <leader>pe i(<Esc>$a)<Esc>
+" Square bracket, to end of current word.
+:map <leader>b i[<Esc>ea]<Esc>
+" Square bracket, to end of line.
+:map <leader>be i[<Esc>$a]<Esc>
+" Curly braces, to end of current word.
+:map <leader>c i{<Esc>ea}<Esc>
+" Curly braces, to end of line.
+:map <leader>ce i{<Esc>$a}<Esc>
+
+" Maps <F9> to open Goyo
+:map <F9> :Goyo<CR>
+
+" Maps Ctrl-J to move to split below.
+" nnoremap <C-J> <C-W><C-J>
+" Maps Ctrl-K to move to split above.
+" nnoremap <C-K> <C-W><C-K>
+" Maps Ctrl-L to move to the split to the right.
+" nnoremap <C-L> <C-W><C-L>
+" Maps Ctrl-H to move to the split to the left.
+" nnoremap <C-H> <C-W><C-H>
+
+" Maps Undotree to <F8>
+nnoremap <F8> :UndotreeToggle<CR>
+
+" Remap space to jump to end of line.
+nnoremap <space> $
+
+" Save and write groff-mom files and generate/update pdf.
+:map <leader>groff :w<CR> :silent !pdfmom % > %:r.pdf<CR>:redraw!<CR>
+
+" ----------------------------------------------------------------------------
+" / END OF CUSTOM MAPPINGS
+" ----------------------------------------------------------------------------
+
+
+" ----------------------------------------------------------------------------
+" AUTOMATIC COMMANDS
+" ----------------------------------------------------------------------------
+
+" Automatically open markdown files in Goyo mode.
+" Commented out as makes the status bar look weird when exiting, for some reason.
+" autocmd FileType markdown Goyo 80
+
+" Automatically enable Limelight when opening Goyo.
+autocmd! User GoyoEnter Limelight
+
+" Automatically reload .vimrc when exiting Goyo.
+" Fixes issue with colourscheme not reapplying upon leaving Goyo.
+" The disable Limelight command needs to be here in order to work properly.
+autocmd! User GoyoLeave
+" Automatically disable Limelight when closing Goyo.
+autocmd! User GoyoLeave Limelight!
+autocmd User GoyoLeave nested source ~/.vim/vimrc
+
+" ----------------------------------------------------------------------------
+" / END OF AUTOMATIC COMMANDS
+" ----------------------------------------------------------------------------
