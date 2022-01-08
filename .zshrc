@@ -16,7 +16,7 @@ setopt autocd                                                   # if only direct
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
-zstyle ':completion:*' rehash true                              # automatically find new executables in path 
+zstyle ':completion:*' rehash true                              # automatically find new executables in path
 # Speed up completions
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
@@ -56,7 +56,7 @@ bindkey '^[[1;5C' forward-word                                  #
 bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
 bindkey '^[[Z' undo                                             # Shift+tab undo last action
 
-## Alias section 
+## Alias section
 alias cp="cp -i"                                                # Confirm before overwriting something
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
@@ -96,7 +96,7 @@ alias pico8='cd ~/pico-8; ./pico8'
 # Brogue
 alias brogue='cd ~/Games/Brogue-windows-v1.7.5; wine brogue.exe'
 # Sanctuary RPG
-alias sanctuaryrpg='cd ~/.wine/drive_c/Program\ Files\ \(x86\)/Black\ Shell\ Games/SanctuaryRPG; wine SanctuaryRPG.exe' 
+alias sanctuaryrpg='cd ~/.wine/drive_c/Program\ Files\ \(x86\)/Black\ Shell\ Games/SanctuaryRPG; wine SanctuaryRPG.exe'
 # SpaceChem
 alias spacechem='cd ~/Games/SpaceChem; ./start.sh'
 # Cinco Paus
@@ -136,11 +136,16 @@ alias ssh-stop='sudo systemctl stop sshd.service'
 # TIME/DATE
 alias time='date'
 
+# GETTING WINDOW DIMENSIONS
+alias cwd='xdotool getwindowfocus getwindowgeometry'
+alias gwd='xdotool selectwindow getwindowgeometry'
+
 # DIRECTORY NAVIGATION
 alias ..='cd ..'
 
 # XPROP (WINDOW INFORMATION)
 alias window-info='xprop'
+alias window-class='xprop | grep WM_CLASS | awk "{print $4}"'
 
 # PASS
 # Pass git push
@@ -161,6 +166,9 @@ alias ripgrep='rg'  # Because I can never bloody remember it otherwise
 alias ':q'='exit'
 alias ':Q'='exit'
 
+# GET DIRECTORY SIZE
+alias fs='du -ch --max-depth=1'
+
 # VIMRC BACKUP
 alias vb='cd ~/.vim; cp -f vimrc ~/vimrc_backup; cd ~'
 alias extra_vb='cd ~/vimrc_backup; cp vimrc backup_of_backup; cd ~'
@@ -175,7 +183,7 @@ alias rofi-config='vim ~/.config/rofi/config.rasi'
 alias dunst-config='vim ~/.config/dunst/dunstrc'
 
 # BATTERY
-alias battery='echo "9 cell battery:"; upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage; echo "Slice battery:"; upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep percentage'
+alias battery='echo "Main Battery:"; upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage; echo "Slice Battery:"; upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep percentage'
 alias battery-info='sudo tlp-stat'
 
 # TARBALLS
@@ -213,7 +221,7 @@ export PATH=/home/wil/bin:$PATH
 # set -o vi
 
 
-# Theming section  
+# Theming section
 autoload -U compinit colors zcalc
 compinit -d
 colors
@@ -306,16 +314,16 @@ parse_git_state() {
 
 git_prompt_string() {
   local git_where="$(parse_git_branch)"
-  
+
   # If inside a Git repository, print its branch and state
   [ -n "$git_where" ] && echo "$GIT_PROMPT_SYMBOL$(parse_git_state)$GIT_PROMPT_PREFIX%{$fg[yellow]%}${git_where#(refs/heads/|tags/)}$GIT_PROMPT_SUFFIX"
-  
+
   # If not inside the Git repo, print exit codes of last command (only if it failed)
   [ ! -n "$git_where" ] && echo "%{$fg[red]%} %(?..[%?])"
 }
 
 # Right prompt with exit status of previous command if not successful
- #RPROMPT="%{$fg[red]%} %(?..[%?])" 
+ #RPROMPT="%{$fg[red]%} %(?..[%?])"
 # Right prompt with exit status of previous command marked with ✓ or ✗
  #RPROMPT="%(?.%{$fg[green]%}✓ %{$reset_color%}.%{$fg[red]%}✗ %{$reset_color%})"
 
@@ -340,20 +348,20 @@ source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
-bindkey '^[[A' history-substring-search-up			
+bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # Apply different settigns for different terminals
 case $(basename "$(cat "/proc/$PPID/comm")") in
   login)
-    	RPROMPT="%{$fg[red]%} %(?..[%?])" 
-    	alias x='startx ~/.xinitrc'      # Type name of desired desktop after x, xinitrc is configured for it
+      RPROMPT="%{$fg[red]%} %(?..[%?])"
+      alias x='startx ~/.xinitrc'      # Type name of desired desktop after x, xinitrc is configured for it
     ;;
 #  'tmux: server')
 #        RPROMPT='$(git_prompt_string)'
 #		## Base16 Shell color themes.
 #		#possible themes: 3024, apathy, ashes, atelierdune, atelierforest, atelierhearth,
-#		#atelierseaside, bespin, brewer, chalk, codeschool, colors, default, eighties, 
+#		#atelierseaside, bespin, brewer, chalk, codeschool, colors, default, eighties,
 #		#embers, flat, google, grayscale, greenscreen, harmonic16, isotope, londontube,
 #		#marrakesh, mocha, monokai, ocean, paraiso, pop (dark only), railscasts, shapesifter,
 #		#solarized, summerfruit, tomorrow, twilight
@@ -369,10 +377,10 @@ case $(basename "$(cat "/proc/$PPID/comm")") in
 #     ;;
   *)
         RPROMPT='$(git_prompt_string)'
-		# Use autosuggestion
-		source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-		ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-  		ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+    # Use autosuggestion
+    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+    ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
     ;;
 esac
 
