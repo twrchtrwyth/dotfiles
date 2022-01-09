@@ -92,25 +92,25 @@ alias donsol='cd ~/Games/donsol-js-master; npm start'
 # Sethian
 alias sethian='cd ~/Games/Sethian; wine Sethian.exe'
 # PICO-8
-alias pico8='cd ~/pico-8; ./pico8'
+alias pico-8='cd ~/pico-8; ./pico8'
 # Brogue
 alias brogue='cd ~/Games/Brogue-windows-v1.7.5; wine brogue.exe'
 # Sanctuary RPG
-alias sanctuaryrpg='cd ~/.wine/drive_c/Program\ Files\ \(x86\)/Black\ Shell\ Games/SanctuaryRPG; wine SanctuaryRPG.exe'
+alias sanctuary-rpg='cd ~/.wine/drive_c/Program\ Files\ \(x86\)/Black\ Shell\ Games/SanctuaryRPG; wine SanctuaryRPG.exe'
 # SpaceChem
 alias spacechem='cd ~/Games/SpaceChem; ./start.sh'
 # Cinco Paus
-alias cincopaus='cd ~/Games/Cinco-Paus; wine Cinco\ Paus.exe'
+alias cinco-paus='cd ~/Games/Cinco-Paus; wine Cinco\ Paus.exe'
 # Ultima Ratio Regum 0.8
 alias urr='cd ~/Games/ultima-ratio-regum-0.8; wine URR080.exe'
 # Loop Hero
-alias loophero='cd ~/Games/loop-hero/game; sh run.sh'
+alias loop-hero='cd ~/Games/loop-hero/game; sh run.sh'
 # Dominion Online
 alias dom='python ~/python/playground/dominion_online_launcher.py'
 # Rift Wizard
-alias riftwizard='python ~/Games/RiftWizard/RiftWizard.py'
+alias rift-wizard='python ~/Games/RiftWizard/RiftWizard.py'
 # Return of the Obra Dinn
-alias obradinn='wine ~/Games/ObraDinn/ObraDinn.exe'
+alias obra-dinn='wine ~/Games/ObraDinn/ObraDinn.exe'
 
 # APPLICATIONS
 # Reddit command line

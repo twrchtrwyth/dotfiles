@@ -65,8 +65,11 @@ for_window [class="(?i)*nextcloud*"] floating disable
 for_window [class="plasmashell" window_type="notification"], move position center, move up 342px, move right 555px
 no_focus [class="plasmashell" window_type="notification"]
 
-# Specific app configuration.
+# Specific program configuration.
+# To get window class, use xprop in the command line.
 for_window [class="calibre"] floating enable, move position center; resize set 585 662
+for_window [class="gwenview"] floating enable, move position center
+for_window [class="ark"] floating enable, move position center
 
 # Replace default notification daemon with dunst.
 exec killall -q msm_kde_notifier
