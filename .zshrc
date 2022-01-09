@@ -113,6 +113,24 @@ alias rift-wizard='python ~/Games/RiftWizard/RiftWizard.py'
 alias obra-dinn='wine ~/Games/ObraDinn/ObraDinn.exe'
 # Ultima VII
 alias ultima=''
+# Morrowind
+alias morrowind='wine ~/Games/morrowind/Morrowind\ Launcher.exe'
+# Jumpgrid
+alias jumpgrid='cd ~/Games/jumpgrid/; ./jumpgrid; cd'
+# Factorio
+alias factorio='~/Games/factorio/bin/x64/factorio'
+# Infra Arcana - doesn't work because of libSDL2 error.
+alias ia='~/Games/infra-arcana/ia'
+# Into The Breach
+alias itb='~/Games/into-the-breach/start.sh'
+# Mage Guild
+alias mage-guild='wine ~/Games/mage-guild/MageGuild.exe'
+# The Temple of Torment
+alias ttot='wine ~/Games/TToTd20_Stable190/TheTempleofTorment.exe'
+# Tangledeep
+alias tangle='~/Games/Tangledeep/start.sh'
+# Dream Quest
+alias dq='wine ~/Games/dream-quest/Windows64.exe'
 
 # APPLICATIONS
 # Reddit command line

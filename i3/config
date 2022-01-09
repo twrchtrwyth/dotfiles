@@ -52,7 +52,7 @@ client.focused  $zenburn_border  $zenburn_background $zenburn_text $zenburn_indi
 for_window [class="pop-up"] floating enable
 for_window [class="task_dialog"] floating enable
 for_window [class="yakuake"] floating enable
-for_window [class="systemsettings"] floating enable
+for_window [class="systemsettings"] floating enable, move position center
 for_window [class="plasmashell"] floating enable, border none
 for_window [class="Plasma"] floating enable; border none
 for_window [class="plasma-desktop"] floating enable; border none
@@ -70,6 +70,10 @@ no_focus [class="plasmashell" window_type="notification"]
 for_window [class="calibre"] floating enable, move position center; resize set 585 662
 for_window [class="gwenview"] floating enable, move position center
 for_window [class="ark"] floating enable, move position center
+for_window [class="kate"] floating enable, move position center
+for_window [class="factorio"] floating enable, move position center
+for_window [class="Breach"] floating enable, move position center
+for_window [class="mageguild.exe"] floating enable, move position center
 
 # Replace default notification daemon with dunst.
 exec killall -q msm_kde_notifier

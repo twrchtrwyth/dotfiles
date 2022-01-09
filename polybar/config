@@ -51,6 +51,8 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
+; List all installed fonts from the command line with fc-list.
+; Use the bit listed after the colon as the font name.
 font-0 = Misc Tamsyn:style=Regular:size=8:antialias=false;0
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
