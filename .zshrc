@@ -78,39 +78,41 @@ alias hon='cat ~/hon.md'
 # GAMES
 
 # Cogmind
-alias cogmind='cd ~/Games/COGMIND\ \(Beta\ 10.2\); wine COGMIND.exe'
+alias cogmind='wine ~/Games/COGMIND\ \(Beta\ 10.2\)/COGMIND.exe'
 # Malleus Goblinficarium
-alias mg='cd ~/Games/malleus-goblinficarium; wine Malleus\ Goblinficarium.exe'
+alias mg='wine ~/Games/malleus-goblinficarium/Malleus\ Goblinficarium.exe'
 # Hylics
-alias hylics='cd ~/Games/Hylics; wine Game.exe'
+alias hylics='wine ~/Games/Hylics/Game.exe'
 # Sengoku
-alias sengoku='cd ~/.wine/dosdevices/c:/GOG\ Games/Sengoku; wine SengokuGame.exe'
+alias sengoku='wine ~/.wine/drive_c/GOG\ Games/Sengoku/SengokuGame.exe'
 # Spelunky
-alias spelunky='cd ~/.wine/dosdevices/c:/GOG\ Games/Spelunky; wine Spelunky.exe'
+alias spelunky='wine ~/.wine/drive_c/GOG\ Games/Spelunky/Spelunky.exe'
 # Donsol
-alias donsol='cd ~/Games/donsol-js-master; npm start'
+alias donsol='npm ~/Games/donsol-js-master/start'
 # Sethian
-alias sethian='cd ~/Games/Sethian; wine Sethian.exe'
+alias sethian='wine ~/Games/Sethian/Sethian.exe'
 # PICO-8
-alias pico-8='cd ~/pico-8; ./pico8'
+alias pico-8='~/pico-8/pico8'
 # Brogue
-alias brogue='cd ~/Games/Brogue-windows-v1.7.5; wine brogue.exe'
+alias brogue='wine ~/Games/Brogue-windows-v1.7.5/brogue.exe'
 # Sanctuary RPG
-alias sanctuary-rpg='cd ~/.wine/drive_c/Program\ Files\ \(x86\)/Black\ Shell\ Games/SanctuaryRPG; wine SanctuaryRPG.exe'
+alias sanctuary-rpg='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Black\ Shell\ Games/SanctuaryRPG/SanctuaryRPG.exe'
 # SpaceChem
-alias spacechem='cd ~/Games/SpaceChem; ./start.sh'
+alias spacechem='~/Games/SpaceChem/start.sh'
 # Cinco Paus
-alias cinco-paus='cd ~/Games/Cinco-Paus; wine Cinco\ Paus.exe'
-# Ultima Ratio Regum 0.8
-alias urr='cd ~/Games/ultima-ratio-regum-0.8; wine URR080.exe'
+alias cinco-paus='wine ~/Games/Cinco-Paus/Cinco\ Paus.exe'
+# Ultima Ratio Regum 0.9
+alias urr='wine ~/Games/ultima-ratio-regum/URR090c.exe'
 # Loop Hero
-alias loop-hero='cd ~/Games/loop-hero/game; sh run.sh'
+alias loop-hero='~/Games/loop-hero/game/Loop_Hero'
 # Dominion Online
 alias dom='python ~/python/playground/dominion_online_launcher.py'
 # Rift Wizard
 alias rift-wizard='python ~/Games/RiftWizard/RiftWizard.py'
 # Return of the Obra Dinn
 alias obra-dinn='wine ~/Games/ObraDinn/ObraDinn.exe'
+# Ultima VII
+alias ultima=''
 
 # APPLICATIONS
 # Reddit command line
@@ -168,10 +170,6 @@ alias ':Q'='exit'
 
 # GET DIRECTORY SIZE
 alias fs='du -ch --max-depth=1'
-
-# VIMRC BACKUP
-alias vb='cd ~/.vim; cp -f vimrc ~/vimrc_backup; cd ~'
-alias extra_vb='cd ~/vimrc_backup; cp vimrc backup_of_backup; cd ~'
 
 # DOTFILES/CONFIG FILES
 alias bash-config='vim ~/.bashrc'
