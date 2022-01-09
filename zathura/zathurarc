@@ -1,0 +1,43 @@
+# Set background & foreground colour.
+set default-fg "#3f3f3f"
+set default-bg "#4e4e4e"
+
+# Switch over keybindings for rotate and reload.
+map r reload
+map R rotate
+
+# Disables the status bar.
+set guioptions ""
+
+# Remove requirement to specify home in file paths.
+set statusbar-home-tilde
+
+# Open in greyscale mode by default.
+set recolor true
+
+# Alter colour in greyscale mode.
+set recolor-lightcolor "#3f3f3f"
+set recolor-darkcolor "#c2c2b4"
+
+# Defines whether original image colours should be kept after recolouring.
+# set recolor-reverse-video True
+
+# Set font.
+set font "monospace 10"
+
+# Set zoom size and bind zoom in and out keys.
+set zoom-step 10
+map <C-i> zoom in
+map <C-o> zoom out
+
+# Incremental search.
+set incremental-search true
+
+# Copy selection to system clipboard.
+set selection-clipboard clipboard
+
+# Change behaviour of PgUp and PgDn - doesn't work.
+map PageUp scroll up
+map PageDown scroll down
+map <S-PageUp> navigate up
+map <S-PageDown> navigate down
