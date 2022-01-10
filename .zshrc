@@ -275,7 +275,12 @@ PROMPT="%(!.%{$fg[red]%}[%4~]%{$reset_color%}# .%{$fg[green]%}[%4~]%{$reset_colo
 # Maia prompt
 #PROMPT='${vim_mode} %B%{$fg[cyan]%}%(4~|%-1~/.../%2~|%~)%u%b >%{$fg[cyan]%}>%B%(?.%{$fg[cyan]%}.%{$fg[red]%})>%{$reset_color%}%b ' # Print some system information when the shell is first started
 # Print a greeting message when shell is started
-echo $fg_bold[red]"DON'T PANIC."$reset_color
+echo $fg[red]"██████╗  ██████╗ ███╗  ██╗█╗██████╗  ██████╗  █████╗ ███╗  ██╗██╗ ██████╗
+██╔══██╗██╔═══██╗████╗ ██║╚╝ ╚██╔═╝  ██╔══██╗██╔══██╗████╗ ██║██║██╔════╝
+██║  ██║██║   ██║██╔██╗██║    ██║    ██████╔╝███████║██╔██╗██║██║██║
+██║  ██║██║   ██║██║╚████║    ██║    ██╔═══╝ ██╔══██║██║╚████║██║██║
+██████╔╝╚██████╔╝██║ ╚███║    ██║    ██║     ██║  ██║██║ ╚███║██║╚██████╗
+╚═════╝  ╚═════╝ ╚═╝  ╚══╝    ╚═╝    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚══╝╚═╝ ╚═════╝"$reset_color
 echo $USER@$HOST  $(uname -srm) $(lsb_release -rcs)
 ## Prompt on right side:
 #  - shows status of git when in git repository (code adapted from https://techanic.net/2011/12/30/my_git_prompt_for_zsh.html)
@@ -400,4 +405,5 @@ case $(basename "$(cat "/proc/$PPID/comm")") in
     ;;
 esac
 
-
+# Required by pyenv
+# eval "$(pyenv init -)"
