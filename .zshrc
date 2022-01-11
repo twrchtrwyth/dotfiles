@@ -114,7 +114,7 @@ alias obra-dinn='wine ~/Games/ObraDinn/ObraDinn.exe'
 # Ultima VII
 alias ultima=''
 # Morrowind
-alias morrowind='wine ~/Games/morrowind/Morrowind\ Launcher.exe'
+alias morrowind='openmw'
 # Jumpgrid
 alias jumpgrid='cd ~/Games/jumpgrid/; ./jumpgrid; cd'
 # Factorio
@@ -140,6 +140,8 @@ alias spotify='spt'
 alias spotofy='spotify'
 # Micro (Text Editor)
 alias micro='~/micro'
+# GPXSEE
+alias gpxsee='~/gpxsee/gpxsee'
 
 # SSH
 # SSH Status
@@ -157,8 +159,8 @@ alias ssh-stop='sudo systemctl stop sshd.service'
 alias time='date'
 
 # GETTING WINDOW DIMENSIONS
-alias cwd='xdotool getwindowfocus getwindowgeometry'
-alias gwd='xdotool selectwindow getwindowgeometry'
+alias cwg='xdotool getwindowfocus getwindowgeometry'
+alias gwg='xdotool selectwindow getwindowgeometry'
 
 # DIRECTORY NAVIGATION
 alias ..='cd ..'

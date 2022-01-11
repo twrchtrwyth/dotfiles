@@ -277,6 +277,8 @@ bindsym $mod+c move position center
 bindsym $mod+t border toggle
 # Launch the GIMP
 bindym $mod+g exec gimp-2.10
+# Set floating windows to a nice petite size.
+bindsym $mod+shift+f resize set 655 396
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
