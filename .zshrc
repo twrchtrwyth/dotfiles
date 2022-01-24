@@ -76,47 +76,50 @@ alias rm='rm -i'													# confirm before deletion
 alias hon='cat ~/hon.md'
 
 # GAMES
-
+# (Yes, it's clunky to cd in and out of the directories, but some of the
+# executables wouldn't launch if wine is invoked outside the directory
+# within which they're located.)
 # Cogmind
-alias cogmind='wine ~/Games/COGMIND\ \(Beta\ 10.2\)/COGMIND.exe'
+alias cogmind='cd ~/Games/COGMIND\ \(Beta\ 10.2\); wine COGMIND.exe; cd ~'
 # Malleus Goblinficarium
-alias mg='wine ~/Games/malleus-goblinficarium/Malleus\ Goblinficarium.exe'
+alias mg='cd ~/Games/malleus-goblinficarium; Malleus\ Goblinficarium.exe; cd ~'
 # Hylics
-alias hylics='wine ~/Games/Hylics/Game.exe'
+alias hylics='cd ~/Games/Hylics; wine Game.exe; cd ~'
 # Sengoku
-alias sengoku='wine ~/.wine/drive_c/GOG\ Games/Sengoku/SengokuGame.exe'
+alias sengoku='cd ~/.wine/drive_c/GOG\ Games/Sengoku; wine SengokuGame.exe; cd ~'
 # Spelunky
-alias spelunky='wine ~/.wine/drive_c/GOG\ Games/Spelunky/Spelunky.exe'
+alias spelunky='cd ~/.wine/drive_c/GOG\ Games/Spelunky; wine Spelunky.exe; cd ~'
 # Donsol
-alias donsol='npm ~/Games/donsol-js-master/start'
+alias donsol='cd ~/Games/donsol-js-master; npm start; cd ~'
 # Sethian
-alias sethian='wine ~/Games/Sethian/Sethian.exe'
+alias sethian='cd ~/Games/Sethian; wine Sethian.exe; cd ~'
 # PICO-8
 alias pico-8='~/pico-8/pico8'
 # Brogue
-alias brogue='wine ~/Games/Brogue-windows-v1.7.5/brogue.exe'
+alias brogue='cd ~/Games/Brogue-windows-v1.7.5; wine brogue.exe; cd ~'
 # Sanctuary RPG
-alias sanctuary-rpg='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Black\ Shell\ Games/SanctuaryRPG/SanctuaryRPG.exe'
+alias sanctuary-rpg='cd ~/.wine/drive_c/Program\ Files\ \(x86\)/Black\ Shell\ Games/SanctuaryRPG; wine SanctuaryRPG.exe; cd~'
 # SpaceChem
 alias spacechem='~/Games/SpaceChem/start.sh'
 # Cinco Paus
-alias cinco-paus='wine ~/Games/Cinco-Paus/Cinco\ Paus.exe'
+alias cinco-paus='cd ~/Games/Cinco-Paus; wine Cinco\ Paus.exe; cd ~'
 # Ultima Ratio Regum 0.9
-alias urr='wine ~/Games/ultima-ratio-regum/URR090c.exe'
+alias urr='cd ~/Games/ultima-ratio-regum; wine URR090c.exe; cd ~'
 # Loop Hero
 alias loop-hero='~/Games/loop-hero/game/Loop_Hero'
 # Dominion Online
 alias dom='python ~/python/playground/dominion_online_launcher.py'
 # Rift Wizard
 alias rift-wizard='python ~/Games/RiftWizard/RiftWizard.py'
+alias rw='rift-wizard'
 # Return of the Obra Dinn
-alias obra-dinn='wine ~/Games/ObraDinn/ObraDinn.exe'
+alias obra-dinn='cd ~/Games/ObraDinn; wine ObraDinn.exe; cd ~'
 # Ultima VII
-alias ultima=''
+alias ultima='echo "DOSBOX is really buggy so best not try to run this at the moment."'
 # Morrowind
 alias morrowind='openmw'
 # Jumpgrid
-alias jumpgrid='cd ~/Games/jumpgrid/; ./jumpgrid; cd'
+alias jumpgrid='cd ~/Games/jumpgrid/; ./jumpgrid; cd ~'
 # Factorio
 alias factorio='~/Games/factorio/bin/x64/factorio'
 # Infra Arcana - doesn't work because of libSDL2 error.
@@ -128,9 +131,9 @@ alias mage-guild='wine ~/Games/mage-guild/MageGuild.exe'
 # The Temple of Torment
 alias ttot='wine ~/Games/TToTd20_Stable190/TheTempleofTorment.exe'
 # Tangledeep
-alias tangle='~/Games/Tangledeep/start.sh'
+alias tangledeep='~/Games/Tangledeep/start.sh'
 # Dream Quest
-alias dq='wine ~/Games/dream-quest/Windows64.exe'
+alias dq='cd ~/Games/dream-quest; wine Windows64.exe; cd ~'
 
 # APPLICATIONS
 # Reddit command line
@@ -142,6 +145,7 @@ alias spotofy='spotify'
 alias micro='~/micro'
 # GPXSEE
 alias gpxsee='~/gpxsee/gpxsee'
+alias map='~/gpxsee/gpxsee'
 
 # SSH
 # SSH Status
@@ -159,8 +163,8 @@ alias ssh-stop='sudo systemctl stop sshd.service'
 alias time='date'
 
 # GETTING WINDOW DIMENSIONS
-alias cwg='xdotool getwindowfocus getwindowgeometry'
-alias gwg='xdotool selectwindow getwindowgeometry'
+alias cwd='xdotool getwindowfocus getwindowgeometry'
+alias gwd='xdotool selectwindow getwindowgeometry'
 
 # DIRECTORY NAVIGATION
 alias ..='cd ..'
@@ -189,7 +193,7 @@ alias ':q'='exit'
 alias ':Q'='exit'
 
 # GET DIRECTORY SIZE
-alias fs='du -ch --max-depth=1'
+alias ds='du -ch --max-depth=1 | sort -nr'
 
 # DOTFILES/CONFIG FILES
 alias bash-config='vim ~/.bashrc'
@@ -218,6 +222,9 @@ alias helm='zathura ~/Documents/helm_manual.pdf & disown'
 
 # FARGE (COLOUR PICKER)
 alias colour='farge'
+
+# LINUX NOTES
+alias linux='vim ~/Documents/linux/the_command_line.md'
 
 ##########################################
 # -------- CUSTOM ALIASES END ------------
@@ -273,7 +280,7 @@ colors
 setopt prompt_subst
 
 # Prompt (on left side) similar to default bash prompt, or redhat zsh prompt with colors
-PROMPT="%(!.%{$fg[red]%}[%4~]%{$reset_color%}# .%{$fg[green]%}[%4~]%{$reset_color%}$ "
+PROMPT="%(!.%{$fg[red]%}[%4~]%{$reset_color%}# .%{$fg[green]%}[%4~]%{$reset_color%} > "
 # Maia prompt
 #PROMPT='${vim_mode} %B%{$fg[cyan]%}%(4~|%-1~/.../%2~|%~)%u%b >%{$fg[cyan]%}>%B%(?.%{$fg[cyan]%}.%{$fg[red]%})>%{$reset_color%}%b ' # Print some system information when the shell is first started
 # Print a greeting message when shell is started

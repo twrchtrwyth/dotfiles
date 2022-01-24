@@ -199,6 +199,7 @@ highlight LineNr ctermfg=DarkGrey
 set notimeout ttimeout ttimeoutlen=200
 
 " Use <F10> to toggle between 'paste' and 'nopaste'
+" (This doesn't seem to work.)
 set pastetoggle=<F10>
 
 " Enable folding
@@ -336,6 +337,8 @@ let g:SimpylFold_docstring_preview=1  " Shows docstrings for folded code.
 " YOUCOMPLETEME
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" Hides the annoying syntactic definition popups(?)
+nmap <leader>h <plus>(YCMHover)
 
 " NERDTREE
 let NERDTreeIgnore=['\.pyc$', '\~$']

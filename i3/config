@@ -13,7 +13,7 @@
 # Mod+Shift+C = Reload config file
 
 # Kill the Plasma desktop window that covers everything.
-for_window [title="Desktop — Plasma"] kill; floating enable; border none
+for_window [title="Desktop — Plasma"] kill, floating enable, border none
 
 # Hides the splash screen, which makes the wallpaper appear faster.
 exec pkill "ksplashqml"
@@ -51,7 +51,7 @@ client.focused  $zenburn_border  $zenburn_background $zenburn_text $zenburn_indi
 # Plasma compatibility improvements.
 for_window [class="pop-up"] floating enable
 for_window [class="task_dialog"] floating enable
-for_window [class="yakuake"] floating enable
+for_window [class="yakuake"] floating enable, border none
 for_window [class="systemsettings"] floating enable, move position center
 for_window [class="plasmashell"] floating enable, border none
 for_window [class="Plasma"] floating enable; border none
@@ -74,6 +74,7 @@ for_window [class="kate"] floating enable, move position center
 for_window [class="factorio"] floating enable, move position center
 for_window [class="Breach"] floating enable, move position center
 for_window [class="mageguild.exe"] floating enable, move position center
+for_window [class="Donsol"] floating enable, move position center
 
 # Replace default notification daemon with dunst.
 exec killall -q msm_kde_notifier
@@ -124,7 +125,7 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
-bindsym $mod+d exec "rofi -modi window,drun,run,ssh -show drun"
+bindsym $mod+d exec "rofi -modi window,drun,run,ssh -show drun -font 'Input Mono 12'"
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
@@ -260,7 +261,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# CUSTOM SHORTCUTS
+# CUSTOM KEYBINDINGS
 
 # Launch Dolphin (file manager).
 # bindsym $mod+e exec dolphin
@@ -276,9 +277,13 @@ bindsym $mod+c move position center
 # Toggle border/title bar.
 bindsym $mod+t border toggle
 # Launch the GIMP
-bindym $mod+g exec gimp-2.10
+bindsym $mod+g exec gimp-2.10
 # Set floating windows to a nice petite size.
 bindsym $mod+shift+f resize set 655 396
+# Set floating windows to a size good for Goyo (in Vim).
+bindsym $mod+shift+g resize set 735 706
+# Set floating windows to a size good for Python.
+bindsym $mod+shift+p resize set 653 704
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

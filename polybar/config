@@ -53,17 +53,20 @@ module-margin-right = 2
 
 ; List all installed fonts from the command line with fc-list.
 ; Use the bit listed after the colon as the font name.
-font-0 = Misc Tamsyn:style=Regular:size=8:antialias=false;0
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-0 = siji:pixelsize=10;1
+font-1 = Input Mono:style=Regular:size=8:antialias=true;0
+font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
 
-modules-left = bspwm i3 
+; Originally included bspwm module first.
+modules-left = i3 
 ; Original center module was mpd or music player daemon - not configured yet so removed.
-modules-center = ""
-; Originally included alsa but appeared to just duplicate volume.
-; xkeyboard excluded as don't need this.
-; Originally was xbacklight but didn't work. Backlight displays a line but doesn't change so removed.
-modules-right = filesystem pulseaudio memory cpu wlan eth battery temperature date powermenu
+modules-center = "memory cpu temperature filesystem"
+; Originally included:
+; 	alsa but appeared to just duplicate volume.
+; 	xkeyboard excluded as don't need this.
+; 	xbacklight but didn't work. (Tried backlight instead: displays a line but doesn't change so removed)
+; 	filesystem memory cpu temperature
+modules-right = pulseaudio battery wlan eth date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -236,9 +239,9 @@ type = internal/network
 interface = wlp3s0
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
+format-connected = <ramp-signal>
 format-connected-underline = #9f78e1
-label-connected = %essid%
+;label-connected = %essid%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -420,6 +423,16 @@ menu-2-0 = power off
 menu-2-0-exec = poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+[module/bluetooth]
+type = custom/script
+exec = ~/.config/polybar/scripts/bluetooth.sh
+interval = 2
+click-left = exec ~/.config/polybar/scripts/toggle_bluetooth.sh
+click-right = exec blueberry
+format-padding = 1
+format-background = #3f3f3f 
+format-foreground = #d1d2c4
 
 [settings]
 screenchange-reload = true
