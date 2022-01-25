@@ -140,7 +140,7 @@ set nocompatible
 set cursorline
 
 " Attempt to determine file type based on name and possibly contents.
-" Allows intelligent auto-indenting for each filetype, and 
+" Allows intelligent auto-indenting for each filetype, and
 " for plugins that are filetype-specific.
 filetype indent plugin on
 
@@ -204,7 +204,7 @@ set mouse=a
 set number
 
 " Make line number background transparent, and set number colour to dark grey.
-highlight clear LineNr 
+highlight clear LineNr
 highlight LineNr ctermfg=DarkGrey
 
 " Quickly time out on keycodes, but never time out on mappings.
@@ -223,7 +223,7 @@ set undodir=~/.vim/undodir
 set undofile
 
 " ----------------------------------------------------------------------------
-" / END OF GENERAL SETTINGS 
+" / END OF GENERAL SETTINGS
 " ----------------------------------------------------------------------------
 
 
@@ -267,7 +267,7 @@ autocmd FileType markdown set scrolloff=12
 " ------
 
 " General Python settings.
-au BufRead, BufNewFile *.py 
+au BufRead, BufNewFile *.py
 	\ set tabstop=4
 	\ set softtabstop=4
 	\ set shiftwidth=4
@@ -371,6 +371,19 @@ let g:ctrlp_custom_ignore = {'file': '\v\.(pdf)$'}
 " let g:airline#extensions#tabline#enabled = 1
 " Show only the filename, rather than full path.
 " let g:airline#extensions#tabline#fnamemod = ':t'
+" Automatically truncate the bar in smaller windows.
+let g:airline#extensions#default#section_truncate_width = {
+	\ 'b': 79,
+	\ 'x': 60,
+	\ 'y': 88,
+	\ 'z': 45,
+	\ 'warning': 80,
+	\ 'error': 80,
+	\ }
+" Set the theme
+if has('nvim')
+ let g:airline_theme ='base16_nord'
+endif
 
 " QUICK SCOPE
 " Only display highlights when the specified keys are pressed.
