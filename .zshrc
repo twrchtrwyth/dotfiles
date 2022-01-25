@@ -72,6 +72,9 @@ alias rm='rm -i'													# confirm before deletion
 # --------- CUSTOM ALIASES ---------
 ####################################
 
+# VIM
+alias vim='nvim'
+
 # HON
 alias hon='cat ~/hon.md'
 

@@ -80,6 +80,7 @@ for_window [class="factorio"] floating enable, move position center
 for_window [class="Breach"] floating enable, move position center
 for_window [class="mageguild.exe"] floating enable, move position center
 for_window [class="Donsol"] floating enable, move position center
+for_window [class="feh"] floating enable, move position center
 
 # Replace default notification daemon with dunst.
 exec killall -q msm_kde_notifier

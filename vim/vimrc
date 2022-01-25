@@ -86,7 +86,7 @@ Plug 'lervag/vimtex'
 " Plug 'vimwiki/vimwiki'
 
 " Code-completion engine.
- Plug 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 
 " Adds a tree structure to the change history.
 Plug 'mbbill/undotree'
@@ -105,6 +105,10 @@ Plug 'Galicarnax/vim-regex-syntax'
 " Call using <leader>mm, dismiss with <leader>mc.
 " Plug 'severin-lemaignan/vim-minimap'
 
+" Installs neovim-specific themes.
+Plug 'andersevenrud/nordic.nvim'
+Plug 'rebelot/kanagawa.nvim'
+
 " Initialise plugin system.
 call plug#end()
 
@@ -117,9 +121,17 @@ call plug#end()
 " GENERAL SETTINGS
 " ----------------------------------------------------------------------------
 
-" Sets Zenburn theme from the zenburn plugin.
 set termguicolors
-colorscheme zenburn
+
+" Sets Zenburn theme from the zenburn plugin if vim opened.
+if !has('nvim')
+	colorscheme zenburn
+endif
+
+" Sets nordic theme from the nordic plugin if nvim opened.
+if has('nvim')
+	colorscheme nordic
+endif
 
 " This will 'ward off unexpected things that your distro might have made'.
 set nocompatible
