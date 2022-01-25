@@ -22,7 +22,7 @@ exec pkill "ksplashqml"
 exec --no-startup-id feh --bg-scale /home/wil/Pictures/wind_waker_swing_pink.jpg
 
 # Launch picom
-exec_always --no-startup-id picom -b
+exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
 
 # Start Polybar when i3 loads.
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
