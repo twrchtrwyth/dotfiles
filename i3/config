@@ -21,6 +21,9 @@ exec pkill "ksplashqml"
 # Set the wallpaper.
 exec --no-startup-id feh --bg-scale /home/wil/Pictures/wind_waker_swing_pink.jpg
 
+# Launch picom
+exec_always --no-startup-id picom -b
+
 # Start Polybar when i3 loads.
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
@@ -36,17 +39,19 @@ gaps inner 15
 # gaps right -5
 # gaps bottom -5
 
-# Colours
-set $zenburn_border #d1d2c4
-set $zenburn_border_light #dfdfdf
-set $zenburn_background #3f3f3f
-set $zenburn_text #dfdfdf
-set $zenburn_light_background #4e4e4e
-set $zenburn_indicator #96968b
+# COLOURS
+
+# ZENBURN
+set $border #d1d2c4
+set $border_light #dfdfdf
+set $background #3f3f3f
+set $text #dfdfdf
+set $light_background #4e4e4e
+set $indicator #96968b
 
 # Window and border colours.
-# Class         Border           Background          Text          Indicator          Child_Border
-client.focused  $zenburn_border  $zenburn_background $zenburn_text $zenburn_indicator $zenburn_border
+# Class         Border   Background   Text   Indicator   Child_Border
+client.focused  $border  $background  $text  $indicator  $border
 
 # Plasma compatibility improvements.
 for_window [class="pop-up"] floating enable
@@ -284,6 +289,12 @@ bindsym $mod+shift+f resize set 655 396
 bindsym $mod+shift+g resize set 735 706
 # Set floating windows to a size good for Python.
 bindsym $mod+shift+p resize set 653 704
+# Move window to scratchpad. This makes it invisible until the scratchpad is shown again.
+# The window in the scratchpad is treated as a floating window.
+# To remove from the scratchpad, simply "unfloat" the window.
+bindsym $mod+shift+minus move scratchpad
+# Show/hide scratchpad (toggle). 
+bindsym $mod+minus scratchpad show
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
