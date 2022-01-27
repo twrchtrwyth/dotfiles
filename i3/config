@@ -19,7 +19,7 @@ for_window [title="Desktop — Plasma"] kill, floating enable, border none
 exec pkill "ksplashqml"
 
 # Set the wallpaper.
-exec --no-startup-id feh --bg-scale /home/wil/Pictures/forest.png
+exec --no-startup-id feh --bg-scale /home/wil/Pictures/blossom_pink_x220_pixellated.png
 
 # Launch picom
 exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
