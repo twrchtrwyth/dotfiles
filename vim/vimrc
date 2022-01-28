@@ -269,12 +269,12 @@ autocmd FileType markdown set scrolloff=12
 " General Python settings.
 au BufRead, BufNewFile *.py
 	\ set tabstop=4
-	\ set softtabstop=4
-	\ set shiftwidth=4
-	\ set expandtab
-	\ set autoindent
-	\ set fileformat=unix
-	\ set encoding=utf-8
+	\ | set softtabstop=4
+	\ | set shiftwidth=4
+	\ | set expandtab
+	\ | set autoindent
+	\ | set fileformat=unix
+	\ | set encoding=utf-8
 
 " Flag extraneous whitespace.
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
@@ -308,8 +308,8 @@ autocmd FileType python execute "set colorcolumn=" . join(range(80,335), ',')
 
 au BufNewFile,BufRead *.js,*.html,*.css
 	\ set tabstop=2
-	\ set softtabstop=2
-	\ set shiftwidth=2
+	\ | set softtabstop=2
+	\ | set shiftwidth=2
 
 
 " GROFF
@@ -397,6 +397,8 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " ----------------------------------------------------------------------------
 " CUSTOM MAPPINGS
 " ----------------------------------------------------------------------------
+
+" NB: <CR> is carriage return (i.e. same as hitting Enter)
 
 " nnoremap is used to map one key combination to another.
 " The `no` part means `remap the key in normal mode` (as opposed to visual).
