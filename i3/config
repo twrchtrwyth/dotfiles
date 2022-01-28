@@ -57,7 +57,7 @@ client.focused  $border  $background  $text  $indicator  $border
 for_window [class="pop-up"] floating enable
 for_window [class="task_dialog"] floating enable
 for_window [class="yakuake"] floating enable, border none
-for_window [class="systemsettings"] floating enable, move position center
+for_window [class="systemsettings"] floating enable, resize set 1264 634, move position center
 for_window [class="plasmashell"] floating enable, border none
 for_window [class="Plasma"] floating enable; border none
 for_window [class="plasma-desktop"] floating enable; border none
