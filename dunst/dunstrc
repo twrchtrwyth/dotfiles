@@ -187,7 +187,7 @@ context = ctrl+shift+period
 #background = "#2B313C"
 frame_color = "#d1d2c4"
 foreground = "#d1d2c4" 
-background = "#3f3f3f"
+background = "#2e3440"
 timeout = 4
 
 [urgency_normal]
@@ -197,7 +197,7 @@ timeout = 4
 #background = "#2B313C"
 frame_color = "#d1d2c4"
 foreground = "#d1d2c4" 
-background = "#3f3f3f"
+background = "#2e3440"
 timeout = 6
 
 [urgency_critical]
