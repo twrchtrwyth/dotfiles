@@ -19,7 +19,7 @@ for_window [title="Desktop — Plasma"] kill, floating enable, border none
 exec pkill "ksplashqml"
 
 # Set the wallpaper.
-exec --no-startup-id feh --bg-scale /home/wil/Pictures/blossom_pink_x220_pixellated.png
+exec --no-startup-id feh --bg-scale /home/wil/Pictures/blossom_blue_x220_pixellated.png
 
 # Launch picom
 exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
@@ -72,16 +72,16 @@ no_focus [class="plasmashell" window_type="notification"]
 
 # Specific program configuration.
 # To get window class, use xprop in the command line.
-for_window [class="calibre"] floating enable, move position center; resize set 585 662
+for_window [class="calibre"] floating enable, resize set 585 662, move position center
 for_window [class="gwenview"] floating enable, move position center
 for_window [class="ark"] floating enable, move position center
-for_window [class="kate"] floating enable, move position center
+for_window [class="kate"] floating enable, resize set 681 574, move position center
 for_window [class="factorio"] floating enable, move position center
 for_window [class="Breach"] floating enable, move position center
 for_window [class="mageguild.exe"] floating enable, move position center
 for_window [class="Donsol"] floating enable, move position center
 for_window [class="feh"] floating enable, move position center
-for_window [class="Sxiv"] floating enable, move position center
+for_window [class="Sxiv"] floating enable, resize set 681 574, move position center
 
 # Replace default notification daemon with dunst.
 exec killall -q msm_kde_notifier
