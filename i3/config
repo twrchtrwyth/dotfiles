@@ -53,6 +53,9 @@ set $indicator #96968b
 # Class         Border   Background   Text   Indicator   Child_Border
 client.focused  $border  $background  $text  $indicator  $border
 
+# Launch a terminal upon login.
+exec --no-startup-id konsole
+
 # Plasma compatibility improvements.
 for_window [class="pop-up"] floating enable
 for_window [class="task_dialog"] floating enable
@@ -72,7 +75,7 @@ no_focus [class="plasmashell" window_type="notification"]
 
 # Specific program configuration.
 # To get window class, use xprop in the command line.
-for_window [class="calibre"] floating enable, resize set 585 662, move position center
+for_window [class="calibre"] floating enable, resize set 583 660, move position center
 for_window [class="gwenview"] floating enable, move position center
 for_window [class="ark"] floating enable, move position center
 for_window [class="kate"] floating enable, resize set 681 574, move position center
@@ -291,6 +294,8 @@ bindsym $mod+shift+f resize set 655 396
 # bindsym $mod+shift+g resize set 735 706
 # Set floating windows to a size good for Python.
 bindsym $mod+shift+p resize set 681 574
+# Set floating window to good size for eBooks.
+bindsym $mod+shift+b resize set 583 660
 # Move window to scratchpad. This makes it invisible until the scratchpad is shown again.
 # The window in the scratchpad is treated as a floating window.
 # To remove from the scratchpad, simply "unfloat" the window.

@@ -72,6 +72,9 @@ alias rm='rm -i'													# confirm before deletion
 # --------- CUSTOM ALIASES ---------
 ####################################
 
+# DICTIONARY
+alias def='sdcv --color'
+
 # VIM
 alias vim='nvim'
 

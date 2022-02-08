@@ -1,6 +1,6 @@
 # Set background & foreground colour.
 set default-fg "#3f3f3f"
-set default-bg "#4e4e4e"
+set default-bg "#303643"
 
 # Switch over keybindings for rotate and reload.
 map r reload
@@ -16,8 +16,8 @@ set statusbar-home-tilde
 set recolor true
 
 # Alter colour in greyscale mode.
-set recolor-lightcolor "#3f3f3f"
-set recolor-darkcolor "#c2c2b4"
+set recolor-lightcolor "#2e3440"
+set recolor-darkcolor "#d1d2c4"
 
 # Defines whether original image colours should be kept after recolouring.
 # set recolor-reverse-video True

@@ -60,13 +60,12 @@ font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
 ; Originally included bspwm module first.
 modules-left = i3
 ; Original center module was mpd or music player daemon - not configured yet so removed.
-modules-center = "memory cpu temperature filesystem"
+modules-center = ""
 ; Originally included:
 ; 	alsa but appeared to just duplicate volume.
 ; 	xkeyboard excluded as don't need this.
 ; 	xbacklight but didn't work. (Tried backlight instead: displays a line but doesn't change so removed)
-; 	filesystem memory cpu temperature
-modules-right = pulseaudio wlan eth battery date powermenu
+modules-right = filesystem memory cpu temperature pulseaudio wlan eth battery date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -292,7 +291,8 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
+format-volume = <label-volume>
+; <bar-volume> -- was after `label volume` in above line.
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 

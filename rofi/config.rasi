@@ -145,4 +145,5 @@ configuration {
   }
 }
 //@theme "/usr/share/rofi/themes/android_notification.rasi"
-@theme "/usr/share/rofi/themes/alien_fruit_salad.rasi"
+//@theme "/usr/share/rofi/themes/alien_fruit_salad.rasi"
+@theme "/usr/share/rofi/themes/nordic.rasi"
