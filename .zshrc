@@ -72,6 +72,9 @@ alias rm='rm -i'													# confirm before deletion
 # --------- CUSTOM ALIASES ---------
 ####################################
 
+# UNMOUNT
+alias unmount='umount'
+
 # DICTIONARY
 alias def='sdcv --color'
 

@@ -85,6 +85,7 @@ for_window [class="mageguild.exe"] floating enable, move position center
 for_window [class="Donsol"] floating enable, move position center
 for_window [class="feh"] floating enable, move position center
 for_window [class="Sxiv"] floating enable, resize set 681 574, move position center
+for_window [class="mpv"] floating enable, resize set 1264 634, move position center
 
 # Replace default notification daemon with dunst.
 exec killall -q msm_kde_notifier
@@ -274,10 +275,9 @@ bindsym $mod+r mode "resize"
 # CUSTOM KEYBINDINGS
 
 # Launch Dolphin (file manager).
-# bindsym $mod+e exec dolphin
+bindsym $mod+n exec konsole -e ranger
 # Launch Firefox.
-# bindsym $mod+b exec firefox
-
+bindsym $mod+i exec firefox
 # Launch system settings.
 bindsym $mod+F1 exec systemsettings5
 # Launch Yakuake.
