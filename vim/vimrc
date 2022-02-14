@@ -66,7 +66,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'rbong/vim-flog'
 
 " Markdown plugin.
-Plug 'plasticboy/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
+
+" Markdown plugin for nvim.
+Plug 'tpope/vim-markdown'
 
 " Adds tabs to NERDTree.
 " No longer maintained.
@@ -241,7 +244,10 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd FileType markdown set cursorline
 
 " Hide and format markdown elements like **bold**.
-autocmd FileType markdown set conceallevel=2
+" autocmd FileType markdown set conceallevel=2
+
+" Disable markdown syntax concealing.
+let g:markdown_syntax_conceal = 0
 
 " Enable spellchecker in Markdown files.
 autocmd FileType markdown setlocal spell spelllang=en_gb

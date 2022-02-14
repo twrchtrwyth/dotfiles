@@ -53,19 +53,23 @@ module-margin-right = 2
 
 ; List all installed fonts from the command line with fc-list.
 ; Use the bit listed after the colon as the font name.
+; Siji must come first for glyphs to load correctly.
 font-0 = siji:pixelsize=10;1
 font-1 = Input Mono:style=Regular:size=8:antialias=true;0
 font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-3 = Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid
+font-4 = Font Awesome 6 Brands,Font Awesome 6 Brands Regular:style=Regular
+font-5 = Font Awesome 6 Free,Font Awesome 6 Free Regular:style=Regular
 
 ; Originally included bspwm module first.
-modules-left = i3
+modules-left = i3 
 ; Original center module was mpd or music player daemon - not configured yet so removed.
 modules-center = ""
 ; Originally included:
 ; 	alsa but appeared to just duplicate volume.
 ; 	xkeyboard excluded as don't need this.
 ; 	xbacklight but didn't work. (Tried backlight instead: displays a line but doesn't change so removed)
-modules-right = filesystem memory cpu temperature pulseaudio wlan eth battery date powermenu
+modules-right = filesystem memory cpu temperature pulseaudio wlan eth battery date covid powermenu
 
 tray-position = right
 tray-padding = 2
@@ -239,9 +243,11 @@ type = internal/network
 interface = wlp3s0
 interval = 3.0
 
-format-connected = <ramp-signal>
+format-connected = <ramp-signal> <label-connected> <upload-speed> <download-speed>
 ; format-connected-underline = #9f78e1
-;label-connected = %essid%
+label-connected = %local_ip%
+upload-speed = %upspeed%
+download-speed = %downspeed%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -434,6 +440,23 @@ click-right = exec blueberry
 format-padding = 1
 format-background = #3f3f3f
 format-foreground = #d1d2c4
+
+[module/covid]
+type = custom/script
+; 86400 seconds = 24 hours.
+interval = 86400
+format = <label>
+; Use the -p (province) argument followed by e.g. "England" to be more specific.
+; The %{T6} %{T-} tags are not Python: they are telling Polybar to use FontAwesome
+;  to render the character, then switch back to the default font afterwards.
+;  The 6 refers to font number 6, confusingly labelled "font-5" above. Something
+;  to do with the indexing.
+exec = python ~/.config/polybar/scripts/coronaWidget.py united-kingdom -ar -lo -pre "%{T6}%{T-} "
+
+; [module/info-hackspeed]
+; type = custom/script
+; exec = ~/.config/polybar/scripts/info-hackspeed.sh
+; tail = true
 
 [settings]
 screenchange-reload = true

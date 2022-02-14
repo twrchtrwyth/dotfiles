@@ -22,7 +22,7 @@ exec pkill "ksplashqml"
 exec --no-startup-id feh --bg-scale /home/wil/Pictures/blossom_blue_x220_pixellated.png
 
 # Launch picom
-exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
+exec_always --no-startup-id picom -b --experimental-backends --config ~/.config/picom/picom.conf
 
 # Start Polybar when i3 loads.
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -34,7 +34,7 @@ set $border_width pixel 1
 for_window [class=".*"] border $border_width
 
 # Sets gap width.
-gaps inner 50
+gaps inner 20
 # gaps left -5
 # gaps right -5
 # gaps bottom -5
@@ -54,7 +54,7 @@ set $indicator #96968b
 client.focused  $border  $background  $text  $indicator  $border
 
 # Launch a terminal upon login.
-exec --no-startup-id konsole
+# exec --no-startup-id konsole
 
 # Plasma compatibility improvements.
 for_window [class="pop-up"] floating enable
@@ -86,6 +86,8 @@ for_window [class="Donsol"] floating enable, move position center
 for_window [class="feh"] floating enable, move position center
 for_window [class="Sxiv"] floating enable, resize set 681 574, move position center
 for_window [class="mpv"] floating enable, resize set 1264 634, move position center
+# for_window [class="konsole"] floating enable, resize set 679 572, move position center
+for_window [class="Thunderbird" instance="Msgcompose"] floating enable, resize set 679 572, move position center
 
 # Replace default notification daemon with dunst.
 exec killall -q msm_kde_notifier
@@ -296,12 +298,20 @@ bindsym $mod+shift+f resize set 655 396
 bindsym $mod+shift+p resize set 681 574
 # Set floating window to good size for eBooks.
 bindsym $mod+shift+b resize set 583 660
-# Move window to scratchpad. This makes it invisible until the scratchpad is shown again.
+
+# SCRATCHPAD
+# ----------
+# Move window to scratchpad. This makes it invisible until scratchpad is shown.
 # The window in the scratchpad is treated as a floating window.
 # To remove from the scratchpad, simply "unfloat" the window.
+# The scratchpad can be toggled irrespective of window class using
+# `bindsym [COMMAND] scratchpad show`. 
 bindsym $mod+shift+minus move scratchpad
-# Show/hide scratchpad (toggle). 
-bindsym $mod+minus scratchpad show
+bindsym $mod+bracketleft scratchpad show
+# Show/hide just konsole windows in scratchpad (toggle). 
+bindsym $mod+minus [class="konsole"] scratchpad show
+# Toggle for Bitwarden (password manager) when in the scratchpad.
+bindsym $mod+plus [class="Bitwarden"] scratchpad show
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
