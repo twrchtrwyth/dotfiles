@@ -1,1 +1,0 @@
-/home/wil/.vim/vimrc

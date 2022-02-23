@@ -88,6 +88,7 @@ for_window [class="Sxiv"] floating enable, resize set 681 574, move position cen
 for_window [class="mpv"] floating enable, resize set 1264 634, move position center
 # for_window [class="konsole"] floating enable, resize set 679 572, move position center
 for_window [class="Thunderbird" instance="Msgcompose"] floating enable, resize set 679 572, move position center
+for_window [class="Blueberry.py"] floating enable, resize set 679 572, move position center
 
 # Replace default notification daemon with dunst.
 exec killall -q msm_kde_notifier

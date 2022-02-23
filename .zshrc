@@ -245,7 +245,7 @@ alias linux='vim ~/Documents/linux/the_command_line.md'
 export PATH=/home/wil/epr:$PATH
 
 # Required for Jekyll
-export PATH=/home/wil/.gem/ruby/2.7.0/bin:$PATH
+export PATH=/home/wil/.gem/ruby/3.0.0/bin:$PATH
 
 # For uxn
 export PATH=/home/wil/bin:$PATH
