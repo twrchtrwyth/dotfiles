@@ -72,7 +72,11 @@ alias rm='rm -i'													# confirm before deletion
 # --------- CUSTOM ALIASES ---------
 ####################################
 
+# Launch the OU data analysis course and open the associated Jupyter notebooks.
+alias datacourse='python ~/python/load_ou_course.py'
+
 # UNMOUNT
+# Because... Come on
 alias unmount='umount'
 
 # DICTIONARY
@@ -233,7 +237,7 @@ alias helm='zathura ~/Documents/helm_manual.pdf & disown'
 alias colour='farge'
 
 # LINUX NOTES
-alias linux='vim ~/Documents/linux/the_command_line.md'
+alias linux='vim ~/Documents/linux/linux_guide.md'
 
 ##########################################
 # -------- CUSTOM ALIASES END ------------
@@ -245,7 +249,7 @@ alias linux='vim ~/Documents/linux/the_command_line.md'
 export PATH=/home/wil/epr:$PATH
 
 # Required for Jekyll
-export PATH=/home/wil/.gem/ruby/3.0.0/bin:$PATH
+export PATH=/home/wil/.gem/ruby/2.7.0/bin:$PATH
 
 # For uxn
 export PATH=/home/wil/bin:$PATH
@@ -425,3 +429,8 @@ esac
 
 # Required by pyenv
 # eval "$(pyenv init -)"
+
+# Correct zsh help function on Manjaro.
+autoload -Uz run-help
+(( ${aliases[run-help]} )) && unalias run-help
+alias help=run-help

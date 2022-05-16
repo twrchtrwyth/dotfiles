@@ -69,7 +69,7 @@ modules-center = ""
 ; 	alsa but appeared to just duplicate volume.
 ; 	xkeyboard excluded as don't need this.
 ; 	xbacklight but didn't work. (Tried backlight instead: displays a line but doesn't change so removed)
-modules-right = filesystem memory cpu temperature pulseaudio wlan eth battery date covid powermenu
+modules-right = wlan eth pulseaudio filesystem memory cpu temperature battery date powermenu
 
 tray-position = right
 tray-padding = 2

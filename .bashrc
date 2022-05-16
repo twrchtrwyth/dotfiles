@@ -240,7 +240,7 @@ alias battery='echo "9 cell battery:"; upower -i /org/freedesktop/UPower/devices
 export PATH=/home/wil/epr:$PATH
 
 # Required for Jekyll
-export PATH=/home/wil/.gem/ruby/2.7.0/bin:$PATH
+export PATH=/home/wil/.gem/ruby/3.0.0/bin:$PATH
 
 # Automatically start Anaconda python environment. Needed for OU data analysis course.
 # >>> conda initialize >>>
