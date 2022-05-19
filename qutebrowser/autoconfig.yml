@@ -40,3 +40,5 @@ settings:
     global: '#434c5e'
   content.user_stylesheets:
     global: null
+  input.forward_unbound_keys:
+    global: all
