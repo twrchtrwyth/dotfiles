@@ -154,8 +154,6 @@ alias reddit='ttrv'
 # Spotify command line
 alias spotify='spt'
 alias spotofy='spotify'
-# Micro (Text Editor)
-alias micro='~/micro'
 # GPXSEE
 alias gpxsee='~/gpxsee/gpxsee'
 alias map='~/gpxsee/gpxsee'

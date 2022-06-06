@@ -269,6 +269,17 @@ autocmd FileType markdown set shiftwidth=2
 autocmd FileType markdown set scrolloff=12
 
 
+" LaTeX
+" -----
+
+" Wrap whole words only.
+autocmd FileType tex,latex set linebreak
+" Stops the syntax being annoyingly hidden.
+let g:vimtex_syntax_conceal_disable=1
+" Turn on spell checking
+autocmd FileType tex,latex set spell=true
+
+
 " PYTHON
 " ------
 
@@ -308,6 +319,7 @@ autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellesca
 " Highlights columns past 79 to help compliance with usual standards.
 " I have no idea how this works.
 autocmd FileType python execute "set colorcolumn=" . join(range(80,335), ',')
+
 
 " HTML, CSS & JAVASCRIPT
 " ----------------------
