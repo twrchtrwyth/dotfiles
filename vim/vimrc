@@ -277,7 +277,7 @@ autocmd FileType tex,latex set linebreak
 " Stops the syntax being annoyingly hidden.
 let g:vimtex_syntax_conceal_disable=1
 " Turn on spell checking
-autocmd FileType tex,latex set spell=true
+autocmd FileType tex,latex set spell
 
 
 " PYTHON
