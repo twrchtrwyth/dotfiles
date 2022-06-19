@@ -207,8 +207,15 @@ set mouse=a
 set number
 
 " Make line number background transparent, and set number colour to dark grey.
-highlight clear LineNr
-highlight LineNr ctermfg=DarkGrey
+if !has('nvim') 
+	highlight clear LineNr
+	highlight LineNr ctermfg=DarkGrey
+endif
+" nvim needs guifg to work, even in terminal.
+if has('nvim')
+	highlight clear LineNr
+	highlight LineNr guifg=#5d677a
+endif
 
 " Quickly time out on keycodes, but never time out on mappings.
 set notimeout ttimeout ttimeoutlen=200
@@ -278,7 +285,8 @@ autocmd FileType tex,latex set linebreak
 let g:vimtex_syntax_conceal_disable=1
 " Turn on spell checking
 autocmd FileType tex,latex set spell
-
+" Automatically update pdf on save.
+" autocmd BufWritePost *.tex term ++close ++hidden pdflatex %
 
 " PYTHON
 " ------

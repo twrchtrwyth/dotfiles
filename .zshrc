@@ -75,6 +75,9 @@ alias rm='rm -i'													# confirm before deletion
 # Launch the OU data analysis course and open the associated Jupyter notebooks.
 alias datacourse='python ~/python/load_ou_course.py'
 
+# Open my notes on maths, along with a Firefox window.
+alias maths='python ~/python/load_maths_notes.py'
+
 # UNMOUNT
 # Because... Come on
 alias unmount='umount'
