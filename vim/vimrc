@@ -283,8 +283,8 @@ autocmd FileType markdown set scrolloff=12
 autocmd FileType tex,latex set linebreak
 " Stops the syntax being annoyingly hidden.
 let g:vimtex_syntax_conceal_disable=1
-" Turn on spell checking
-autocmd FileType tex,latex set spell
+" Turn on spell checking for LaTeX files.
+autocmd FileType tex,latex set spell mousemodel=popup
 " Automatically update pdf on save.
 " autocmd BufWritePost *.tex term ++close ++hidden pdflatex %
 
@@ -444,6 +444,15 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 :map <leader>c i{<Esc>ea}<Esc>
 " Curly braces, to end of line.
 :map <leader>ce i{<Esc>$a}<Esc>
+
+" For inserting bold font in LaTeX.
+autocmd FileType tex,latex map <leader>bf a\textbf{}<Esc>i
+" For inserting italic font in LaTeX.
+autocmd FileType tex,latex map <leader>it a\textit{}<Esc>i
+" For inserting inline maths in LaTeX.
+autocmd FileType tex,latex map <leader>ima a$$<Esc>i
+" For inserting newline maths in LaTeX.
+autocmd FileType tex,latex map <leader>oma o<Esc>o\begin{gather*}<Esc>o<Esc>o<backspace>\end{gather*}<Esc>o<esc>kki<tab>
 
 " Maps <F9> to open Goyo
 :map <F9> :Goyo<CR>
