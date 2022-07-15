@@ -453,6 +453,8 @@ autocmd FileType tex,latex map <leader>it a\textit{}<Esc>i
 autocmd FileType tex,latex map <leader>ima a$$<Esc>i
 " For inserting newline maths in LaTeX.
 autocmd FileType tex,latex map <leader>oma o<Esc>o\begin{gather*}<Esc>o<Esc>o<backspace>\end{gather*}<Esc>o<esc>kki<tab>
+" For inserting newline maths in LaTeX.
+autocmd FileType tex,latex map <leader>bullets o<Esc>o\begin{itemize}<Esc>o<Esc>o<backspace>\end{itemize}<Esc>o<esc>kki<tab>\item 
 
 " Maps <F9> to open Goyo
 :map <F9> :Goyo<CR>

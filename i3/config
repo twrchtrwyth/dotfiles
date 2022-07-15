@@ -19,7 +19,7 @@ for_window [title="Desktop — Plasma"] kill, floating enable, border none
 exec pkill "ksplashqml"
 
 # Set the wallpaper.
-exec --no-startup-id feh --bg-scale /home/wil/Pictures/blossom_blue_x220_pixellated.png
+exec --no-startup-id feh --bg-scale /home/wil/Pictures/jwst_carina_nebula.png
 
 # Launch picom
 exec_always --no-startup-id picom -b --experimental-backends --config ~/.config/picom/picom.conf
@@ -91,6 +91,7 @@ for_window [class="Thunderbird" instance="Msgcompose"] floating enable, resize s
 for_window [class="Blueberry.py"] floating enable, resize set 679 572, move position center
 for_window [class="qutebrowser"] floating enable, resize set 870 660, move position center
 for_window [class="realvnc-viewer"] floating enable, resize set 870 660, move position center
+for_window [class="oolite"] floating enable, move position center
 
 # Replace default notification daemon with dunst.
 exec killall -q msm_kde_notifier

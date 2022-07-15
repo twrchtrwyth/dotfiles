@@ -1,6 +1,6 @@
 # Set background & foreground colour.
 set default-fg "#3f3f3f"
-set default-bg "d1d2c4"
+set default-bg "#46454e"
 
 # Switch over keybindings for rotate and reload.
 map r reload
@@ -37,7 +37,7 @@ set incremental-search true
 set selection-clipboard clipboard
 
 # Change behaviour of PgUp and PgDn - doesn't work.
-map PageUp scroll up
-map PageDown scroll down
-map <S-PageUp> navigate up
-map <S-PageDown> navigate down
+# map PageUp scroll up
+# map PageDown scroll down
+# map <S-PageUp> navigate up
+# map <S-PageDown> navigate down

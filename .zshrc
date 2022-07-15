@@ -150,6 +150,8 @@ alias ttot='wine ~/Games/TToTd20_Stable190/TheTempleofTorment.exe'
 alias tangledeep='~/Games/Tangledeep/start.sh'
 # Dream Quest
 alias dq='cd ~/Games/dream-quest; wine Windows64.exe; cd ~'
+# Oolite
+alias oolite='~/GNUstep/Applications/Oolite/oolite'
 
 # APPLICATIONS
 # Reddit command line
