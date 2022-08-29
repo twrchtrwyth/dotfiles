@@ -3,7 +3,7 @@
   /* To limit fullscreen mode to the window size, change the following setting in about:config
    * full-screen-api.ignore-widgets = true
    * Once this is done, when F11 is pressed, it will instead just hide the toolbar and tab bar.
-   * This works well with i3wm, as its fullscreen shortcut can still be used for true fullscreen is desired.
+   * This works well with i3wm, as its fullscreen shortcut can still be used for true fullscreen if desired.
 
    /* Minimal Functional Fox variables*/
   --mff-bg: #2e3440;

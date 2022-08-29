@@ -76,7 +76,13 @@ alias rm='rm -i'													# confirm before deletion
 alias datacourse='python ~/python/load_ou_course.py'
 
 # Open my notes on maths, along with a Firefox window.
-alias maths='python ~/python/load_maths_notes.py'
+alias maths_load='python ~/python/load_maths_notes.py'
+
+# Just open the maths notes and pdf.
+alias maths='zathura ~/Documents/latex/maths/maths.pdf & disown && vim ~/Documents/latex/maths/maths.tex'
+
+# Open physics notes.
+alias physics='zathura ~/Documents/latex/physics/physics.pdf & disown && vim ~/Documents/latex/physics/physics.tex'
 
 # UNMOUNT
 # Because... Come on
@@ -95,6 +101,7 @@ alias hon='cat ~/hon.md'
 # (Yes, it's clunky to cd in and out of the directories, but some of the
 # executables wouldn't launch if wine is invoked outside the directory
 # within which they're located.)
+
 # Cogmind
 alias cogmind='cd ~/Games/COGMIND\ \(Beta\ 10.2\); wine COGMIND.exe; cd ~'
 # Malleus Goblinficarium
@@ -152,6 +159,12 @@ alias tangledeep='~/Games/Tangledeep/start.sh'
 alias dq='cd ~/Games/dream-quest; wine Windows64.exe; cd ~'
 # Oolite
 alias oolite='~/GNUstep/Applications/Oolite/oolite'
+# Necrosmith
+alias necrosmith='cd ~/.local/share/Steam/steamapps/common/Necrosmith; wine Necrosmith.exe; cd ~'
+# Shogun Total War
+alias shogun='cd ~/.local/share/Steam/steamapps/common/Total\ War\ Shogun\ 1\ Gold; wine ShogunM.exe; cd ~'
+# Shogun Total War PDF
+alias shogun-history='zathura ~/.local/share/Steam/steamapps/common/Total\ War\ Shogun\ 1\ Gold/STWG\ History\ English.pdf & disown'
 
 # APPLICATIONS
 # Reddit command line
@@ -256,6 +269,9 @@ export PATH=/home/wil/.gem/ruby/2.7.0/bin:$PATH
 
 # For uxn
 export PATH=/home/wil/bin:$PATH
+
+# For sonicpi --- unclear if needed, trying something else first.
+# export PATH=/usr/bin/qmake:$PATH
 
 # Use vi bindings in the shell instead of default emacs bindings.
 # Handed by .inputrc file instead.
