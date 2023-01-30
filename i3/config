@@ -19,7 +19,7 @@ for_window [title="Desktop — Plasma"] kill, floating enable, border none
 exec pkill "ksplashqml"
 
 # Set the wallpaper.
-exec --no-startup-id feh --bg-scale /home/wil/Pictures/borges-library-andrew-de-graff-3.jpg
+exec --no-startup-id feh --bg-scale /home/wil/pictures/nausicaa_4.jpg
 
 # Launch picom
 exec_always --no-startup-id picom -b --experimental-backends --config ~/.config/picom/picom.conf
@@ -34,7 +34,8 @@ set $border_width pixel 1
 for_window [class=".*"] border $border_width
 
 # Sets gap width.
-gaps inner 20
+# Currently disabled.
+# gaps inner 10
 # gaps left -5
 # gaps right -5
 # gaps bottom -5
@@ -86,15 +87,27 @@ for_window [class="Donsol"] floating enable, move position center
 for_window [class="feh"] floating enable, move position center
 for_window [class="Sxiv"] floating enable, resize set 681 574, move position center
 for_window [class="mpv"] floating enable, resize set 1264 634, move position center
-# for_window [class="konsole"] floating enable, resize set 679 572, move position center
-for_window [class="Thunderbird" instance="Msgcompose"] floating enable, resize set 679 572, move position center
-for_window [class="Thunderbird" instance="Calendar"] floating enable, resize set 679 572, move position center
+for_window [class="konsole"] floating enable
+for_window [class="thunderbird" instance="Msgcompose"] floating enable, resize set 679 572, move position center
+for_window [class="thunderbird" instance="Calendar"] floating enable, resize set 679 572, move position center
 for_window [class="Blueberry.py"] floating enable, resize set 679 572, move position center
 for_window [class="qutebrowser"] floating enable, resize set 870 660, move position center
+for_window [class="Midori"] floating enable, resize set 1294 664, move position center
 for_window [class="realvnc-viewer"] floating enable, resize set 870 660, move position center
 for_window [class="oolite"] floating enable, move position center
 for_window [class="sengoku.exe"] floating enable, move position center
 for_window [class="SuperCollider"] floating enable, move position center
+for_window [class="Flet"] floating enable, move position center
+for_window [class="vlc"] floating enable, move position center
+for_window [class="matplotlib"] floating enable, resize set 1264 634, move position center
+for_window [class="prboom-plus"] floating enable, move position center
+for_window [class="sunvox"] floating enable, move position center
+for_window [class="Tk"] floating enable, border normal, move position center
+for_window [class="Processing"] floating enable, move position center
+for_window [class="!toplevel"] floating enable, border normal, move position center
+for_window [class="Nm-connection-editor"] floating enable, move position center
+for_window [class="python3.10"] floating enable, move position center
+for_window [class="steam_app_975370"] floating enable, move position center
 
 # Replace default notification daemon with dunst.
 exec killall -q msm_kde_notifier
@@ -185,7 +198,7 @@ bindsym $mod+b split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -252,7 +265,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec --no-startup-id qdbus-qt5 org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
 
 # VirtualBox Machines always float.
-for_window [class="VirtualBox Machine"] floating enable, move position center 
+for_window [class="VirtualBox Machine"] floating enable, resize set 1264 634, move position center 
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -283,10 +296,12 @@ bindsym $mod+r mode "resize"
 
 # CUSTOM KEYBINDINGS
 
-# Launch Dolphin (file manager).
+# Launch Ranger (CLI file manager).
 bindsym $mod+n exec konsole -e ranger
 # Launch Firefox.
 bindsym $mod+i exec firefox
+# Launch Dolphin (file manager).
+bindsym $mod+f exec dolphin
 # Launch system settings.
 bindsym $mod+F1 exec systemsettings5
 # Launch Yakuake.
@@ -298,16 +313,21 @@ bindsym $mod+t border toggle
 # Launch the GIMP
 bindsym $mod+g exec gimp-2.10
 # Set floating windows to a nice petite size.
-bindsym $mod+shift+f resize set 655 396
+bindsym $mod+shift+v resize set 655 396
+# Set floating windows to a tiny size.
+bindsym $mod+shift+t resize set 400 350
 # Set floating windows to a size good for Goyo (in Vim).
 # bindsym $mod+shift+g resize set 735 706
 # Set floating windows to a size good for Python.
-bindsym $mod+shift+p resize set 681 574
+bindsym $mod+shift+p resize set 728 660
 # Set floating window to good size for eBooks.
 bindsym $mod+shift+b resize set 583 660
 # Set floating window to good size for Jupyter notebooks.
 bindsym $mod+shift+n resize set 870 660
-
+# Set floating window to a nice sized square.
+bindsym $mod+shift+s resize set 598 544
+# Set floating windows to a large size.
+bindsym $mod+shift+w resize set 1294 664
 
 # SCRATCHPAD
 # ----------
@@ -316,9 +336,13 @@ bindsym $mod+shift+n resize set 870 660
 # To remove from the scratchpad, simply "unfloat" the window.
 # The scratchpad can be toggled irrespective of window class using
 # `bindsym [COMMAND] scratchpad show`. 
+# Specific applications can be assigned to shortcuts, to immediately display them is they are in the scratchpad.
+
+# Add the focused window to the scratchpad.
 bindsym $mod+shift+minus move scratchpad
+# Show/hide the scratchpad.
 bindsym $mod+bracketleft scratchpad show
-# Show/hide just konsole windows in scratchpad (toggle). 
+# Show/hide just konsole windows in scratchpad (toggle).
 bindsym $mod+minus [class="konsole"] scratchpad show
 # Toggle for Bitwarden (password manager) when in the scratchpad.
 bindsym $mod+plus [class="Bitwarden"] scratchpad show
@@ -453,3 +477,12 @@ mode "$mode_gaps_left" {
         bindsym Return mode "$mode_gaps"
         bindsym Escape mode "default"
 } 
+
+# Toggle gaps. From a Reddit post. Doesn't work, just makes the screen go black for a bit.
+# Might work after reboot?
+bindsym $mod+o exec --no-startup-id "if [ `i3-msg -t get_tree | grep -Po \
+    '.*\\"gaps\\":{\\"inner\\":\K(-|)[0-9]+(?=.*\\"focused\\":true)'` -eq 0 ]; then \
+        i3-msg gaps inner current set 0; \
+    else \
+        i3-msg gaps inner current set $gap_width; \
+    fi"

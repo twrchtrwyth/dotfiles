@@ -72,6 +72,9 @@ alias rm='rm -i'													# confirm before deletion
 # --------- CUSTOM ALIASES ---------
 ####################################
 
+# Finance manager
+alias finance='cd ~/Fortunae; npm start'
+
 # Launch the OU data analysis course and open the associated Jupyter notebooks.
 alias datacourse='python ~/python/load_ou_course.py'
 
@@ -165,6 +168,8 @@ alias necrosmith='cd ~/.local/share/Steam/steamapps/common/Necrosmith; wine Necr
 alias shogun='cd ~/.local/share/Steam/steamapps/common/Total\ War\ Shogun\ 1\ Gold; wine ShogunM.exe; cd ~'
 # Shogun Total War PDF
 alias shogun-history='zathura ~/.local/share/Steam/steamapps/common/Total\ War\ Shogun\ 1\ Gold/STWG\ History\ English.pdf & disown'
+# Planescape Torment
+alias planescape='~/Games/Planescape\ Torment/start.sh'
 
 # APPLICATIONS
 # Reddit command line
@@ -187,6 +192,24 @@ alias ssh-start='sudo systemctl start sshd.service'
 alias ssh-disable='sudo systemctl disable sshd.service'
 # Stop SSH
 alias ssh-stop='sudo systemctl stop sshd.service'
+
+#################
+# RASPBERRY PIs #
+#################
+
+# yunohost server
+alias oki='ssh -p 9967 admin@oki.nohost.me'
+
+# raspberry pi zero w 2
+# (ronin is an alias for 192.168.1.240, set in /etc/hosts)
+# Add the -Y flag to enable trusted X11 forwarding.
+alias ronin='ssh -p 9973 wil@ronin'
+
+# pi-hole
+alias yojimbo='ssh pi@pi-hole.local'
+
+# TMUX
+alias tmux='tmux -2'  # Forces 256 colour mode.
 
 # TIME/DATE
 alias time='date'
@@ -315,13 +338,21 @@ setopt prompt_subst
 PROMPT="%(!.%{$fg[red]%}[%4~]%{$reset_color%}# .%{$fg[green]%}[%4~]%{$reset_color%} > "
 # Maia prompt
 #PROMPT='${vim_mode} %B%{$fg[cyan]%}%(4~|%-1~/.../%2~|%~)%u%b >%{$fg[cyan]%}>%B%(?.%{$fg[cyan]%}.%{$fg[red]%})>%{$reset_color%}%b ' # Print some system information when the shell is first started
-# Print a greeting message when shell is started
-echo $fg[red]"██████╗  ██████╗ ███╗  ██╗█╗██████╗  ██████╗  █████╗ ███╗  ██╗██╗ ██████╗
-██╔══██╗██╔═══██╗████╗ ██║╚╝ ╚██╔═╝  ██╔══██╗██╔══██╗████╗ ██║██║██╔════╝
-██║  ██║██║   ██║██╔██╗██║    ██║    ██████╔╝███████║██╔██╗██║██║██║
-██║  ██║██║   ██║██║╚████║    ██║    ██╔═══╝ ██╔══██║██║╚████║██║██║
-██████╔╝╚██████╔╝██║ ╚███║    ██║    ██║     ██║  ██║██║ ╚███║██║╚██████╗
-╚═════╝  ╚═════╝ ╚═╝  ╚══╝    ╚═╝    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚══╝╚═╝ ╚═════╝"$reset_color
+
+# Print a greeting message when shell is started (DON'T PANIC)
+echo $fg[red]"██████╗  █████╗ ███╗  ██╗██╗██████╗
+██╔══██╗██╔══██╗████╗ ██║██║╚═██╔═╝
+██║  ██║██║  ██║██╔██╗██║╚═╝  ██║  
+██║  ██║██║  ██║██║╚████║     ██║  
+██████╔╝╚█████╔╝██║ ╚███║     ██║  
+╚═════╝  ╚════╝ ╚═╝  ╚══╝     ╚═╝  
+██████╗  █████╗ ███╗  ██╗██╗ ██████╗
+██╔══██╗██╔══██╗████╗ ██║██║██╔════╝
+██████╔╝███████║██╔██╗██║██║██║
+██╔═══╝ ██╔══██║██║╚████║██║██║
+██║     ██║  ██║██║ ╚███║██║╚██████╗
+╚═╝     ╚═╝  ╚═╝╚═╝  ╚══╝╚═╝ ╚═════╝"$reset_color
+
 echo $USER@$HOST  $(uname -srm) $(lsb_release -rcs)
 ## Prompt on right side:
 #  - shows status of git when in git repository (code adapted from https://techanic.net/2011/12/30/my_git_prompt_for_zsh.html)
@@ -453,3 +484,13 @@ esac
 autoload -Uz run-help
 (( ${aliases[run-help]} )) && unalias run-help
 alias help=run-help
+
+# Create a blank markdown document with necessary frontmatter.
+# For Pelican blogging.
+np () {
+  cat template.txt > "$1".md && nvim "$1".md
+}
+
+# Playdate SDK
+export PLAYDATE_SDK_PATH=~/PlaydateSDK-1.12.3
+export PATH=/home/wil/PlaydateSDK-1.12.3/bin:$PATH

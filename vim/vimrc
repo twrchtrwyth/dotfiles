@@ -112,6 +112,10 @@ Plug 'Galicarnax/vim-regex-syntax'
 Plug 'andersevenrud/nordic.nvim'
 Plug 'rebelot/kanagawa.nvim'
 
+" Neovim statusline.
+" Plug 'nvim-lualine/lualine.nvim'
+" Plug 'kyazdani42/nvim-web-devicons'
+
 " Initialise plugin system.
 call plug#end()
 
@@ -128,12 +132,12 @@ set termguicolors
 
 " Sets Zenburn theme from the zenburn plugin if vim opened.
 if !has('nvim')
-	colorscheme zenburn
+  colorscheme zenburn
 endif
 
 " Sets nordic theme from the nordic plugin if nvim opened.
 if has('nvim')
-	colorscheme nordic
+  colorscheme kanagawa
 endif
 
 " This will 'ward off unexpected things that your distro might have made'.
@@ -207,14 +211,14 @@ set mouse=a
 set number
 
 " Make line number background transparent, and set number colour to dark grey.
-if !has('nvim') 
-	highlight clear LineNr
-	highlight LineNr ctermfg=DarkGrey
+if !has('nvim')
+  highlight clear LineNr
+  highlight LineNr ctermfg=DarkGrey
 endif
 " nvim needs guifg to work, even in terminal.
 if has('nvim')
-	highlight clear LineNr
-	highlight LineNr guifg=#5d677a
+  highlight clear LineNr
+  highlight LineNr guifg=#5d677a
 endif
 
 " Quickly time out on keycodes, but never time out on mappings.
@@ -251,10 +255,10 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd FileType markdown set cursorline
 
 " Hide and format markdown elements like **bold**.
-" autocmd FileType markdown set conceallevel=2
+autocmd FileType markdown set conceallevel=0
 
 " Disable markdown syntax concealing.
-let g:markdown_syntax_conceal = 0
+let g:markdown_syntax_conceal=0
 
 " Enable spellchecker in Markdown files.
 autocmd FileType markdown setlocal spell spelllang=en_gb
@@ -288,18 +292,30 @@ autocmd FileType tex,latex set spell mousemodel=popup
 " Automatically update pdf on save.
 " autocmd BufWritePost *.tex term ++close ++hidden pdflatex %
 
+" LUA
+" ---
+
+au BufRead,BufNewFile *.lua
+  \ set expandtab
+  \ | set tabstop=4
+  \ | set softtabstop=4
+  \ | set shiftwidth=4
+  \ | set autoindent
+
+autocmd FileType lua set cursorline
+
 " PYTHON
 " ------
 
 " General Python settings.
 au BufRead, BufNewFile *.py
-	\ set tabstop=4
-	\ | set softtabstop=4
-	\ | set shiftwidth=4
-	\ | set expandtab
-	\ | set autoindent
-	\ | set fileformat=unix
-	\ | set encoding=utf-8
+  \ set tabstop=4
+  \ | set softtabstop=4
+  \ | set shiftwidth=4
+  \ | set expandtab
+  \ | set autoindent
+  \ | set fileformat=unix
+  \ | set encoding=utf-8
 
 " Flag extraneous whitespace.
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
@@ -325,7 +341,6 @@ autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%,
 autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
 " Highlights columns past 79 to help compliance with usual standards.
-" I have no idea how this works.
 autocmd FileType python execute "set colorcolumn=" . join(range(80,335), ',')
 
 
@@ -333,9 +348,9 @@ autocmd FileType python execute "set colorcolumn=" . join(range(80,335), ',')
 " ----------------------
 
 au BufNewFile,BufRead *.js,*.html,*.css
-	\ set tabstop=2
-	\ | set softtabstop=2
-	\ | set shiftwidth=2
+  \ set tabstop=2
+  \ | set softtabstop=2
+  \ | set shiftwidth=2
 
 
 " GROFF
@@ -367,7 +382,7 @@ let g:vim_markdown_autowrite = 1  " Writes file if link followed.
 let g:vim_markdown_edit_url_in = 'tab'
 let g:vim_markdown_follow_anchor = 1
 let g:vim_markdown_new_list_item_indent = 2
-" let g:vim_markdown_conceal = 2
+let g:vim_markdown_conceal = 0
 
 " SIMPYLFOLD
 let g:SimpylFold_docstring_preview=1  " Shows docstrings for folded code.
@@ -393,22 +408,27 @@ let g:ctrlp_custom_ignore = {'file': '\v\.(pdf)$'}
 " let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " VIM-AIRLINE
+" Draw the line at the top of the screen.
+" let g:airline_statusline_ontop=1
+let g:airline_powerline_fonts = 1
 " Enable the list of buffers.
-" let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 " Show only the filename, rather than full path.
-" let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#fnamemod = ':t'
+" Show only filename in buffer names.
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 " Automatically truncate the bar in smaller windows.
 let g:airline#extensions#default#section_truncate_width = {
-	\ 'b': 79,
-	\ 'x': 60,
-	\ 'y': 88,
-	\ 'z': 45,
-	\ 'warning': 80,
-	\ 'error': 80,
-	\ }
+  \ 'b': 79,
+  \ 'x': 60,
+  \ 'y': 88,
+  \ 'z': 45,
+  \ 'warning': 80,
+  \ 'error': 80,
+  \ }
 " Set the theme
 if has('nvim')
- let g:airline_theme ='base16_nord'
+  let g:airline_theme ='base16_nord'
 endif
 
 " QUICK SCOPE
@@ -454,7 +474,10 @@ autocmd FileType tex,latex map <leader>ima a$$<Esc>i
 " For inserting newline maths in LaTeX.
 autocmd FileType tex,latex map <leader>oma o<Esc>o\begin{align*}<Esc>o<Esc>o<backspace>\end{align*}<Esc>o<esc>kki<tab>
 " For inserting bullet points in LaTeX.
-autocmd FileType tex,latex map <leader>bullets o<Esc>o\begin{itemize}<Esc>o<Esc>o<backspace>\end{itemize}<Esc>o<esc>kki<tab>\item 
+autocmd FileType tex,latex map <leader>bullets o<Esc>o\begin{itemize}<Esc>o<Esc>o<backspace>\end{itemize}<Esc>o<esc>kki<tab>\item
+
+" To insert Python shebang line.
+autocmd FileType python map <leader>sb i#!/usr/bin/env python3<Esc>
 
 " Maps <F9> to open Goyo
 :map <F9> :Goyo<CR>
