@@ -1,0 +1,44 @@
+filetype: groff
+
+detect: 
+    filename: "\\.m[ems]$|\\.rof|\\.mom|\\.tmac$|^tmac."
+
+rules:
+    - statement: "^\\.(ds|nr) [^[[:space:]]]*"
+    - constant.specialChar: "\\\\."
+    - constant.specialChar: "\\\\f.|\\\\f\\(..|\\\\s(\\+|\\-)?[0-9]"
+    - constant: "(\\\\|\\\\\\\\)n(.|\\(..)"
+    - constant:
+        start: "(\\\\|\\\\\\\\)n\\["
+        end: "]"
+        rules: []
+
+    # Everything seems to work except inline comments.
+    # - type: "^\\.[[:space:]]*[^[[:space:]]]*"
+    - type: "^\\.[[:space:]]*(?i:.*)"
+    - type:
+        start: "^\\.R*[0-9]"
+        end: "R*[0-9]"
+        rules: []
+    - comment: "^\\.\\\\\".*$"
+    - constant.string: "(\\\\|\\\\\\\\)\\*(.|\\(..)"
+    - constant.string:
+        start: "(\\\\|\\\\\\\\)\\*\\["
+        end: "]"
+        rules: []
+
+    # May do odd things with comments if include quotation marks.
+    - constant.string:
+        start: "[^\\.\\\\]\""
+        end: "\"|$"
+        skip: "\\\\."
+        rules:
+            - constant.specialChar: "\\\\."
+
+    - constant.specialChar: "\\\\\\(.."
+    - constant.specialChar:
+        start: "\\\\\\["
+        end: "]"
+        rules: []
+
+    - identifier.macro: "\\\\\\\\\\$[1-9]"

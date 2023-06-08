@@ -1,0 +1,9 @@
+{
+    "*.txt": {
+        "aspell.check": "on"
+    },
+    "colorscheme": "cmc-16",
+    "indentchar": "⸱",
+    "softwrap": true,
+    "wordwrap": true
+}

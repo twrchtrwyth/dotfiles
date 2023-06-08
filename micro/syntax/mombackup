@@ -1,0 +1,19 @@
+filetype: mom
+
+detect:
+    filename: "\\.mom$"
+
+rules:
+    - type: "\\b(?i:.*[A-Z][0-9])\\b"
+    
+    - comment:
+        start: "\\\\#"
+        end: "$"
+        rules: []
+
+    - constant.string:
+        start: "\""
+        end: "\""
+        skip: "\\\\."
+        rules:
+            - constant.specialChar: "\\\\."
