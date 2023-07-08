@@ -32,7 +32,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
 " Alternative fuzzy finder.
-" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Enhanced Python indentation.
 Plug 'vim-scripts/indentpython.vim'
@@ -89,7 +90,7 @@ Plug 'lervag/vimtex'
 " Plug 'vimwiki/vimwiki'
 
 " Code-completion engine.
-Plug 'ycm-core/YouCompleteMe'
+" Plug 'ycm-core/YouCompleteMe'
 
 " Adds a tree structure to the change history.
 Plug 'mbbill/undotree'
@@ -235,6 +236,8 @@ set foldlevel=99
 " Enables persistent undo. Undo files are stored in the specified directory.
 set undodir=~/.vim/undodir
 set undofile
+
+set spell mousemodel=popup
 
 " ----------------------------------------------------------------------------
 " / END OF GENERAL SETTINGS
