@@ -48,7 +48,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 
 " A light statusline (based on vim powerline).
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Improves folding of python code.
@@ -112,10 +112,11 @@ Plug 'Galicarnax/vim-regex-syntax'
 " Installs neovim-specific themes.
 Plug 'andersevenrud/nordic.nvim'
 Plug 'rebelot/kanagawa.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 " Neovim statusline.
-" Plug 'nvim-lualine/lualine.nvim'
-" Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 
 " Initialise plugin system.
 call plug#end()
@@ -138,7 +139,7 @@ endif
 
 " Sets nordic theme from the nordic plugin if nvim opened.
 if has('nvim')
-  colorscheme kanagawa
+  colorscheme kanagawa-dragon
 endif
 
 " This will 'ward off unexpected things that your distro might have made'.
@@ -430,9 +431,15 @@ let g:airline#extensions#default#section_truncate_width = {
   \ 'error': 80,
   \ }
 " Set the theme
-if has('nvim')
-  let g:airline_theme ='base16_nord'
-endif
+" if has('nvim')
+"   let g:airline_theme ='base16_nord'
+" endif
+
+" LUALINE
+lua << END
+require('lualine').setup()
+END
+
 
 " QUICK SCOPE
 " Only display highlights when the specified keys are pressed.
@@ -499,6 +506,10 @@ nnoremap <F8> :UndotreeToggle<CR>
 
 " Remap space to jump to end of line.
 nnoremap <space> $
+
+" Switch between light and dark colour schemes
+:map <leader>li :colorscheme catppuccin-latte<CR>
+:map <leader>da :colorscheme kanagawa-dragon<CR>
 
 " Save and write groff-mom files and generate/update pdf.
 :map <leader>groff :w<CR> :silent !pdfmom % > %:r.pdf<CR>:redraw!<CR>

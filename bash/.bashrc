@@ -181,6 +181,9 @@ export FZF_DEFAULT_COMMAND="fd --type f"
 ## Load default keybindings (Ctrl-T, Alt-C, Ctrl-R)
 source /usr/share/fzf/key-bindings.bash
 
+# LaTeX
+alias maths='cd ~/documents/latex/maths'
+
 # GROFF
 alias gf='cd ~/documents/groff'
 ## Create a new groff mom chapter document using my template.
