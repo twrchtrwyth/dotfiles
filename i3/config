@@ -242,6 +242,8 @@ for_window [class="SuperCollider"] floating enable
 for_window [class="GV"] floating enable
 for_window [class="sent"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
+for_window [class="filelight"] floating enable
+for_window [class="Lxtask"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
