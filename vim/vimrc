@@ -486,6 +486,9 @@ autocmd FileType tex,latex map <leader>oma o<Esc>o\begin{align*}<Esc>o<Esc>o<bac
 " For inserting bullet points in LaTeX.
 autocmd FileType tex,latex map <leader>bullets o<Esc>o\begin{itemize}<Esc>o<Esc>o<backspace>\end{itemize}<Esc>o<esc>kki<tab>\item
 
+" For inserting references in Groff.
+autocmd FileType groff map <leader>ref a\c<Esc>o.REF \# REF NO.  <Esc>o.[<Esc>o<Esc>o.]<Esc>o.REF<Esc>kk
+
 " To insert Python shebang line.
 autocmd FileType python map <leader>sb i#!/usr/bin/env python3<Esc>
 
