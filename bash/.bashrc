@@ -75,7 +75,8 @@ if ${use_color} ; then
 		PS1='\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[01;32m\]]\$\[\033[00m\] '
 	fi
 
-	alias ls='ls --color=auto'
+	# alias ls='ls --color=auto'
+	alias ls='exa'  # exa must be installed from package manager.
 	alias grep='grep --colour=auto'
 	alias egrep='egrep --colour=auto'
 	alias fgrep='fgrep --colour=auto'
@@ -150,9 +151,12 @@ alias vim='nvim'
 alias ripgrep='rg'
 alias ..='cd ..'
 alias sysinfo='inxi --admin --verbosity=7 --filter --no-host --width'
+alias pp='cd ~/python/playground'
+alias open='xdg-open'
 
 ## GAMES
 alias sethian='cd ~/games/sethian/Sethian/; wine Sethian.exe; cd ~'
+alias gw='wine "C:\Program Files (x86)\Guild Wars\Gw.exe"'
 
 ## SSH
 alias oki='ssh -p 9967 wil@oki.nohost.me'
@@ -160,7 +164,7 @@ alias akira='ssh osmc@192.168.178.32'
 alias pihole='ssh pi@pi-hole.local'
 
 ## WORK
-alias work='firefox --kiosk https://ntxgateway.luht.scot.nhs.uk/portal/webclient/index.html & disown & exit'
+alias work='firefox --new-window --kiosk https://ntxgateway.luht.scot.nhs.uk/portal/webclient/index.html & disown & exit'
 alias rx='cd ~/documents/work/prescribing/'
 
 ## PDFs
@@ -186,9 +190,13 @@ alias maths='cd ~/documents/latex/maths'
 
 # GROFF
 alias gf='cd ~/documents/groff'
+## Create a new groff mom default document using my template.
+doc () {
+	cat ~/documents/groff/templates/document/document.mom > "$1".mom && vim "$1".mom
+}
 ## Create a new groff mom chapter document using my template.
 chap () {
-	cat ~/documents/groff/templates/chapter/chapter_template.mom > "$1".mom && vim "$1".mom
+	cat ~/documents/groff/templates/chapter/chapter.mom > "$1".mom && vim "$1".mom
 }
 ## Generate a referenced PDF from groff/mom formatted chapters.
 mkrefpdf () {
@@ -198,3 +206,5 @@ mkrefpdf () {
 ch () {
 	chem "$1" | groffer -p
 }
+# Run the word counter program. Must be in same directory as file.
+alias pywc='~/programs/pywc'

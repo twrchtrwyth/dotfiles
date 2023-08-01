@@ -90,7 +90,7 @@ Plug 'lervag/vimtex'
 " Plug 'vimwiki/vimwiki'
 
 " Code-completion engine.
-" Plug 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 
 " Adds a tree structure to the change history.
 Plug 'mbbill/undotree'
@@ -238,7 +238,7 @@ set foldlevel=99
 set undodir=~/.vim/undodir
 set undofile
 
-set spell mousemodel=popup
+set spell mousemodel=popup_setpos
 
 " ----------------------------------------------------------------------------
 " / END OF GENERAL SETTINGS
@@ -292,7 +292,7 @@ autocmd FileType tex,latex set linebreak
 " Stops the syntax being annoyingly hidden.
 let g:vimtex_syntax_conceal_disable=1
 " Turn on spell checking for LaTeX files.
-autocmd FileType tex,latex set spell mousemodel=popup
+autocmd FileType tex,latex set spell mousemodel=popup_setpos
 " Automatically update pdf on save.
 " autocmd BufWritePost *.tex term ++close ++hidden pdflatex %
 
@@ -344,7 +344,7 @@ let python_highlight_all=1
 autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
-" Highlights columns past 79 to help compliance with usual standards.
+" Highlights columns past 79.
 autocmd FileType python execute "set colorcolumn=" . join(range(80,335), ',')
 
 
@@ -360,12 +360,30 @@ au BufNewFile,BufRead *.js,*.html,*.css
 " GROFF
 " -----
 
+" Keeps the cursor near the middle of the screen... Possibly.
+autocmd FileType groff set scrolloff=12
+" Shortcut for bold font.
+autocmd filetype groff map <leader>bd a\*[BD]\*[PREV]<Esc>bba
+" Shortcut for italic font.
+autocmd filetype groff map <leader>it a\*[IT]\*[PREV]<Esc>bba
+" Shortcut for en-dash.
+autocmd filetype groff map <leader>en a\[en]
+" Shortcut for em-dash.
+autocmd filetype groff map <leader>em a\[em]
 " Enable groff syntax highlighting.
 au BufNewFile,BufRead *.groff,*.mom set filetype=groff
 " Wrap whole words at edge of page, rather than mid-word.
 autocmd FileType groff set linebreak
 " Enable spellcheck for groff files.
-autocmd FileType groff setlocal spell spelllang=en_gb
+autocmd FileType groff setlocal spell spelllang=en_gb mousemodel=popup_setpos
+" Make Limelight treat full stops as the end of a line. Otherwise everything
+" highlighted.
+autocmd FileType groff let g:limelight_bop = '^[^.]'
+autocmd FileType groff let g:limelight_eop = '\.'
+" For inserting reference blocks in Groff.
+autocmd FileType groff map <leader>ref a\c<Esc>o<Esc>i.REF \" REF NO. <Esc>o<Esc>i.[<Esc>o<Esc>o.]<Esc>o.REF<Esc>kk
+" Save and write groff-mom files and generate/update pdf.
+:map <leader>groff :w<CR> :silent !pdfmom % > %:r.pdf<CR>:redraw!<CR>
 
 " ----------------------------------------------------------------------------
 " / END OF SYNTAX-SPECIFIC SETTINGS
@@ -435,11 +453,6 @@ let g:airline#extensions#default#section_truncate_width = {
 "   let g:airline_theme ='base16_nord'
 " endif
 
-" LUALINE
-lua << END
-require('lualine').setup()
-END
-
 
 " QUICK SCOPE
 " Only display highlights when the specified keys are pressed.
@@ -486,9 +499,6 @@ autocmd FileType tex,latex map <leader>oma o<Esc>o\begin{align*}<Esc>o<Esc>o<bac
 " For inserting bullet points in LaTeX.
 autocmd FileType tex,latex map <leader>bullets o<Esc>o\begin{itemize}<Esc>o<Esc>o<backspace>\end{itemize}<Esc>o<esc>kki<tab>\item
 
-" For inserting references in Groff.
-autocmd FileType groff map <leader>ref a\c<Esc>o.REF \# REF NO.  <Esc>o.[<Esc>o<Esc>o.]<Esc>o.REF<Esc>kk
-
 " To insert Python shebang line.
 autocmd FileType python map <leader>sb i#!/usr/bin/env python3<Esc>
 
@@ -514,9 +524,6 @@ nnoremap <space> $
 :map <leader>li :colorscheme catppuccin-latte<CR>
 :map <leader>da :colorscheme kanagawa-dragon<CR>
 
-" Save and write groff-mom files and generate/update pdf.
-:map <leader>groff :w<CR> :silent !pdfmom % > %:r.pdf<CR>:redraw!<CR>
-
 " ----------------------------------------------------------------------------
 " / END OF CUSTOM MAPPINGS
 " ----------------------------------------------------------------------------
@@ -541,6 +548,18 @@ autocmd! User GoyoLeave
 autocmd! User GoyoLeave Limelight!
 autocmd User GoyoLeave nested source ~/.vim/vimrc
 
+" Set the cursorline off in Limelight and back on when quitting.
+autocmd User GoyoEnter set nocursorline
+autocmd User GoyoLeave set cursorline
+
 " ----------------------------------------------------------------------------
 " / END OF AUTOMATIC COMMANDS
 " ----------------------------------------------------------------------------
+
+
+" LUALINE
+" Have put this down here otherwise it messes up the file syntax highlighting.
+lua << END
+require('lualine').setup()
+END
+
