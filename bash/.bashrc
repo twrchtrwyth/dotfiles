@@ -76,7 +76,7 @@ if ${use_color} ; then
 	fi
 
 	# alias ls='ls --color=auto'
-	alias ls='exa'  # exa must be installed from package manager.
+	alias ls='exa -s type'  # exa must be installed from package manager.
 	alias grep='grep --colour=auto'
 	alias egrep='egrep --colour=auto'
 	alias fgrep='fgrep --colour=auto'
@@ -111,6 +111,9 @@ shopt -s expand_aliases
 
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
+
+# Automatically cd by typing a directory's name.
+shopt -s autocd
 
 #
 # # ex - archive extractor
@@ -152,16 +155,21 @@ alias ripgrep='rg'
 alias ..='cd ..'
 alias sysinfo='inxi --admin --verbosity=7 --filter --no-host --width'
 alias pp='cd ~/python/playground'
+alias texted='cd ~/python/playground/tkinter-practice/tutorial/examples/apps/text-editor'
 alias open='xdg-open'
+alias sonic-pi='qjackctl -s & sonic-pi'
+alias du='du -h'
+alias ll='~/python/playground/tkinter-practice/tutorial/examples/apps/text-editor/main.py'
+# alias catclock='cd ~/uxn; ./uxnemu catclock.rom; cd -'
 
 ## GAMES
-alias sethian='cd ~/games/sethian/Sethian/; wine Sethian.exe; cd ~'
+alias sethian='cd ~/games/sethian/Sethian/; wine Sethian.exe; cd -'
 alias gw='wine "C:\Program Files (x86)\Guild Wars\Gw.exe"'
 
 ## SSH
 alias oki='ssh -p 9967 wil@oki.nohost.me'
 alias akira='ssh osmc@192.168.178.32'
-alias pihole='ssh pi@pi-hole.local'
+alias yojimbo='ssh pi@pi-hole.local'
 
 ## WORK
 alias work='firefox --new-window --kiosk https://ntxgateway.luht.scot.nhs.uk/portal/webclient/index.html & disown & exit'
@@ -208,3 +216,6 @@ ch () {
 }
 # Run the word counter program. Must be in same directory as file.
 alias pywc='~/programs/pywc'
+
+# Autojump configuration.
+[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh

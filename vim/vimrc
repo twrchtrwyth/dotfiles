@@ -521,7 +521,7 @@ nnoremap <F8> :UndotreeToggle<CR>
 nnoremap <space> $
 
 " Switch between light and dark colour schemes
-:map <leader>li :colorscheme catppuccin-latte<CR>
+:map <leader>li :colorscheme peachpuff<CR>
 :map <leader>da :colorscheme kanagawa-dragon<CR>
 
 " ----------------------------------------------------------------------------

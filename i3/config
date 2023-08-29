@@ -79,6 +79,8 @@ bindsym $mod+Ctrl+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+F1 exec terminal -e 'surf www.duckduckgo.com'
 bindsym $mod+Ctrl+c exec terminal -e 'xcalc'
+# Good size for Python programming on X220.
+bindsym $mod+Ctrl+p resize set 585 635
 
 # focus_follows_mouse no
 
@@ -237,6 +239,7 @@ for_window [class="Viewnior"] floating enable
 for_window [class="Surf"] floating enable
 for_window [class="Tk"] floating enable
 for_window [class="thunderbird" instance="Msgcompose"] floating enable, resize set 679 572, move position center
+for_window [class="thunderbird" instance="Calendar"] floating enable, resize set 679 572, move position center
 for_window [class="mpv"] floating enable, resize set 1264 634, move position center
 for_window [class="kate"] floating enable, resize set 681 574, move position center
 for_window [class="Sxiv"] floating enable, resize set 681 574, move position center
@@ -253,6 +256,10 @@ for_window [class="filelight"] floating enable
 for_window [class="Lxtask"] floating enable
 for_window [class="XCalc"] floating enable
 for_window [class="matplotlib"] floating enable
+for_window [class="Gnome-pomodoro"] floating enable
+for_window [class="Toplevel"] floating enable
+for_window [class="Processing"] floating enable
+for_window [class="libreoffice"] floating enable, resize set 900 650, move position center
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
