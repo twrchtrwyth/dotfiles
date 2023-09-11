@@ -260,6 +260,7 @@ for_window [class="Gnome-pomodoro"] floating enable
 for_window [class="Toplevel"] floating enable
 for_window [class="Processing"] floating enable
 for_window [class="libreoffice"] floating enable, resize set 900 650, move position center
+for_window [class="pico8"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus

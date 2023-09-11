@@ -161,10 +161,14 @@ alias sonic-pi='qjackctl -s & sonic-pi'
 alias du='du -h'
 alias ll='~/python/playground/tkinter-practice/tutorial/examples/apps/text-editor/main.py'
 # alias catclock='cd ~/uxn; ./uxnemu catclock.rom; cd -'
+alias pico8='~/programs/pico-8/pico8 & disown & exit'
+alias p8=pico8
+alias pico=pico8
 
 ## GAMES
 alias sethian='cd ~/games/sethian/Sethian/; wine Sethian.exe; cd -'
 alias gw='wine "C:\Program Files (x86)\Guild Wars\Gw.exe"'
+alias ia='cd ~/games/ia-linux-x64-v21.0.1-3aee05d9-2022-04-07/; ./ia & disown & exit; cd -'
 
 ## SSH
 alias oki='ssh -p 9967 wil@oki.nohost.me'
