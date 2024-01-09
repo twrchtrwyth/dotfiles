@@ -146,6 +146,7 @@ ex ()
 
 # PATH ADDITIONS
 export PATH=/home/wil/programs/bin:$PATH
+export PATH=/home/wil/.local/share/gem/ruby/3.0.0/bin:$PATH
 
 # ALIASES
 
@@ -164,11 +165,15 @@ alias ll='~/python/playground/tkinter-practice/tutorial/examples/apps/text-edito
 alias pico8='~/programs/pico-8/pico8 & disown & exit'
 alias p8=pico8
 alias pico=pico8
+alias pandas="cd ~/python/tutorials/learn-to-code-for-data-analysis/; jupyter-notebook; cd -"
+alias regex='bat ~/python/tutorials/automate-the-boring-stuff-with-python/7-chapter-regex/regex_cheat_sheet.md'
+alias met='~/python/playground/metronome/metronome.py'
 
 ## GAMES
 alias sethian='cd ~/games/sethian/Sethian/; wine Sethian.exe; cd -'
 alias gw='wine "C:\Program Files (x86)\Guild Wars\Gw.exe"'
 alias ia='cd ~/games/ia-linux-x64-v21.0.1-3aee05d9-2022-04-07/; ./ia & disown & exit; cd -'
+alias rw='cd ~/games/roadwarden/; ./start.sh & disown & exit; cd -'
 
 ## SSH
 alias oki='ssh -p 9967 wil@oki.nohost.me'
@@ -178,6 +183,13 @@ alias yojimbo='ssh pi@pi-hole.local'
 ## WORK
 alias work='firefox --new-window --kiosk https://ntxgateway.luht.scot.nhs.uk/portal/webclient/index.html & disown & exit'
 alias rx='cd ~/documents/work/prescribing/'
+alias pf='cd ~/documents/work/prescribing/portfolio/'
+alias diary='cd ~/documents/work/prescribing/portfolio/diary/entries/'
+## Create a new groff mom default document using my template.
+nd () {
+	cat ~/documents/work/prescribing/portfolio/diary/template/diary_template.mom > "$1".mom && vim "$1".mom
+}
+alias comp='zathura ~/documents/work/prescribing/portfolio/competencies/ip_competencies_2023.pdf & disown'
 
 ## PDFs
 alias biochem='mupdf ~/documents/books/textbooks/molbiolcell.pdf & disown & exit'
@@ -188,6 +200,7 @@ alias quantum='zathura ~/documents/books/\(Teach\ Yourself\)\ Alexandre\ Zagoski
 alias orgchem='zathura ~/documents/books/textbooks/John\ McMurry\ -\ Organic\ Chemistry-Cengage\ Learning\ \(2016\).pdf & disown & exit' 
 alias funorgchem='zathura ~/documents/books/textbooks/McMurry\,\ John\ -\ Fundamentals\ of\ organic\ chemistry-Brooks_Cole\ \(2011\).pdf & disown & exit' 
 alias marine="zathura ~/documents/books/textbooks/J.\ D.\ Fish\,\ S.\ Fish\ -\ A\ Student\'s\ Guide\ to\ the\ Seashore\,\ 3rd\ Edition\ -Cambridge\ University\ Press\ \(2011\).pdf"
+alias jellyfish="zathura ~/books/jellyfish.pdf & disown & exit"
 
 # FZF
 ## Display preview with bat. bat must be installed.
@@ -211,6 +224,7 @@ chap () {
 	cat ~/documents/groff/templates/chapter/chapter.mom > "$1".mom && vim "$1".mom
 }
 ## Generate a referenced PDF from groff/mom formatted chapters.
+## This is a bit nasty, better to use include method as per my note in the relevant groff folder.
 mkrefpdf () {
 	touch "$1".mom && rm "$1".mom && cat *.mom > "$1".mom && pdfmom -R "$1".mom > "$1".pdf
 }
@@ -218,7 +232,7 @@ mkrefpdf () {
 ch () {
 	chem "$1" | groffer -p
 }
-# Run the word counter program. Must be in same directory as file.
+# Run the word counter program. Must be run in same directory as file.
 alias pywc='~/programs/pywc'
 
 # Autojump configuration.

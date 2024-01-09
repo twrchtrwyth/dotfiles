@@ -16,14 +16,15 @@ set statusbar-home-tilde
 set recolor true
 
 # Alter colour in greyscale mode.
-set recolor-lightcolor "#1c1c24"
-set recolor-darkcolor "#bdc0a8"
+# `lightcolor` is the background.
+set recolor-lightcolor "#161414"
+set recolor-darkcolor "#e3e3e3"
 
 # Defines whether original image colours should be kept after recolouring.
 set recolor-reverse-video true
 
 # Set font.
-set font "monospace 10"
+set font "cozette 10"
 
 # Set zoom size and bind zoom in and out keys.
 set zoom-step 10
