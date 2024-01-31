@@ -2,7 +2,7 @@
     "*.txt": {
         "aspell.check": "on"
     },
-    "colorscheme": "cmc-16",
+    "colorscheme": "gruvbox-tc",
     "indentchar": "⸱",
     "softwrap": true,
     "wordwrap": true

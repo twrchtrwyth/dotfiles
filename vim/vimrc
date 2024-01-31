@@ -113,6 +113,19 @@ Plug 'Galicarnax/vim-regex-syntax'
 Plug 'andersevenrud/nordic.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'tjdevries/colorbuddy.nvim', { 'branch': 'dev' }
+Plug 'jesseleite/nvim-noirbuddy'
+Plug 'JoshPorterDev/nvim-base16'
+
+" Some other colours.
+Plug 'lurst/austere.vim'
+Plug 'huyvohcmc/atlas.vim'
+" Plug 'chriskempson/base16-vim'
+Plug 'ntk148v/komau.vim'
+Plug 'preservim/vim-colors-pencil'
+Plug 'jaredgorski/Mies.vim'
+Plug 'yorickpeterse/vim-paper'
+Plug 'stefanvanburen/rams.vim'
 
 " Neovim statusline.
 Plug 'nvim-lualine/lualine.nvim'
@@ -134,12 +147,12 @@ set termguicolors
 
 " Sets Zenburn theme from the zenburn plugin if vim opened.
 if !has('nvim')
-  colorscheme zenburn
+  colorscheme austere
 endif
 
 " Sets nordic theme from the nordic plugin if nvim opened.
 if has('nvim')
-  colorscheme kanagawa-dragon
+  colorscheme base16-default-dark
 endif
 
 " This will 'ward off unexpected things that your distro might have made'.
@@ -165,7 +178,7 @@ set wildmenu
 " Show partial commands in the last line of the screen.
 set showcmd
 
-" Highlight searches (use <Ctrl-L> to temporarily turn off).
+" Highlight searches (use <Ctrl-L> to turn off until next search).
 set hlsearch
 
 " Use case-insensitive search, except when using capital letters.
@@ -248,6 +261,13 @@ set spell mousemodel=popup_setpos
 " ----------------------------------------------------------------------------
 " SYNTAX-SPECIFIC SETTINGS
 " ----------------------------------------------------------------------------
+
+" C
+" -
+
+" Use four spaces instead of default two for tabs.
+autocmd FileType c set tabstop=4
+
 
 " MARKDOWN
 " --------
@@ -382,6 +402,8 @@ autocmd FileType groff let g:limelight_bop = '^[^.]'
 autocmd FileType groff let g:limelight_eop = '\.'
 " For inserting reference blocks in Groff.
 autocmd FileType groff map <leader>ref a\c<Esc>o<Esc>i.REF \" REF NO. <Esc>o<Esc>i.[<Esc>o<Esc>o.]<Esc>o.REF<Esc>kk
+" For inserting footnotes in Groff.
+autocmd FileType groff map <leader>fn o<Esc>i.FOOTNOTE<Esc>o<Esc>o.FOOTNOTE END<Esc>ki
 " Save and write groff-mom files and generate/update pdf.
 :map <leader>groff :w<CR> :silent !pdfmom % > %:r.pdf<CR>:redraw!<CR>
 
@@ -521,8 +543,8 @@ nnoremap <F8> :UndotreeToggle<CR>
 nnoremap <space> $
 
 " Switch between light and dark colour schemes
-:map <leader>li :colorscheme peachpuff<CR>
-:map <leader>da :colorscheme kanagawa-dragon<CR>
+:map <leader>li :colorscheme acme<CR>
+:map <leader>da :colorscheme base16-default-dark<CR>
 
 " ----------------------------------------------------------------------------
 " / END OF CUSTOM MAPPINGS

@@ -66,6 +66,7 @@ bindsym XF86AudioMicMute exec "amixer set Capture toggle"
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec firefox
+bindsym $mod+Shift+F2 exec terminal -e w3m
 bindsym $mod+F3 exec pcmanfm
 bindsym $mod+Shift+F3 exec ranger
 # bindsym $mod+Shift+F3 exec pcmanfm_pkexec
@@ -264,8 +265,13 @@ for_window [class="matplotlib"] floating enable
 for_window [class="Gnome-pomodoro"] floating enable
 for_window [class="Toplevel"] floating enable
 for_window [class="Processing"] floating enable
-for_window [class="libreoffice"] floating enable, resize set 900 650, move position center
+for_window [class="libreoffice"] floating enable, move position center, resize set 900 650
 for_window [class="pico8"] floating enable
+for_window [class="Breach"] floating enable
+for_window [class="calibre" instance="calibre-ebook-viewer"] floating enable border pixel 1, resize set 585 635, move position 66 px 83 px
+for_window [class="Geany"] floating enable, move position center
+for_window [class="XTerm"] floating enable, resize set 400 400, move position center
+for_window [class="VVVVVV"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -485,4 +491,5 @@ bindsym $mod+c move position center
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Write new email.
-bindsym $mod+m exec terminal -e 'thunderbird -compose'
+# bindsym $mod+m exec terminal -e 'thunderbird -compose'
+bindsym $mod+m exec thunderbird

@@ -168,24 +168,29 @@ alias pico=pico8
 alias pandas="cd ~/python/tutorials/learn-to-code-for-data-analysis/; jupyter-notebook; cd -"
 alias regex='bat ~/python/tutorials/automate-the-boring-stuff-with-python/7-chapter-regex/regex_cheat_sheet.md'
 alias met='~/python/playground/metronome/metronome.py'
+alias qemu='qemu-system-x86_64'
+alias cpl='cd ~/documents/notes/c/the-c-programming-language/ && xdg-open c.epub'
 
 ## GAMES
 alias sethian='cd ~/games/sethian/Sethian/; wine Sethian.exe; cd -'
 alias gw='wine "C:\Program Files (x86)\Guild Wars\Gw.exe"'
 alias ia='cd ~/games/ia-linux-x64-v21.0.1-3aee05d9-2022-04-07/; ./ia & disown & exit; cd -'
 alias rw='cd ~/games/roadwarden/; ./start.sh & disown & exit; cd -'
+alias quakespasm='quakespasm -basedir /usr/local/games/'
 
 ## SSH
 alias oki='ssh -p 9967 wil@oki.nohost.me'
 alias akira='ssh osmc@192.168.178.32'
 alias yojimbo='ssh pi@pi-hole.local'
+alias akira-film='echo osmc@192.168.178.32:/media/Crucial\ X8/media/video/film/'
+alias akira-tv='echo osmc@192.168.178.32:/media/Crucial\ X8/media/video/tv/'
 
 ## WORK
 alias work='firefox --new-window --kiosk https://ntxgateway.luht.scot.nhs.uk/portal/webclient/index.html & disown & exit'
 alias rx='cd ~/documents/work/prescribing/'
 alias pf='cd ~/documents/work/prescribing/portfolio/'
 alias diary='cd ~/documents/work/prescribing/portfolio/diary/entries/'
-## Create a new groff mom default document using my template.
+## Create a new groff/mom diary entry using my template.
 nd () {
 	cat ~/documents/work/prescribing/portfolio/diary/template/diary_template.mom > "$1".mom && vim "$1".mom
 }
@@ -237,3 +242,6 @@ alias pywc='~/programs/pywc'
 
 # Autojump configuration.
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
+
+# w3m homepage
+export WWW_HOME="https://oki.nohost.me/babel"
