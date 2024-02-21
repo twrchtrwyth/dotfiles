@@ -170,6 +170,7 @@ alias regex='bat ~/python/tutorials/automate-the-boring-stuff-with-python/7-chap
 alias met='~/python/playground/metronome/metronome.py'
 alias qemu='qemu-system-x86_64'
 alias cpl='cd ~/documents/notes/c/the-c-programming-language/ && xdg-open c.epub'
+alias tlcl='zathura ~/documents/notes/linux/the_linux_command_line.pdf & disown & exit'
 
 ## GAMES
 alias sethian='cd ~/games/sethian/Sethian/; wine Sethian.exe; cd -'
