@@ -82,7 +82,7 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+F1 exec terminal -e 'surf www.duckduckgo.com'
 bindsym $mod+Ctrl+c exec terminal -e 'xcalc'
 # Good size for Python programming on X220.
-bindsym $mod+Ctrl+p resize set 585 635, move position 66 px 83 px
+bindsym $mod+Ctrl+p resize set 505 635, move position 66 px 83 px
 bindsym $mod+Ctrl+w resize set 735 635, move position 66 px 83 px
 bindsym $mod+Ctrl+l resize set 492 597, move position 69 px 100 px
 
@@ -269,10 +269,11 @@ for_window [class="Processing"] floating enable
 for_window [class="libreoffice"] floating enable, move position center, resize set 900 650
 for_window [class="pico8"] floating enable
 for_window [class="Breach"] floating enable
-for_window [class="calibre" instance="calibre-ebook-viewer"] floating enable border pixel 1, resize set 585 635, move position 66 px 83 px
+# for_window [class="calibre" instance="calibre-ebook-viewer"] floating enable border pixel 1, resize set 585 635, move position 66 px 83 px
 for_window [class="Geany"] floating enable, move position center
 for_window [class="XTerm"] floating enable, resize set 400 300, move position center
 for_window [class="VVVVVV"] floating enable
+for_window [class="Kiwix"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus

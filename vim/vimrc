@@ -152,7 +152,7 @@ endif
 
 " Sets nordic theme from the nordic plugin if nvim opened.
 if has('nvim')
-  colorscheme base16-default-dark
+  colorscheme acme
 endif
 
 " This will 'ward off unexpected things that your distro might have made'.
@@ -544,7 +544,7 @@ nnoremap <space> $
 
 " Switch between light and dark colour schemes
 :map <leader>li :colorscheme acme<CR>
-:map <leader>da :colorscheme base16-default-dark<CR>
+:map <leader>da :colorscheme kanagawa<CR>
 
 " ----------------------------------------------------------------------------
 " / END OF CUSTOM MAPPINGS
