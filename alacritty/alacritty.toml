@@ -1,0 +1,23 @@
+[font]
+size = 12.0
+normal = { family = "Tamzen" }
+bold = { family = "Tamzen" }
+italic = { family = "scientifica" }
+#offset = { y = 1 }
+glyph_offset = { y = -1 }
+
+[window]
+dimensions = { columns = 82, lines = 24}
+padding = { x = 12, y = 10 }
+#dynamic_padding = true
+#decorations = "None"
+
+[colors]
+primary = { foreground = "#000000", background = "#ffffea" }
+selection = { text = "#000000", background = "#ffffca" }
+normal = { black = '#000000', blue = '#7ab4b4', cyan = '#9cd6d6', green = '#000000', magenta = '#333333', red = '#555555', white = '#bbbbbb', yellow = '#aaaaaa' }
+# bright = { black, blue, cyan, green, magenta, red, white, yellow }
+# dim = { black, blue, cyan, green, magenta, red, white, yellow }
+
+[cursor]
+style = { shape = "Block" }

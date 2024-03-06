@@ -2,8 +2,9 @@
     "*.txt": {
         "aspell.check": "on"
     },
-    "colorscheme": "bubblegum",
+    "colorscheme": "acme",
     "indentchar": "⸱",
+    "scrollbar": true,
     "softwrap": true,
     "wordwrap": true
 }

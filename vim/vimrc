@@ -90,7 +90,7 @@ Plug 'lervag/vimtex'
 " Plug 'vimwiki/vimwiki'
 
 " Code-completion engine.
-Plug 'ycm-core/YouCompleteMe'
+" Plug 'ycm-core/YouCompleteMe'
 
 " Adds a tree structure to the change history.
 Plug 'mbbill/undotree'
@@ -577,7 +577,6 @@ autocmd User GoyoLeave set cursorline
 " ----------------------------------------------------------------------------
 " / END OF AUTOMATIC COMMANDS
 " ----------------------------------------------------------------------------
-
 
 " LUALINE
 " Have put this down here otherwise it messes up the file syntax highlighting.
