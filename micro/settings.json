@@ -1,10 +1,17 @@
 {
+    "*.md": {
+        "aspell.check": "on"
+    },
     "*.txt": {
         "aspell.check": "on"
     },
     "colorscheme": "acme",
+    "ft:c": {
+        "tabsize": 8
+    },
     "indentchar": "⸱",
     "scrollbar": true,
     "softwrap": true,
+    "tabhighlight": true,
     "wordwrap": true
 }

@@ -265,8 +265,8 @@ set spell mousemodel=popup_setpos
 " C
 " -
 
-" Use four spaces instead of default two for tabs.
-autocmd FileType c set tabstop=4
+" Use eight spaces instead of default two for tabs.
+autocmd FileType c set tabstop=8
 
 
 " MARKDOWN
