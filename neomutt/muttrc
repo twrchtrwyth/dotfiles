@@ -2,6 +2,12 @@
 set from = "wilifanevans@gmail.com"
 set realname = "Wil Ifan Evans"
 
+# COLOURS
+# color status bold white black
+color indicator bold black cyan
+color index_author bold black default
+color index_subject yellow default  # Yellow = grey in my weird colour scheme
+
 # GMAIL
 set imap_user = "wilifanevans@gmail.com"
 set smtp_url = "smtps://wilifanevans@gmail.com@smtp.gmail.com:465/
@@ -102,13 +108,13 @@ set sidebar_short_path
 set sidebar_folder_indent
 set sidebar_format = "%B %* [%?N?%N / ?%S]"
 set mail_check_stats
-bind index,pager \CJ sidebar-prev
-bind index,pager \CK sidebar-next
+bind index,pager \CJ sidebar-next
+bind index,pager \CK sidebar-prev
 bind index,pager \CE sidebar-open
 bind index,pager B sidebar-toggle-visible  # Shift+B to toggle
 
 # SIGNATURE
-set signature = "$XDG_CONFIG_HOME/mutt/signature"
+set signature = "~/.config/mutt/signature"
 
 # EDITOR
 set editor = "micro"
@@ -119,4 +125,15 @@ set mailcap_path = "~/.config/mutt/mailcap"
 bind attach <return> view-mailcap
 # Save attachments to a folder
 macro attach s '<save-entry> <bol>~/Documents/attachments/<eol>' 'save attachment'
-auto_view text/html		# automatically show html (mailcap uses lynx)
+auto_view text/html  # automatically show html (mailcap uses w3m)
+
+# URLSCAN (must be installed first)
+# Shortcut is Ctrl+B
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
+# ARCHIVE SHORTCUT FROM NEOMUTT DOCS
+macro index ,a "<save-message>=archive<Enter><enter-command>echo 'Saved to archive'<Enter>"
+
+# GOOBOOK (contact search)
+# TODO
