@@ -1,6 +1,6 @@
 # Set background & foreground colour.
-set default-fg "#3f3f3f"
-set default-bg "#46454e"
+set default-fg "#000000"
+set default-bg "#afd7d7"
 
 # Switch over keybindings for rotate and reload.
 map r reload
@@ -17,14 +17,14 @@ set recolor true
 
 # Alter colour in greyscale mode.
 # `lightcolor` is the background.
-set recolor-lightcolor "#161414"
-set recolor-darkcolor "#e3e3e3"
+set recolor-lightcolor "#ffffea"
+set recolor-darkcolor "#000000"
 
 # Defines whether original image colours should be kept after recolouring.
-set recolor-reverse-video true
+set recolor-reverse-video false
 
 # Set font.
-set font "cozette 10"
+set font "tamzen 11"
 
 # Set zoom size and bind zoom in and out keys.
 set zoom-step 10
