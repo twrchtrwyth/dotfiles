@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Email in the Terminal: Configuring Neomutt :: Gideon Wolfe</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Intro In one of my first posts about building an optimized workflow, I briefly mentioned neomutt was a program who&amp;rsquo;s configuration deserved a post all its own. This is that post.
+Much like weechat, Neomutt is an extremely powerful tool but it needs a bit of customization to make it more &amp;ldquo;user friendly&amp;rdquo;.
+On Arch we can install Neomutt with pacman -Syu neomutt
+You have probably seen tons of tutorials about setting up offlineIMAP or a similar service." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://gideonwolfe.com/posts/workflow/neomutt/intro/" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-157961177-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://gideonwolfe.com/assets/style.css">
+
+  <link rel="stylesheet" href="https://gideonwolfe.com/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://gideonwolfe.com/img/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="https://gideonwolfe.com/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+<meta name="twitter:creator" content="Gideon Wolfe" />
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Email in the Terminal: Configuring Neomutt :: Gideon Wolfe">
+<meta property="og:description" content="Neomutt is the best way to manage email in the terminal" />
+<meta property="og:url" content="https://gideonwolfe.com/posts/workflow/neomutt/intro/" />
+<meta property="og:site_name" content="Email in the Terminal: Configuring Neomutt" />
+
+  <meta property="og:image" content="https://gideonwolfe.com/img/workflow/neomutt/cover.png">
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-03-31 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+<div class="container center">
+
+  <head>
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-157961177-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-157961177-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+<header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Gideon Wolfe
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/contents">Contents</a></li>
+        
+      
+        
+          <li><a href="/projects">Projects</a></li>
+        
+      
+      
+        <ul class="menu__sub-inner">
+          <li class="menu__sub-inner-more-trigger">Categories ▾</li>
+
+          <ul class="menu__sub-inner-more hidden">
+            
+              
+                <li><a href="/tags/linux">linux</a></li>
+              
+            
+              
+                <li><a href="/tags/math">math</a></li>
+              
+            
+              
+                <li><a href="/tags/music">music</a></li>
+              
+            
+              
+                <li><a href="/tags/programming">programming</a></li>
+              
+            
+              
+                <li><a href="/tags/science">science</a></li>
+              
+            
+              
+                <li><a href="/tags/security">security</a></li>
+              
+            
+              
+                <li><a href="/tags/sysadmin">sysadmin</a></li>
+              
+            
+          </ul>
+        </ul>
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/contents">Contents</a></li>
+      
+    
+      
+        <li><a href="/projects">Projects</a></li>
+      
+    
+      
+        <li><a href="/tags/linux">linux</a></li>
+      
+    
+      
+        <li><a href="/tags/math">math</a></li>
+      
+    
+      
+        <li><a href="/tags/music">music</a></li>
+      
+    
+      
+        <li><a href="/tags/programming">programming</a></li>
+      
+    
+      
+        <li><a href="/tags/science">science</a></li>
+      
+    
+      
+        <li><a href="/tags/security">security</a></li>
+      
+    
+      
+        <li><a href="/tags/sysadmin">sysadmin</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+           extensions: ["AMSmath.js", "AMSsymbols.js", "[mhchem]/mhchem.js", "Qcircuit"] }
+    }
+    });
+    MathJax.Hub.Queue(function() {
+      
+      
+      
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i = 0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+
+    MathJax.Hub.Config({
+    
+    TeX: { equationNumbers: { autoNumber: "AMS" } }
+    });
+  </script>
+
+
+  </header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://gideonwolfe.com/posts/workflow/neomutt/intro/">Email in the Terminal: Configuring Neomutt</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-03-31 
+      </span>
+    
+    
+    <span class="post-author">::
+      Gideon Wolfe
+    </span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://gideonwolfe.com/tags/neomutt/">neomutt</a>&nbsp;
+    
+    #<a href="https://gideonwolfe.com/tags/linux/">Linux</a>&nbsp;
+    
+    #<a href="https://gideonwolfe.com/tags/workflow/">workflow</a>&nbsp;
+    
+  </span>
+  
+
+  
+    <img src="https://gideonwolfe.com/img/workflow/neomutt/cover.png" class="post-cover" alt="Email in the Terminal: Configuring Neomutt" />
+  
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="intro">Intro<a href="#intro" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>In one of my first posts about building an optimized workflow, I briefly mentioned neomutt was a program who&rsquo;s configuration deserved a post all its own. This is that post.</p>
+<p>Much like weechat, Neomutt is an extremely powerful tool but it needs a bit of customization to make it more &ldquo;user friendly&rdquo;.</p>
+<p>On Arch we can install Neomutt with <code>pacman -Syu neomutt</code></p>
+<p>You have probably seen tons of tutorials about setting up <code>offlineIMAP</code> or a similar service. I personally opt to connect directly to the IMAP server as its less of a hassle. Maybe
+there is a good reason to do the whole offline sync thing but I haven&rsquo;t found it.</p>
+<h1 id="files">Files<a href="#files" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>You may have heard of a <code>muttrc</code> or <code>neomuttrc</code>. Like a <code>vimrc</code>, these files define the settings for neomutt. I place my <code>neomuttrc</code> in <code>~/.config/neomutt/</code> because its where most
+programs store their config files.</p>
+<p>However much like my <a href="https://github.com/GideonWolfe/vim.reaper">custom neovim configuration</a>, the main configuration file will simply be used to source the discrete configuration
+files containing specific configurations.</p>
+<pre><code># vim: filetype=muttrc
+
+source ~/.config/neomutt/settings
+source ~/.config/neomutt/colors
+source ~/.config/neomutt/mappings
+
+# Accounts
+
+source ~/.config/neomutt/accounts/gmail
+folder-hook $folder 'source ~/.config/neomutt/accounts/gmail'
+
+source ~/.config/neomutt/accounts/school
+folder-hook $folder 'source ~/.config/neomutt/accounts/school'
+
+source ~/.config/neomutt/accounts/main
+folder-hook $folder 'source ~/.config/neomutt/accounts/main'
+</code></pre><p>In the above <code>neomuttrc</code> file, I source three files: <code>settings</code> for general program configuration, <code>colors</code> to adjust colors, and <code>mappings</code> to store custom keybinds.</p>
+<p>Additionally, in the <code>accounts</code> folder, I have a configuration file for each of the email accounts I want to use with neomutt. We will get to that configuration later.</p>
+<h1 id="general-settings">General Settings<a href="#general-settings" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>Here is where we can declare some universal settings for neomutt that change core program behavior.</p>
+<pre><code># vim: filetype=muttrc
+
+# set editor to neovim
+set editor = &quot;nvim&quot;
+
+set my_name = &quot;Gideon Wolfe&quot;
+set imap_check_subscribed
+
+# Set preffered view modes
+auto_view text/html text/calendar application/ics # view html automatically
+alternative_order text/html text/plain text/enriched text/*
+
+
+# main options
+set envelope_from
+set edit_headers                     # show headers when composing
+set fast_reply                       # skip to compose when replying
+set askcc                            # ask for CC:
+set fcc_attach                       # save attachments with the body
+set forward_format = &quot;Fwd: %s&quot;       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set attribution = &quot;On %d, %n wrote:&quot; # format of quoting header
+set reply_to                         # reply to Reply to: field
+set reverse_name                     # reply as whomever it was to
+set include                          # include message in replies
+set forward_quote                    # include message in forwards
+set text_flowed
+unset sig_dashes                     # no dashes before sig
+unset mime_forward                   # forward attachments as part of body
+unset help                           # No help bar at the top of index
+# set status_on_top                    # Status bar on top of index
+set tmpdir = ~/Programs/neomutt/temp # where to keep temp files
+
+unset confirmappend      # don't ask, just do!
+set quit                 # don't ask, just do!!
+unset mark_old           # read/new is good enough for me
+set beep_new             # bell on new mails
+set pipe_decode          # strip headers and eval mimes when piping
+set thorough_search      # strip headers and eval mimes before searching
+set timeout = 0
+
+# status bar, date format, finding stuff etc.
+set status_chars = &quot; *%A&quot;
+set status_format = &quot;[ Folder: %f ] [%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]%&gt;─%?p?( %p postponed )?&quot;
+set date_format = &quot;%d.%m.%Y %H:%M&quot;
+set sort = threads
+set sort_aux = reverse-last-date-received
+set uncollapse_jump
+set sort_re
+set reply_regexp = &quot;^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*&quot;
+set quote_regexp = &quot;^( {0,4}[&gt;|:#%]| {0,4}[a-z0-9]+[&gt;|]+)+&quot;
+set send_charset = &quot;utf-8:iso-8859-1:us-ascii&quot;
+set charset = &quot;utf-8&quot;
+set arrow_cursor = &quot;no&quot; # Change `color indicator` depending 
+
+# Pager View Options
+set pager_index_lines = 10  # Shows 10 lines of index when pager is active
+set pager_context = 3
+set pager_stop
+set menu_scroll
+set tilde
+unset markers
+
+set mailcap_path = ~/.config/neomutt/mailcap
+set header_cache = &quot;~/.cache/mutt&quot;
+set message_cachedir = &quot;~/.cache/mutt&quot;
+
+set query_command = &quot;khard email --parsable --search-in-source-files '%s'&quot;
+
+</code></pre><p>I&rsquo;ll go over some of the important parts, and the things people might often want to change:</p>
+<ul>
+<li><code>editor</code> is set to neovim, so I can write all my emails with vim.reaper!</li>
+<li><code>query_command</code> hooks in with the contact manager <code>khard</code>, which I wrote about <a href="https://www.gideonwolfe.com/posts/sysadmin/nextcloud/nextcloudworkflow/#files">here</a>. Tab
+complete your contacts!</li>
+<li><code>help</code> is unset so the top bar disappears. Just press <code>?</code> if you need to see keybindings.</li>
+<li>Optionally set <code>status_on_top</code> to see the status bar on top. Personally I like it on the bottom, as that&rsquo;s where weechat puts it.</li>
+<li><code>arrow_cursor</code> can be enabled to have an arrow point to the currently selected message. I prefer the line as it&rsquo;s more space efficient.</li>
+</ul>
+<p>If you&rsquo;re curious about any configuration variable, search <a href="https://neomutt.org/code/config_vars.html">this</a> page and you can find a description.</p>
+<h1 id="colors">Colors<a href="#colors" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>This file contains the color settings for various elements within neomutt.</p>
+<pre><code># vim: filetype=muttrc
+
+# Header colors:
+color header blue default &quot;.*&quot;
+color header brightmagenta default &quot;^(From)&quot;
+color header brightcyan default &quot;^(Subject)&quot;
+color header brightwhite default &quot;^(CC|BCC)&quot;
+
+mono bold bold
+mono underline underline
+mono indicator reverse
+mono error bold
+color normal default default
+color indicator brightyellow default # currently selected message. default makes bar clear, disabled arrow to save space.
+color sidebar_highlight red default
+color sidebar_divider brightblack black
+color sidebar_flagged red black
+color sidebar_new green black
+color normal brightyellow default
+color error red default
+color tilde black default
+color message cyan default
+color markers red white
+color attachment white default
+color search brightmagenta default
+color status brightyellow black
+color hdrdefault brightgreen default
+color quoted green default
+color quoted1 blue default
+color quoted2 cyan default
+color quoted3 yellow default
+color quoted4 red default
+color quoted5 brightred default
+color signature brightgreen default
+color bold black default
+color underline black default
+color normal default default
+
+color body brightred default &quot;[\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+&quot; # Email addresses
+color body brightblue default &quot;(https?|ftp)://[\-\.,/%~_:?&amp;=\#a-zA-Z0-9]+&quot; # URL
+color body green default &quot;\`[^\`]*\`&quot; # Green text between ` and `
+color body brightblue default &quot;^# \.*&quot; # Headings as bold blue
+color body brightcyan default &quot;^## \.*&quot; # Subheadings as bold cyan
+color body brightgreen default &quot;^### \.*&quot; # Subsubheadings as bold green
+color body yellow default &quot;^(\t| )*(-|\\*) \.*&quot; # List items as yellow
+color body brightcyan default &quot;[;:][-o][)/(|]&quot; # emoticons
+color body brightcyan default &quot;[;:][)(|]&quot; # emoticons
+color body brightcyan default &quot;[ ][*][^*]*[*][ ]?&quot; # more emoticon?
+color body brightcyan default &quot;[ ]?[*][^*]*[*][ ]&quot; # more emoticon?
+color body red default &quot;(BAD signature)&quot;
+color body cyan default &quot;(Good signature)&quot;
+color body brightblack default &quot;^gpg: Good signature .*&quot;
+color body brightyellow default &quot;^gpg: &quot;
+color body brightyellow red &quot;^gpg: BAD signature from.*&quot;
+mono body bold &quot;^gpg: Good signature&quot;
+mohttps://neomutt.org/code/config_vars.htmlno body bold &quot;^gpg: BAD signature from.*&quot;
+color body red default &quot;([a-z][a-z0-9+-]*://(((([a-z0-9_.!~*'();:&amp;=+$,-]|%[0-9a-f][0-9a-f])*@)?((([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?|[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)(:[0-9]+)?)|([a-z0-9_.!~*'()$,;:@&amp;=+-]|%[0-9a-f][0-9a-f])+)(/([a-z0-9_.!~*'():@&amp;=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&amp;=+$,-]|%[0-9a-f][0-9a-f])*)*(/([a-z0-9_.!~*'():@&amp;=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&amp;=+$,-]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([a-z0-9_.!~*'();/?:@&amp;=+$,-]|%[0-9a-f][0-9a-f])*)?(#([a-z0-9_.!~*'();/?:@&amp;=+$,-]|%[0-9a-f][0-9a-f])*)?|(www|ftp)\\.(([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?(:[0-9]+)?(/([-a-z0-9_.!~*'():@&amp;=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&amp;=+$,]|%[0-9a-f][0-9a-f])*)*(/([-a-z0-9_.!~*'():@&amp;=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&amp;=+$,]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([-a-z0-9_.!~*'();/?:@&amp;=+$,]|%[0-9a-f][0-9a-f])*)?(#([-a-z0-9_.!~*'();/?:@&amp;=+$,]|%[0-9a-f][0-9a-f])*)?)[^].,:;!)? \t\r\n&lt;&gt;\&quot;]&quot;
+
+# Default index colors:
+color index yellow default '.*'
+color index_author red default '.*'
+color index_number blue default
+color index_subject cyan default '.*'
+
+# For new mail:
+color index brightyellow black &quot;~N&quot;
+color index_author brightred black &quot;~N&quot;
+color index_subject brightcyan black &quot;~N&quot;
+
+color progress black cyan
+</code></pre>
+  <img src="/img/workflow/neomutt/pager.png"  class="center"  style="border-radius: 8px;"  />
+
+
+<p>Here are some of the highlights (pun very intended):</p>
+<ul>
+<li><code>color indicator</code> changes the color of the highlighted message line, or the arrow if <code>arrow_cursor</code> is enabled.</li>
+<li>neomutt does colors by <em>layering</em>. For example you might assign one color to the whole <code>index</code>, and then manually add different colors for new mail, from address, etc.</li>
+<li>The various <code>color body</code> settings assign specific colors to anything matching a given regular expression, from list items to emoticons.</li>
+</ul>
+<p>These colors look good with my pywal generated themes, and are easy to read without being too hard on the eyes. Here is a <a href="https://neomutt.org/feature/index-color">reference</a> for coloring the index page if you want to make any tweaks.</p>
+<h1 id="mappings">Mappings<a href="#mappings" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>On any page in neomutt, press <code>?</code> to get a full list of defined mappings for that page.</p>
+<p>neomutt assigns mappings on a view basis. For example you could have a specific set of keybinds for when you are viewing an inbox (the <code>index</code> view)
+and another set for actually reading a message (<code>pager</code> view).</p>
+<p>Many keybinds can be assigned to <em>multiple</em> views by
+listing the views we want to pick.</p>
+<p>Here is the contents of my <code>mappings</code> file:</p>
+<pre><code># vim: filetype=muttrc
+
+# General rebindings
+bind attach &lt;return&gt; view-mailcap
+bind attach l view-mailcap
+bind editor &lt;space&gt; noop
+bind pager c imap-fetch-mail
+bind index G last-entry
+bind index g noop
+bind index gg first-entry
+bind pager,attach h exit
+bind pager j next-line
+bind pager k previous-line
+bind pager l view-attachments
+bind index D delete-message
+bind index U undelete-message
+bind index L limit
+bind index h noop
+bind index l display-message
+bind browser h goto-parent
+bind browser l select-entry
+bind pager,browser gg top-page
+bind pager,browser G bottom-page
+bind index,pager,browser d half-down
+bind index,pager,browser u half-up
+bind index,pager R group-reply
+bind index \031 previous-undeleted	# Mouse wheel
+bind index \005 next-undeleted		# Mouse wheel
+bind pager \031 previous-line		# Mouse wheel
+bind pager \005 next-line		# Mouse wheel
+bind editor &lt;Tab&gt; complete-query
+
+
+# sidebar mappings
+bind index,pager \Ck sidebar-prev
+bind index,pager \Cj sidebar-next
+bind index,pager \Co sidebar-open
+bind index,pager \Cp sidebar-prev-new
+bind index,pager \Cn sidebar-next-new
+bind index,pager B sidebar-toggle-visible
+
+# global index and pager shortcuts
+bind index,pager @ compose-to-sender
+bind index,pager D purge-message
+bind index &lt;tab&gt; sync-mailbox
+bind index &lt;space&gt; collapse-thread
+
+# Email completion bindings
+bind editor &lt;Tab&gt; complete-query
+bind editor ^T complete
+
+# Press A to add contact to Khard address book
+macro index,pager A \
+    &quot;&lt;pipe-message&gt;khard add-email&lt;return&gt;&quot; \
+    &quot;add the sender email address to khard&quot;
+
+## Shortcuts
+macro index,pager &lt;f2&gt; '&lt;sync-mailbox&gt;&lt;enter-command&gt;source ~/.config/neomutt/accounts/gmail&lt;enter&gt;&lt;change-folder&gt;!&lt;enter&gt;'
+macro index,pager &lt;f3&gt; '&lt;sync-mailbox&gt;&lt;enter-command&gt;source ~/.config/neomutt/accounts/main&lt;enter&gt;&lt;change-folder&gt;!&lt;enter&gt;'
+macro index,pager &lt;f4&gt; '&lt;sync-mailbox&gt;&lt;enter-command&gt;source ~/.config/neomutt/accounts/school&lt;enter&gt;&lt;change-folder&gt;!&lt;enter&gt;'
+
+</code></pre><p>The main differences between my config and the default:</p>
+<ul>
+<li>vim keybinds! <code>k</code> and <code>j</code> to go up and down, and <code>l</code> and <code>h</code> to move forwards and back pages.</li>
+<li>Open the sidebar with <code>B</code>. <code>Ctrl+j</code> and <code>Ctrl+k</code> to navigate, <code>Ctrl+o</code> to open selection</li>
+<li><code>A</code> will attempt to create a new contact with <code>khard</code>.</li>
+<li><code>F2</code>, <code>F3</code>, and <code>F4</code> are used to switch between my three mailboxes</li>
+</ul>
+<p>I put the important binds in a little cheatsheet table for myself!</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Keybind</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Go to last entry</td>
+<td><code>G</code></td>
+</tr>
+<tr>
+<td>Go to first entry</td>
+<td><code>gg</code></td>
+</tr>
+<tr>
+<td>Page down</td>
+<td><code>d</code></td>
+</tr>
+<tr>
+<td>Page up</td>
+<td><code>u</code></td>
+</tr>
+<tr>
+<td>Delete message</td>
+<td><code>D</code></td>
+</tr>
+<tr>
+<td>Delete thread</td>
+<td><code>Ctrl+d</code></td>
+</tr>
+<tr>
+<td>Mark thread read</td>
+<td><code>Ctrl+r</code></td>
+</tr>
+<tr>
+<td>Undelete message</td>
+<td><code>U</code></td>
+</tr>
+<tr>
+<td>Limit/Filter</td>
+<td><code>L</code></td>
+</tr>
+<tr>
+<td>Open message</td>
+<td><code>l</code>, <code>Enter</code></td>
+</tr>
+<tr>
+<td>Group reply</td>
+<td><code>R</code></td>
+</tr>
+<tr>
+<td>Reply</td>
+<td><code>r</code></td>
+</tr>
+<tr>
+<td>Forward message</td>
+<td><code>f</code></td>
+</tr>
+<tr>
+<td>New message</td>
+<td><code>m</code></td>
+</tr>
+<tr>
+<td>View attachments</td>
+<td><code>v</code></td>
+</tr>
+<tr>
+<td>Compose to Sender</td>
+<td><code>@</code></td>
+</tr>
+<tr>
+<td>Resend message</td>
+<td><code>Esc+e</code></td>
+</tr>
+<tr>
+<td>Save message (to file)</td>
+<td><code>s</code></td>
+</tr>
+<tr>
+<td>Toggle collapse thread</td>
+<td><code>Space</code>, <code>Esc+v</code></td>
+</tr>
+<tr>
+<td>Toggle collapse all threads</td>
+<td><code>Esc+V</code></td>
+</tr>
+<tr>
+<td>Add contact to Khard</td>
+<td><code>A</code></td>
+</tr>
+<tr>
+<td>Jump to parent message</td>
+<td><code>P</code></td>
+</tr>
+<tr>
+<td>Email PGP public key</td>
+<td><code>Esc+k</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="pager">Pager<a href="#pager" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Keybind</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bottom of page</td>
+<td><code>G</code></td>
+</tr>
+<tr>
+<td>Top of page</td>
+<td><code>gg</code></td>
+</tr>
+<tr>
+<td>Next line</td>
+<td><code>j</code></td>
+</tr>
+<tr>
+<td>Previous line</td>
+<td><code>k</code></td>
+</tr>
+<tr>
+<td>View attachments</td>
+<td><code>l</code></td>
+</tr>
+<tr>
+<td>Page down</td>
+<td><code>d</code></td>
+</tr>
+<tr>
+<td>Page up</td>
+<td><code>u</code></td>
+</tr>
+<tr>
+<td>Group reply</td>
+<td><code>R</code>,<code>g</code></td>
+</tr>
+<tr>
+<td>Reply</td>
+<td><code>r</code></td>
+</tr>
+<tr>
+<td>Compose to Sender</td>
+<td><code>@</code></td>
+</tr>
+<tr>
+<td>Delete thread</td>
+<td><code>Ctrl+d</code></td>
+</tr>
+<tr>
+<td>Mark thread read</td>
+<td><code>Ctrl+r</code></td>
+</tr>
+<tr>
+<td>Mark thread new</td>
+<td><code>N</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="sidebar">Sidebar<a href="#sidebar" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Keybind</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Show sidebar</td>
+<td><code>B</code></td>
+</tr>
+<tr>
+<td>Up</td>
+<td><code>Ctrl+k</code></td>
+</tr>
+<tr>
+<td>Down</td>
+<td><code>Ctrl+j</code></td>
+</tr>
+<tr>
+<td>Open</td>
+<td><code>Ctrl+o</code></td>
+</tr>
+<tr>
+<td>Open next new</td>
+<td><code>Ctrl+n</code></td>
+</tr>
+<tr>
+<td>Open previous new</td>
+<td><code>Ctrl+p</code></td>
+</tr>
+</tbody>
+</table>
+<h1 id="mailcap">Mailcap<a href="#mailcap" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>This file defines which programs should handle various filetypes included in email attachments.</p>
+<pre><code># MS Word documents
+application/msword; ~/dotfiles/office/view-attachment.sh %s &quot;-&quot; '/Applications/LibreOffice.app'
+application/vnd.ms-excel; ~/dotfiles/office/view-attachment.sh %s &quot;-&quot; '/Applications/LibreOffice.app'
+application/vnd.openxmlformats-officedocument.presentationml.presentation; ~/dotfiles/office/view-attachment.sh %s &quot;-&quot; '/Applications/LibreOffice.app'
+application/vnd.oasis.opendocument.text; ~/dotfiles/office/view-attachment.sh %s &quot;-&quot; '/Applications/LibreOffice.app'
+
+# HTML
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+text/plain; nvim %s
+
+#PDFs
+application/pdf; /usr/bin/zathura %s pdf
+
+#Images
+image/png; /usr/bin/feh %s
+image/jpeg; /usr/bin/feh %s
+</code></pre><ul>
+<li>I use <code>feh</code> as a lightweight image viewer</li>
+<li>All MS office docs are handled by <code>LibreOffice</code></li>
+<li><code>zathura</code> reads my PDFs (with <a href="https://github.com/GideonWolfe/Zathura-Pywal">style</a>)</li>
+<li><code>HTML</code> is rendered as text with <code>w3m</code></li>
+</ul>
+<h1 id="accounts">Accounts<a href="#accounts" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>I won&rsquo;t go over the specifics of each account here, because getting neomutt to actually talk to your mailserver is another matter entirely, for which there are dozens of tutorials.</p>
+<p>Here is a generic template for hooking up an <code>IMAP</code> account.</p>
+<pre><code># vim: filetype=muttrc
+unmailboxes *
+
+# in/out mail servers
+set realname = &quot;Firstname Lastname&quot;
+set imap_pass = &quot;SOME_PASSWORD&quot;
+set smtp_url = &quot;smtps://you@somedomain.com@mailserver.com:465&quot;
+set smtp_pass = &quot;SOME_PASSWORD&quot;
+set folder = &quot;imaps://you@somedomain.com@mailserver.com:993&quot;
+set spoolfile = &quot;+INBOX&quot;
+
+set from = &quot;you@somedomain.com&quot;
+set envelope_from
+set use_from = &quot;yes&quot;
+set record = &quot;+Sent&quot;
+set trash = &quot;+Trash&quot;
+set postponed = &quot;+Drafts&quot;
+set mail_check = 6
+
+# Allow Mutt to open a new IMAP connection automatically.
+unset imap_passive
+
+# Keep the IMAP connection alive by polling intermittently (time in seconds).
+set imap_keepalive = 300
+
+## Hook -- IMPORTANT!
+account-hook $folder &quot;set imap_pass=SOME_PASSWORD&quot;
+</code></pre><ul>
+<li><code>unmailboxes *</code> hides the inboxes of accounts we are not currently viewing.</li>
+<li><code>account-hook</code> is the line that allows us to switch to this account with a keybind.</li>
+</ul>
+<h1 id="conclusion">Conclusion<a href="#conclusion" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>And that&rsquo;s basically it. If you have done everything correctly, you should be able to use neomutt to interact with multiple email accounts, switching with just a keypress.</p>
+<p>The colors should look good, and the keybinds should feel natural to a vim user. I am constantly improving this setup so don&rsquo;t hesitate to throw me some suggestions.</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://gideonwolfe.com/posts/sysadmin/huginn/telegram/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Agents Standing By: Notifications through Telegram</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://gideonwolfe.com/posts/sysadmin/huginn/disasters/">
+                <span class="button__text">Agents Standing By: Monitoring National Emergencies</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://gideonwolfe.com/assets/main.js"></script>
+<script src="https://gideonwolfe.com/assets/prism.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

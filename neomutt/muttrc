@@ -1,23 +1,20 @@
-# User
+# USER
 set from = "wilifanevans@gmail.com"
 set realname = "Wil Ifan Evans"
 
-# Gmail
+# GMAIL
 set imap_user = "wilifanevans@gmail.com"
-set smtp_url = "smtps://wilifanevans@gmail.com@smtp.gmail.com:465/"
+set smtp_url = "smtps://wilifanevans@gmail.com@smtp.gmail.com:465/
 set smtp_authenticators = "gssapi:login"
 
-# Ensure TLS is enforced
-set ssl_starttls = yes
-set ssl_force_tls = yes
+# ENCRYPTED PASSWORD (GPG)
+source "gpg -dq ~/.config/mutt/cyfrinair.gpg |"
 
-# My mailboxes
 set folder = "imaps://imap.gmail.com:993"
 set spoolfile = "+INBOX"
 set postponed = "+[Google Mail]/Drafts"
 set record = "+[Google Mail]/Sent Mail"
 set trash = "+[Google Mail]/Bin"
-
 named-mailboxes inbox "+INBOX"
 named-mailboxes allmail "+[Google Mail]/All Mail"
 named-mailboxes sent "+[Google Mail]/Sent Mail"
@@ -27,14 +24,37 @@ named-mailboxes drafts "+[Google Mail]/Drafts"
 named-mailboxes spam "+[Google Mail]/Spam"
 named-mailboxes bin "+[Google Mail]/Bin"
 
-# Where to put caches
+# ENCRYPTION
+set pgp_default_key = BE8AD497C3FED0F33D665C4D9089F0F2E0A81974
+# USe GPGME
+set crypt_use_gpgme = yes
+# Automatically sign all out-going email
+set crypt_autosign = yes
+# Automatically sign replies to signed emails
+set crypt_replysign = yes
+# Encrypt replies to encrypted emails
+set crypt_replyencrypt = yes
+# Encrypt and sign replies to encrypted and signed email
+set crypt_replysignencrypted = yes
+# Attempt to verify signatures automatically
+set crypt_verify_sig = yes
+# Disable automatic encryption (stops emails being marked as spam)
+set crypt_opportunistic_encrypt = no
+# View encrypted emails automatically
+auto_view application/pgp-encrypted
+
+# Ensure TLS is enforced
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
+# CACHE LOCATIONS
 set header_cache = "~/.cache/mutt/headers"
 set message_cachedir = "~/.cache/mutt/bodies"
 set certificate_file = "~/.cache/mutt/certificates"
-# Gmail already records sent emails, the below prevents duplication
-unset record
 
 # Settings
+# Gmail already records sent emails: below prevents duplication
+unset record
 set pager_index_lines = 10
 set pager_context = 3  # Show 3 lines of context.
 set pager_stop  # Stop at end of message.
@@ -94,7 +114,7 @@ set signature = "$XDG_CONFIG_HOME/mutt/signature"
 set editor = "micro"
 
 # DEFINE PROGRAMS USED TO OPEN ATTACHMENTS
-set mailcap_path = "$XDG_CONFIG_HOME/mutt/mailcap"
+set mailcap_path = "~/.config/mutt/mailcap"
 # Open attachments with mailcap using <Return>
 bind attach <return> view-mailcap
 # Save attachments to a folder
