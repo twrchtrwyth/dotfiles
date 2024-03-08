@@ -274,6 +274,7 @@ for_window [class="Geany"] floating enable, move position center
 for_window [class="XTerm"] floating enable, resize set 400 300, move position center
 for_window [class="VVVVVV"] floating enable
 for_window [class="Kiwix"] floating enable
+for_window [class="GoldenDict"] floating enable, move position center
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
