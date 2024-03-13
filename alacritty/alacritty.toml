@@ -1,6 +1,9 @@
 [font]
+# This works through an alias set in .config/fontconfig/conf.d/99-alias-fonts.conf
+# Required for glyphs, etc., to display properly
+# Only certain names seem to work... Hence Bendigeidfran
 size = 12.0
-normal = { family = "Tamzen" }
+normal = { family = "bendigeidfran" }
 bold = { family = "Tamzen" }
 italic = { family = "scientifica" }
 #offset = { y = 1 }

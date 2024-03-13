@@ -15,12 +15,14 @@ rules:
 
     # Everything seems to work except inline comments.
     # - type: "^\\.[[:space:]]*[^[[:space:]]]*"
-    - type: "^\\.[[:space:]]*(?i:.*)"
+    # - type: "^\\.[[:space:]]*(?i:.*)"
+    - statement: "^\\.[[:space:]]*(?i:.*)"
     - type:
         start: "^\\.R*[0-9]"
         end: "R*[0-9]"
         rules: []
     - comment: "^\\.\\\\\".*$"
+    - comment: "^\\\\#.*$"
     - constant.string: "(\\\\|\\\\\\\\)\\*(.|\\(..)"
     - constant.string:
         start: "(\\\\|\\\\\\\\)\\*\\["

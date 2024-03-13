@@ -38,7 +38,7 @@ bindsym $mod+Shift+q kill
 
 # start program launcher (changed from default)
 # bindsym $mod+d exec --no-startup-id dmenu_recency
-bindsym $mod+d exec "rofi -modi window,drun,run,ssh -show drun -show-icons"
+bindsym $mod+d exec "rofi -modi window#filebrowser#drun#run#ssh -show drun -show-icons"
 # bindsym $mod+d exec "rofi -show combi -modes combi -combi-modes 'window,drun,run,ssh'-show-icons"
 
 # launch categorized menu

@@ -1,6 +1,7 @@
 # Set background & foreground colour.
 set default-fg "#000000"
-set default-bg "#afd7d7"
+# set default-bg "#afd7d7"  # blue
+set default-bg "#cccccc"
 
 # Switch over keybindings for rotate and reload.
 map r reload
