@@ -25,7 +25,7 @@ set recolor-darkcolor "#000000"
 set recolor-reverse-video false
 
 # Set font.
-set font "tamzen 11"
+set font "cozette 10"
 
 # Set zoom size and bind zoom in and out keys.
 set zoom-step 10

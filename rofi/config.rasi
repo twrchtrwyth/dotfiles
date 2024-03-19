@@ -2,7 +2,7 @@ configuration {
 /*	modi: "window,run,ssh,drun";*/
 font: "Cozette 11";
 /* location: 0;*/
-yoffset: 25;
+/* yoffset: 25;*/
 /* xoffset: 0;*/
 fixed-num-lines: false;
 /*	show-icons: true;*/
@@ -149,7 +149,8 @@ filebrowser {
   sorting-method:    "name";
 }
 window {
-  location:north;
+  /* location:north;*/
   width:40%;
- /* height: 25%;*/
+  /* height: 25%;*/
+  /* padding:100;*/
 }

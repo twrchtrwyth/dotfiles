@@ -2,6 +2,9 @@
     "*.md": {
         "aspell.check": "on"
     },
+    "*.mom": {
+        "aspell.check": "on"
+    },
     "*.txt": {
         "aspell.check": "on"
     },
@@ -9,8 +12,8 @@
     "ft:c": {
         "tabsize": 8
     },
-    "indentchar": "⸱",
-    "scrollbar": true,
+    "indentchar": "\u003e",
+    "saveundo": true,
     "softwrap": true,
     "tabhighlight": true,
     "wordwrap": true

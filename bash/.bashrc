@@ -237,6 +237,10 @@ chap () {
 mkrefpdf () {
 	touch "$1".mom && rm "$1".mom && cat *.mom > "$1".mom && pdfmom -R "$1".mom > "$1".pdf
 }
+## Build my prescribing portfolio. Must be run in the entries dir.
+bp () {
+	rm list_of_competencies.mom && rm summaries.mom && python competency_extractor.py && python summary_creator.py && pdfmom portfolio.mom > portfolio.pdf
+}
 ## Generate a postscript file of a chemical strucure from a specified groff/chem file.
 ch () {
 	chem "$1" | groffer -p
