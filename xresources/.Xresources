@@ -61,9 +61,9 @@ XTerm.termName: xterm-256-color
 Xcursor.theme: xcursor-breeze
 Xcursor.size:                     0
 
-! URxvt.font:                       9x15,xft:TerminessTTFNerdFontMono
+! URxvt.font: 9x15,xft:TerminessTTFNerdFontMono
 ! URxvt.font: xft:Iosevka NFM:size=10:antialias=true:hinting=true
-URxvt.font: xft:Cozette:size=13:antialias=true:hinting=true
+URxvt.font: xft:Cozette:size=13:antialias=false:hinting=true
 ! URxvt.italicFont: xft:Iosevka:size=7:style=Italic:hinting=true
 ! URxvt.boldFont: xft:Iosevka:size=7:style=Bold:hinting=true
 ! URxvt.boldItalicFont: xft:Iosevka:size=7:style=Bold Italic:hinting=true

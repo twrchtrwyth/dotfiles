@@ -174,6 +174,7 @@ alias cpl='cd ~/documents/notes/c/the-c-programming-language/ && xdg-open c.epub
 alias tlcl='zathura ~/documents/notes/linux/the_linux_command_line.pdf & disown & exit'
 alias kiwix='~/kiwix/kiwix.appimage & disown'
 alias mac='cd ~/mac; ./Mini\ vMac\ 26 Workstation\ \(Boot\).dsk; cd -'
+alias pres='cd ~/documents/presentations'
 
 ## GAMES
 alias sethian='cd ~/games/sethian/Sethian/; wine Sethian.exe; cd -'
@@ -181,6 +182,8 @@ alias gw='wine "C:\Program Files (x86)\Guild Wars\Gw.exe"'
 alias ia='cd ~/games/ia-linux-x64-v21.0.1-3aee05d9-2022-04-07/; ./ia & disown & exit; cd -'
 alias rw='cd ~/games/roadwarden/; ./start.sh & disown & exit; cd -'
 alias quakespasm='quakespasm -basedir /usr/local/games/'
+alias psx='~/games/DuckStation-x64.AppImage'
+alias cotw='cd ~/games/castle-of-the-winds/; wine CASTLE1.EXE; cd -'
 
 ## SSH
 alias oki='ssh -p 9967 wil@oki.nohost.me'
@@ -190,10 +193,11 @@ alias akira-film='echo osmc@192.168.178.32:/media/Crucial\ X8/media/video/film/'
 alias akira-tv='echo osmc@192.168.178.32:/media/Crucial\ X8/media/video/tv/'
 
 ## WORK
-alias work='firefox --new-window --kiosk https://ntxgateway.luht.scot.nhs.uk/portal/webclient/index.html & disown & exit'
+alias lothian='firefox --private-window --kiosk https://ntxgateway.luht.scot.nhs.uk/portal/webclient/index.html & disown & exit'
 alias rx='cd ~/documents/work/prescribing/'
 alias pf='cd ~/documents/work/prescribing/portfolio/'
 alias diary='cd ~/documents/work/prescribing/portfolio/diary/entries/'
+alias work='cd ~/documents/work/'
 ## Create a new groff/mom diary entry using my template.
 nd () {
 	cat ~/documents/work/prescribing/portfolio/diary/template/diary_template.mom > "$1".mom && vim "$1".mom
@@ -253,3 +257,7 @@ alias pywc='~/programs/pywc'
 
 # w3m homepage
 export WWW_HOME="https://oki.nohost.me/babel"
+
+# Use micro as text edtior
+export EDITOR=micro
+export MICRO_TRUECOLOR=1

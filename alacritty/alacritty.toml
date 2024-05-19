@@ -1,11 +1,13 @@
 [font]
-# This works through an alias set in .config/fontconfig/conf.d/99-alias-fonts.conf
+# This used to work through an alias set in .config/fontconfig/conf.d/99-alias-fonts.conf
 # Required for glyphs, etc., to display properly
-# Only certain names seem to work... Hence Bendigeidfran
+# Only certain names seem to work... Hence was bendigeidfran
+# Doesn't fix the issue for Japanese characters.
+# Now configured in .config/fontconfig/fonts.conf instead.
 size = 12.0
-normal = { family = "bendigeidfran" }
-bold = { family = "Tamzen" }
-italic = { family = "scientifica" }
+normal = { family = "Tamzen", style = "Regular" }
+bold = { family = "Tamzen", style = "Bold" }
+italic = { family = "scientifica", style = "Italic" }
 #offset = { y = 1 }
 glyph_offset = { y = -1 }
 

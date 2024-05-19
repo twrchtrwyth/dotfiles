@@ -1,6 +1,7 @@
 {
     "Alt-/": "lua:comment.comment",
     "Ctrl-F2": "command:toggleBookmark",
+    "CtrlAlt-D": "command:addpersonal",
     "CtrlAlt-F2": "command:clearBookmarks",
     "CtrlAlt-L": "command:lower",
     "CtrlAlt-R": "command:reverse",
