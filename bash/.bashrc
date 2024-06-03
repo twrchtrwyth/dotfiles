@@ -146,6 +146,7 @@ ex ()
 
 # PATH ADDITIONS
 export PATH=/home/wil/programs/bin:$PATH
+export PATH=$PATH:$HOME/bin
 export PATH=/home/wil/.local/share/gem/ruby/3.0.0/bin:$PATH
 
 # ALIASES
@@ -162,7 +163,6 @@ alias open='xdg-open'
 alias sonic-pi='qjackctl -s & sonic-pi'
 alias du='du -h'
 alias ll='~/python/playground/tkinter-practice/tutorial/examples/apps/text-editor/main.py'
-# alias catclock='cd ~/uxn; ./uxnemu catclock.rom; cd -'
 alias pico8='~/programs/pico-8/pico8 & disown & exit'
 alias p8=pico8
 alias pico=pico8
@@ -243,7 +243,7 @@ mkrefpdf () {
 }
 ## Build my prescribing portfolio. Must be run in the entries dir.
 bp () {
-	rm list_of_competencies.mom && rm summaries.mom && python competency_extractor.py && python summary_creator.py && pdfmom portfolio.mom > portfolio.pdf
+	rm list_of_competencies.mom && rm summaries.mom && python competency_extractor.py && python summary_creator.py && pdfmom diary.mom > diary.pdf
 }
 ## Generate a postscript file of a chemical strucure from a specified groff/chem file.
 ch () {
@@ -261,3 +261,8 @@ export WWW_HOME="https://oki.nohost.me/babel"
 # Use micro as text edtior
 export EDITOR=micro
 export MICRO_TRUECOLOR=1
+
+# UXN
+alias catclock='uxnemu ~/uxn/roms/catclock.rom'
+alias adelie='uxnemu ~/uxn/latest/adelie.rom'
+alias left='uxnemu ~/uxn/latest/left.rom'

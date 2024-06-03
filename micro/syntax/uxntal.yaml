@@ -1,0 +1,8 @@
+filetype: uxntal
+
+detect:
+    filename: "\\.(tal)$"
+
+rules:
+      # Comments
+    - comment:  "\\( .* \\)"

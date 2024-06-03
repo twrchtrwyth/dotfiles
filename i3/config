@@ -277,6 +277,8 @@ for_window [class="Kiwix"] floating enable
 for_window [class="GoldenDict"] floating enable, move position center
 for_window [class="AppRun.wrapped"] floating enable, move position center
 for_window [class="Cider"] floating enable, move position center
+for_window [class="Sylpheed" instance="compose"] floating enable, move position center
+for_window [class="Abiword"] floating enable, move position center
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus

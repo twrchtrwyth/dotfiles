@@ -1,0 +1,15 @@
+filetype: adelie
+
+detect:
+    filename: "\\.(adelie)$"
+
+rules:
+      # Comments
+    - comment:  "\\( .* \\)"
+
+      # Keywords
+    - type: "^([A-Z]){4}"
+
+      # Notes
+    # - statement: "\t- .*"
+    - statement: "^(\t){1}.*"

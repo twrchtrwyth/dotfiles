@@ -3,7 +3,8 @@
         "aspell.check": "on"
     },
     "*.mom": {
-        "aspell.check": "on"
+        "aspell.check": "on",
+        "commenttype": "\\# %s"
     },
     "*.txt": {
         "aspell.check": "on"
