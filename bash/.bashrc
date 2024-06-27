@@ -1,6 +1,7 @@
 #
 # ~/.bashrc
 #
+source ~/.bashalias
 
 [[ $- != *i* ]] && return
 
@@ -72,7 +73,7 @@ if ${use_color} ; then
 	if [[ ${EUID} == 0 ]] ; then
 		PS1='\[\033[01;31m\][\h\[\033[01;36m\] \W\[\033[01;31m\]]\$\[\033[00m\] '
 	else
-		PS1='\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[01;32m\]]\$\[\033[00m\] '
+		PS1='\[\033[01;32m\][\u@\h\[\033[01;34m\] \W\[\033[01;32m\]]\$\[\033[00m\] '
 	fi
 
 	# alias ls='ls --color=auto'
@@ -91,9 +92,9 @@ fi
 
 unset use_color safe_term match_lhs sh
 
-#alias cp="cp -i"                          # confirm before overwriting something
-#alias df='df -h'                          # human-readable sizes
-#alias free='free -m'                      # show sizes in MB
+alias cp='cp -i'                          # confirm before overwriting something
+alias df='df -h'                          # human-readable sizes
+alias free='free -m'                      # show sizes in MB
 #alias np='nano -w PKGBUILD'
 #alias more=less
 
@@ -149,72 +150,6 @@ export PATH=/home/wil/programs/bin:$PATH
 export PATH=$PATH:$HOME/bin
 export PATH=/home/wil/.local/share/gem/ruby/3.0.0/bin:$PATH
 
-# ALIASES
-
-alias vim='nvim'
-# alias fzfp="fzf --preview 'bat --color=always {}'"
-alias ripgrep='rg'
-alias ..='cd ..'
-alias sysinfo='inxi --admin --verbosity=7 --filter --no-host --width'
-alias pp='cd ~/python/playground'
-alias cpg='cd ~/documents/notes/c/the-c-programming-language/playground'
-alias texted='cd ~/python/playground/tkinter-practice/tutorial/examples/apps/text-editor'
-alias open='xdg-open'
-alias sonic-pi='qjackctl -s & sonic-pi'
-alias du='du -h'
-alias ll='~/python/playground/tkinter-practice/tutorial/examples/apps/text-editor/main.py'
-alias pico8='~/programs/pico-8/pico8 & disown & exit'
-alias p8=pico8
-alias pico=pico8
-alias pandas="cd ~/python/tutorials/learn-to-code-for-data-analysis/; jupyter-notebook; cd -"
-alias regex='bat ~/python/tutorials/automate-the-boring-stuff-with-python/7-chapter-regex/regex_cheat_sheet.md'
-alias met='~/python/playground/metronome/metronome.py'
-alias qemu='qemu-system-x86_64'
-alias cpl='cd ~/documents/notes/c/the-c-programming-language/ && xdg-open c.epub'
-alias tlcl='zathura ~/documents/notes/linux/the_linux_command_line.pdf & disown & exit'
-alias kiwix='~/kiwix/kiwix.appimage & disown'
-alias mac='cd ~/mac; ./Mini\ vMac\ 26 Workstation\ \(Boot\).dsk; cd -'
-alias pres='cd ~/documents/presentations'
-
-## GAMES
-alias sethian='cd ~/games/sethian/Sethian/; wine Sethian.exe; cd -'
-alias gw='wine "C:\Program Files (x86)\Guild Wars\Gw.exe"'
-alias ia='cd ~/games/ia-linux-x64-v21.0.1-3aee05d9-2022-04-07/; ./ia & disown & exit; cd -'
-alias rw='cd ~/games/roadwarden/; ./start.sh & disown & exit; cd -'
-alias quakespasm='quakespasm -basedir /usr/local/games/'
-alias psx='~/games/DuckStation-x64.AppImage'
-alias cotw='cd ~/games/castle-of-the-winds/; wine CASTLE1.EXE; cd -'
-
-## SSH
-alias oki='ssh -p 9967 wil@oki.nohost.me'
-alias akira='ssh osmc@192.168.178.32'
-alias yojimbo='ssh pi@pi-hole.local'
-alias akira-film='echo osmc@192.168.178.32:/media/Crucial\ X8/media/video/film/'
-alias akira-tv='echo osmc@192.168.178.32:/media/Crucial\ X8/media/video/tv/'
-
-## WORK
-alias lothian='firefox --private-window --kiosk https://ntxgateway.luht.scot.nhs.uk/portal/webclient/index.html & disown & exit'
-alias rx='cd ~/documents/work/prescribing/'
-alias pf='cd ~/documents/work/prescribing/portfolio/'
-alias diary='cd ~/documents/work/prescribing/portfolio/diary/entries/'
-alias work='cd ~/documents/work/'
-## Create a new groff/mom diary entry using my template.
-nd () {
-	cat ~/documents/work/prescribing/portfolio/diary/template/diary_template.mom > "$1".mom && vim "$1".mom
-}
-alias comp='zathura ~/documents/work/prescribing/portfolio/competencies/ip_competencies_2023.pdf & disown'
-
-## PDFs
-alias biochem='mupdf ~/documents/books/textbooks/molbiolcell.pdf & disown & exit'
-alias pharm="zathura ~/documents/books/textbooks/Rang\ and\ Dale\'s\ Pharmacology\,\ Seventh\ Edition-\ H.\ P.\ Rang.pdf & disown & exit"
-alias physics='zathura ~/documents/books/textbooks/David\ Halliday\,\ Robert\ Resnick\,\ Jearl\ Walker\ -\ Fundamentals\ of\ Physics_\ Extended-Wiley\ \(2018\).pdf & disown & exit'
-alias medicine='zathura ~/documents/books/Oxford\ Handbook\ of\ Clinical\ Medicine\ \(10th\ Ed\)\(gnv64\).pdf & disown & exit'
-alias quantum='zathura ~/documents/books/\(Teach\ Yourself\)\ Alexandre\ Zagoskin\ -\ Quantum\ Theory_\ A\ Complete\ Introduction-Teach\ Yourself\ \(2015\).pdf & disown & exit'
-alias orgchem='zathura ~/documents/books/textbooks/John\ McMurry\ -\ Organic\ Chemistry-Cengage\ Learning\ \(2016\).pdf & disown & exit' 
-alias funorgchem='zathura ~/documents/books/textbooks/McMurry\,\ John\ -\ Fundamentals\ of\ organic\ chemistry-Brooks_Cole\ \(2011\).pdf & disown & exit' 
-alias marine="zathura ~/documents/books/textbooks/J.\ D.\ Fish\,\ S.\ Fish\ -\ A\ Student\'s\ Guide\ to\ the\ Seashore\,\ 3rd\ Edition\ -Cambridge\ University\ Press\ \(2011\).pdf"
-alias jellyfish="zathura ~/books/jellyfish.pdf & disown & exit"
-
 # FZF
 ## Display preview with bat. bat must be installed.
 export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
@@ -222,35 +157,6 @@ export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
 export FZF_DEFAULT_COMMAND="fd --type f"
 ## Load default keybindings (Ctrl-T, Alt-C, Ctrl-R)
 source /usr/share/fzf/key-bindings.bash
-
-# LaTeX
-alias maths='cd ~/documents/latex/maths'
-
-# GROFF
-alias gf='cd ~/documents/groff'
-## Create a new groff mom default document using my template.
-doc () {
-	cat ~/documents/groff/templates/document/document.mom > "$1".mom && vim "$1".mom
-}
-## Create a new groff mom chapter document using my template.
-chap () {
-	cat ~/documents/groff/templates/chapter/chapter.mom > "$1".mom && vim "$1".mom
-}
-## Generate a referenced PDF from groff/mom formatted chapters.
-## This is a bit nasty, better to use include method as per my note in the relevant groff folder.
-mkrefpdf () {
-	touch "$1".mom && rm "$1".mom && cat *.mom > "$1".mom && pdfmom -R "$1".mom > "$1".pdf
-}
-## Build my prescribing portfolio. Must be run in the entries dir.
-bp () {
-	rm list_of_competencies.mom && rm summaries.mom && python competency_extractor.py && python summary_creator.py && pdfmom diary.mom > diary.pdf
-}
-## Generate a postscript file of a chemical strucure from a specified groff/chem file.
-ch () {
-	chem "$1" | groffer -p
-}
-# Run the word counter program. Must be run in same directory as file.
-alias pywc='~/programs/pywc'
 
 # Autojump configuration.
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
@@ -261,8 +167,3 @@ export WWW_HOME="https://oki.nohost.me/babel"
 # Use micro as text edtior
 export EDITOR=micro
 export MICRO_TRUECOLOR=1
-
-# UXN
-alias catclock='uxnemu ~/uxn/roms/catclock.rom'
-alias adelie='uxnemu ~/uxn/latest/adelie.rom'
-alias left='uxnemu ~/uxn/latest/left.rom'

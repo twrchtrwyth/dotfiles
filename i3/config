@@ -44,6 +44,8 @@ bindsym $mod+d exec "rofi -modi window#filebrowser#drun#run#ssh -show drun -show
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
 
+bindsym XF86TouchpadToggle exec --no-startup-id ~/touchpad.sh
+
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
@@ -245,6 +247,7 @@ for_window [class="feh"] floating enable
 for_window [class="Viewnior"] floating enable
 for_window [class="Surf"] floating enable
 for_window [class="Tk"] floating enable
+for_window [title="Llythrennau"] floating enable, border normal
 for_window [class="thunderbird" instance="Msgcompose"] floating enable, resize set 679 572, move position center
 for_window [class="thunderbird" instance="Calendar"] floating enable, resize set 679 572, move position center
 for_window [class="mpv"] floating enable, resize set 1264 634, move position center
@@ -279,6 +282,9 @@ for_window [class="AppRun.wrapped"] floating enable, move position center
 for_window [class="Cider"] floating enable, move position center
 for_window [class="Sylpheed" instance="compose"] floating enable, move position center
 for_window [class="Abiword"] floating enable, move position center
+for_window [class="uxnemu"] border pixel 0
+for_window [class="brogue"] floating enable, move position center
+for_window [class="decker"] floating enable, move position center
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus

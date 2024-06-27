@@ -20,7 +20,7 @@ padding = { x = 12, y = 10 }
 [colors]
 primary = { foreground = "#000000", background = "#ffffea" }
 selection = { text = "#000000", background = "#ffffca" }
-normal = { black = '#000000', blue = '#7ab4b4', cyan = '#9cd6d6', green = '#000000', magenta = '#333333', red = '#555555', white = '#bbbbbb', yellow = '#aaaaaa' }
+normal = { black = '#000000', blue = '#7ab4b4', cyan = '#9cd6d6', green = '#000000', magenta = '#333333', red = '#555555', white = '#ffffea', yellow = '#000000' }
 # bright = { black, blue, cyan, green, magenta, red, white, yellow }
 # dim = { black, blue, cyan, green, magenta, red, white, yellow }
 
