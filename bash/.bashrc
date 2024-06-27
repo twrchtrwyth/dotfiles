@@ -1,7 +1,9 @@
 #
 # ~/.bashrc
 #
+if [ -f ~/.bashalias ]; then
 source ~/.bashalias
+fi
 
 [[ $- != *i* ]] && return
 
@@ -77,7 +79,6 @@ if ${use_color} ; then
 	fi
 
 	# alias ls='ls --color=auto'
-	alias ls='exa -s type'  # exa must be installed from package manager.
 	alias grep='grep --colour=auto'
 	alias egrep='egrep --colour=auto'
 	alias fgrep='fgrep --colour=auto'
