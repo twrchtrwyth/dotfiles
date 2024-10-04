@@ -30,6 +30,7 @@ font xft:Cozette 10
 floating_modifier $mod
 
 # start a terminal
+# to set terminal edit the file at ~/.local/bin/terminal
 bindsym $mod+Return exec terminal
 bindsym Mod1+space exec terminal  # Mod1 = L-Alt
 
@@ -274,7 +275,7 @@ for_window [class="pico8"] floating enable
 for_window [class="Breach"] floating enable
 # for_window [class="calibre" instance="calibre-ebook-viewer"] floating enable border pixel 1, resize set 585 635, move position 66 px 83 px
 for_window [class="Geany"] floating enable, move position center
-for_window [class="XTerm"] floating enable, resize set 400 300, move position center
+for_window [class="XTerm"] floating enable, resize set 500 400, move position center
 for_window [class="VVVVVV"] floating enable
 for_window [class="Kiwix"] floating enable
 for_window [class="GoldenDict"] floating enable, move position center
@@ -506,3 +507,6 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Write new email.
 bindsym $mod+m exec sylpheed
 bindsym $mod+Shift+m exec terminal -e 'thunderbird -compose'
+
+# Open Mandelbrot's Fractal book.
+bindsym $mod+Shift+f exec xdg-open /home/wil/books/mandelbrot_fractals.epub

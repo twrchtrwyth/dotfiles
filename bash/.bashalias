@@ -1,8 +1,9 @@
 # CUSTOM BASH ALIASES AND FUNCTIONS
 
 # exa must first be installed from package manager
-alias ls='exa -s type'
-alias l.='exa -d .* -s type'
+# switched off for now to avoid painful colours in xterm
+# alias ls='exa -s type'
+# alias l.='exa -d .* -s type'
 
 alias bc='bc -lq'
 
@@ -13,11 +14,13 @@ alias time='date +"%T"'
 # Disaster protection --- not a replacement for judicious use of rm!
 alias rm='rm -I --preserve-root'
 
-cp='cp -i'
-mv='mv -i'
+alias cp='cp -i'
+alias mv='mv -i'
 
 # Will resume download of a partially downloaded file, if it exists.
-wget='wget -c'
+alias wget='wget -c'
+
+alias lookman='apropos'
 
 alias vim='nvim'
 # alias fzfp="fzf --preview 'bat --color=always {}'"

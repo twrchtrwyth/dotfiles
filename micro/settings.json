@@ -10,6 +10,7 @@
         "aspell.check": "on"
     },
     "colorscheme": "acme",
+    "cursorline": false,
     "ft:c": {
         "tabsize": 8
     },
