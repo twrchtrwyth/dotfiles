@@ -19,6 +19,18 @@ xterm.vt100.renderFont: false
 ! Make Alt key behave the same as other terminal emulators
 XTerm.vt100.metaSendsEscape: true
 
+! Fix backspace behaviour; changes from sending ^H to ^?
+XTerm.vt100.backarrowKey: false
+XTerm.ttyModes: erase ^?
+
+! Defining custom keybindings
+! see xterm(1) KEY_BINDINGS for list of actions
+! XTerm.vt100.translations: #override \n\
+!	Ctrl <Key>M: maximize() \n\
+!	Ctrl <Key>R: restore()
+
+XTerm.vt100.saveLines: 4096
+
 xterm*termName: xterm-256color
 
 *background:                      #161414

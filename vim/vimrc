@@ -49,7 +49,7 @@ Plug 'preservim/nerdtree'
 
 " A light statusline (based on vim powerline).
 " Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline-themes'
 
 " Improves folding of python code.
 Plug 'tmhedberg/SimpylFold'
@@ -452,6 +452,10 @@ let g:ctrlp_custom_ignore = {'file': '\v\.(pdf)$'}
 " let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " VIM-AIRLINE
+" Only try to load fancy symbols if they exist in the font being used
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
 " Draw the line at the top of the screen.
 " let g:airline_statusline_ontop=1
 let g:airline_powerline_fonts = 1
@@ -479,6 +483,11 @@ let g:airline#extensions#default#section_truncate_width = {
 " QUICK SCOPE
 " Only display highlights when the specified keys are pressed.
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" LIMELIGHT
+" Alters the dimming of paragraphs that aren't under the cursor
+" Higher number = dimmer
+let g:limelight_default_coefficient = 0.8  " Default 0.7
 
 " ----------------------------------------------------------------------------
 " / END OF PLUGIN CONFIGURATION
