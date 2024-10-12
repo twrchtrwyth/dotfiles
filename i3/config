@@ -26,6 +26,9 @@ bindsym $mod+n border normal
 # font xft:TerminessNerdFontMono 9
 font xft:Cozette 10
 
+# Customise the window title bar.
+for_window [class=".*"] title_format "<span foreground='#9cd6d6'>%title | %class/%instance</span>"
+
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
@@ -344,6 +347,9 @@ mode "resize" {
 
 # Lock screen
 bindsym $mod+x exec --no-startup-id blurlock
+
+# Jump to the next open VIM instance
+bindsym $mod+Shift+v [class="Xterm" title="VIM"] focus
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
