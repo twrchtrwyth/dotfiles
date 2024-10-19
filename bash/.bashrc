@@ -165,6 +165,6 @@ source /usr/share/fzf/key-bindings.bash
 # w3m homepage
 export WWW_HOME="https://oki.nohost.me/babel"
 
-# Use micro as text edtior
+# Use micro as default text edtior
 export EDITOR=micro
 export MICRO_TRUECOLOR=1

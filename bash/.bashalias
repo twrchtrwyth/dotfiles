@@ -118,7 +118,7 @@ ch () {
 alias pywc='~/programs/pywc'
 
 # uxn
-alias catclock='uxnemu ~/uxn/roms/catclock.rom'
+alias catclock='uxnemu ~/uxn/roms/catclock.rom & disown'
 alias adelie='uxnemu ~/uxn/latest/adelie.rom'
 alias left='uxnemu ~/uxn/latest/left.rom'
 alias notepad='uxnemu ~/uxn/latest/notepad.rom'

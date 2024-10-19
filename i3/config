@@ -2,6 +2,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
+# Note that this is the syntax used to define variables.
 set $mod Mod4
 
 # set default desktop layout (default is tiling)
@@ -31,6 +32,10 @@ for_window [class=".*"] title_format "<span foreground='#9cd6d6'>%title | %class
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
+
+# Set min/max floating window size
+floating_minimum_size 0 x 0  # No constraint
+floating_maximum_size 800 x 800
 
 # start a terminal
 # to set terminal edit the file at ~/.local/bin/terminal
@@ -90,7 +95,8 @@ bindsym $mod+Ctrl+c exec terminal -e 'xcalc'
 # Good size for Python programming on X220.
 bindsym $mod+Ctrl+p resize set 505 635, move position 66 px 83 px
 bindsym $mod+Ctrl+w resize set 735 635, move position 66 px 83 px
-bindsym $mod+Ctrl+l resize set 492 597, move position 69 px 100 px
+# bindsym $mod+Ctrl+l resize set 492 597, move position 69 px 100 px
+bindsym $mod+Ctrl+l exec xdg-open /home/wil/books/linux_pocket_guide.pdf
 
 # focus_follows_mouse no
 
@@ -504,15 +510,21 @@ mode "$mode_gaps_outer" {
 
 # Additions
 
-exec --no-startup-id ~/startup.sh
-bindsym $mod+c move position center
+# Run my startup scripts
+exec_always --no-startup-id ~/startup.sh
+
+# Set US keyboard layout if external monitor detected (proxy for when my 
+#  little 60% keyboard is being used)
+exec_always --no-startup-id ~/setuskeyboard.sh
 
 # Start Polybar on launch.
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+bindsym $mod+c move position center
 
 # Write new email.
 bindsym $mod+m exec sylpheed
 bindsym $mod+Shift+m exec terminal -e 'thunderbird -compose'
 
-# Open Mandelbrot's Fractal book.
+# Open Mandelbrot's Fractal book... Because why not
 bindsym $mod+Shift+f exec xdg-open /home/wil/books/mandelbrot_fractals.epub
