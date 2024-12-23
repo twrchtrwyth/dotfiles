@@ -93,7 +93,7 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+F1 exec terminal -e 'surf www.duckduckgo.com'
 bindsym $mod+Ctrl+c exec terminal -e 'xcalc'
 # Good size for Python programming on X220.
-bindsym $mod+Ctrl+p resize set 505 635, move position 66 px 83 px
+bindsym $mod+Ctrl+p resize set 528 635, move position 66 px 83 px
 bindsym $mod+Ctrl+w resize set 735 635, move position 66 px 83 px
 # bindsym $mod+Ctrl+l resize set 492 597, move position 69 px 100 px
 bindsym $mod+Ctrl+l exec xdg-open /home/wil/books/linux_pocket_guide.pdf
@@ -291,10 +291,12 @@ for_window [class="GoldenDict"] floating enable, move position center
 for_window [class="AppRun.wrapped"] floating enable, move position center
 for_window [class="Cider"] floating enable, move position center
 for_window [class="Sylpheed" instance="compose"] floating enable, move position center
+for_window [class="Sylpheed" title="Find in current message"] floating enable, move position center
 for_window [class="Abiword"] floating enable, move position center
 for_window [class="uxnemu"] border pixel 0
 for_window [class="brogue"] floating enable, move position center
 for_window [class="decker"] floating enable, move position center
+for_window [class="main" instance="main"] floating enable, move position center
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -436,7 +438,7 @@ set_from_resource $term_color15    color15
 # hide/unhide i3status bar
 # bindsym $mod+m bar mode toggle
 
-# Toggle Polybar. Code 133 is the super key. Toggling doesn't work properly so disabled.
+# Toggle Polybar. Code 133 is the super key. Toggling with this doesn't work properly so disabled.
 bindsym $mod+p exec --no-startup-id polybar-msg cmd toggle
 # bindcode 133 exec --no-startup-id polybar-msg cmd show
 # bindcode --release 133 exec --no-startup-id polybar-msg cmd hide

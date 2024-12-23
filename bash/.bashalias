@@ -76,6 +76,7 @@ nd () {
 	cat ~/documents/work/prescribing/portfolio/diary/template/diary_template.mom > "$1".mom && vim "$1".mom
 }
 alias comp='zathura ~/documents/work/prescribing/portfolio/competencies/ip_competencies_2023.pdf & disown'
+alias bennett='cd ~/documents/jobs/bennett-institute'
 
 ## PDFs
 alias biochem='mupdf ~/documents/books/textbooks/molbiolcell.pdf & disown & exit'
@@ -87,6 +88,7 @@ alias orgchem='zathura ~/documents/books/textbooks/John\ McMurry\ -\ Organic\ Ch
 alias funorgchem='zathura ~/documents/books/textbooks/McMurry\,\ John\ -\ Fundamentals\ of\ organic\ chemistry-Brooks_Cole\ \(2011\).pdf & disown & exit' 
 alias marine="zathura ~/documents/books/textbooks/J.\ D.\ Fish\,\ S.\ Fish\ -\ A\ Student\'s\ Guide\ to\ the\ Seashore\,\ 3rd\ Edition\ -Cambridge\ University\ Press\ \(2011\).pdf"
 alias jellyfish="zathura ~/books/jellyfish.pdf & disown & exit"
+alias lpg="zathura ~/books/linux_pocket_guide.pdf & disown"
 
 # LaTeX
 alias maths='cd ~/documents/latex/maths'
@@ -118,7 +120,15 @@ ch () {
 alias pywc='~/programs/pywc'
 
 # uxn
-alias catclock='uxnemu ~/uxn/roms/catclock.rom & disown'
+alias catclock='uxnemu ~/uxn/roms/catclock.rom'
 alias adelie='uxnemu ~/uxn/latest/adelie.rom'
 alias left='uxnemu ~/uxn/latest/left.rom'
 alias notepad='uxnemu ~/uxn/latest/notepad.rom'
+alias ipod='uxnemu ~/uxn/latest/m291.rom'
+alias uxnl='cd ~/uxn/latest/; uxnemu launcher.rom; cd -'
+
+# WEATHER
+alias weather='curl wttr.in/EDINBURGH,UK'
+
+# BETTY `SMART ASSISTANT`
+alias betty='~/programs/betty/main.rb'
