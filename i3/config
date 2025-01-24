@@ -290,13 +290,15 @@ for_window [class="Kiwix"] floating enable
 for_window [class="GoldenDict"] floating enable, move position center
 for_window [class="AppRun.wrapped"] floating enable, move position center
 for_window [class="Cider"] floating enable, move position center
-for_window [class="Sylpheed" instance="compose"] floating enable, move position center
+for_window [class="Sylpheed" instance="compose"] floating enable, resize set 700 550, move position center
+for_window [class="Sylpheed" instance="message_view"] floating enable, resize set 700 550, move position center
 for_window [class="Sylpheed" title="Find in current message"] floating enable, move position center
 for_window [class="Abiword"] floating enable, move position center
 for_window [class="uxnemu"] border pixel 0
 for_window [class="brogue"] floating enable, move position center
 for_window [class="decker"] floating enable, move position center
 for_window [class="main" instance="main"] floating enable, move position center
+for_window [class="Songrec"] floating enable, move position center
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus

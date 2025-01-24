@@ -128,7 +128,16 @@ alias ipod='uxnemu ~/uxn/latest/m291.rom'
 alias uxnl='cd ~/uxn/latest/; uxnemu launcher.rom; cd -'
 
 # WEATHER
-alias weather='curl wttr.in/EDINBURGH,UK'
+# ?T forces plaintext which suppresses colours
+alias weather='curl wttr.in/EDINBURGH,UK?T'
+alias moon='curl wttr.in/Moon?T'
 
 # BETTY `SMART ASSISTANT`
 alias betty='~/programs/betty/main.rb'
+
+# SONGREC (SHAZAM)
+alias shazam='songrec'
+
+# NOSON (SONOS APP)
+alias noson='noson-app --deviceurl=http://192.168.178.57:1400 & disown & exit'
+alias sonos='noson'

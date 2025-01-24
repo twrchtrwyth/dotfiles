@@ -14,6 +14,7 @@
     "ft:c": {
         "tabsize": 8
     },
+    "hlsearch": true,
     "indentchar": "\u003e",
     "saveundo": true,
     "softwrap": true,
