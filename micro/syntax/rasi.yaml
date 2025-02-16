@@ -1,0 +1,9 @@
+filetype: groff
+
+detect:
+    filename: "\\.(rasi)$"
+
+rules:
+    - identifier: "^.*:[[:space:]]"
+    - constant.string: "\".*\""
+    - comment: "/\\*.*\\*/$"
