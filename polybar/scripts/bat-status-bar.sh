@@ -2,13 +2,17 @@
 
 # Get the current battery levels
 bat0=$(cat /sys/class/power_supply/BAT0/capacity) # INTERNAL
-bat1=$(cat /sys/class/power_supply/BAT1/capacity) # EXTERNAL
+# Only check for this if the slice battery is connected to avoid errors
+if [ -d /sys/class/power_supply/BAT1/ ]; then
+  bat1=$(cat /sys/class/power_supply/BAT1/capacity) # EXTERNAL
+fi
 
-# Get the wh counts of the batteries
+# Get the Wh counts of the batteries
+# Commented out as the name of the file seems to change randomly
 #bat0_wh=$(($(cat /sys/class/power_supply/BAT0/energy_full_design) / 1000000))
 #bat1_wh=$(($(cat /sys/class/power_supply/BAT1/energy_full_design) / 1000000))
 
-# Define the weights for each battery capacity (in Wh?)
+# Define the weights for each battery capacity
 weight1=24  # internal
 weight2=72  # external 
 
@@ -22,7 +26,9 @@ fi
 
 # Get the charging status of each battery
 status1=$(cat /sys/class/power_supply/BAT0/status)
-status2=$(cat /sys/class/power_supply/BAT1/status)
+if [ -d /sys/class/power_supply/BAT1/ ]; then
+  status2=$(cat /sys/class/power_supply/BAT1/status)
+fi
 
 # Check if any of the batteries is charging
 charging=false
@@ -31,6 +37,7 @@ if [ "$status1" == "Charging" ] || [ "$status2" == "Charging" ]; then
 fi
 
 # Battery current watt usage
+# Commented out as per Wh counts above
 #if [ $(cat /sys/class/power_supply/BAT1/current_now) -eq 0 ]; then
 #  bat_watt=$(echo "scale=2; $(cat /sys/class/power_supply/BAT0/current_now)*$(cat /sys/class/power_supply/BAT0/voltage_now)/1000000000000" | bc)W
 #else
@@ -55,13 +62,37 @@ ac_status=$(cat /sys/class/power_supply/AC/online)
 
 # Output the battery levels, charging status, and AC adapter status
 # add %bat_watt if you want to see current usage
-if [ "$charging" == true ] && [ "$ac_status" == 1 ]; then
-  echo "%{F#1ABB9B}BATRI%{F-} +$average%" 
-elif [ "$charging" == false ] && [ "$ac_status" == 1 ]; then
-  echo "%{F#1ABB9B}BATRI%{F-} -$average% AC"
-elif [ "$average" -lt 16 ]; then
-  echo "%{F#1ABB9B}BATRI%{F-} -$average%"
-else
-  echo "%{F#1ABB9B}BATRI%{F-} -$average%"
+# This is a hacky mess
+if [ -d /sys/class/power_supply/BAT1/ ]; then
+  if [ "$charging" == true ] && [ "$ac_status" == 1 ]; then
+    echo "%{F#1ABB9B}BATRI%{F-} +$average%" 
+  elif [ "$charging" == false ] && [ "$ac_status" == 1 ]; then
+    echo "%{F#1ABB9B}BATRI%{F-} LLAWN"
+  elif [ "$average" -lt 16 ]; then
+    while [ "$average" -lt 16 ]
+    do
+      echo "%{F#BC4028}! BATRI ISEL%{F-} $average%"
+      sleep 0.5s
+      echo "%{F#BC4028}BATRI ISEL%{F-} $average%"
+      sleep 0.5s
+    done
+  else
+    echo "%{F#1ABB9B}BATRI%{F-} -$average%"
+  fi
+else # If only internal battery in use
+  if [ "$charging" == true ] && [ "$ac_status" == 1 ]; then
+    echo "%{F#1ABB9B}BATRI%{F-} +$bat0%" 
+  elif [ "$charging" == false ] && [ "$ac_status" == 1 ]; then
+    echo "%{F#1ABB9B}BATRI%{F-} LLAWM"
+  elif [ "$bat0" -lt 16 ]; then
+    while [ "$bat0" -lt 16 ]
+    do
+      echo "%{F#BC4028}! BATRI ISEL%{F-} $bat0%"
+      sleep 0.5s
+      echo "%{F#BC4028}BATRI ISEL%{F-} $bat0%"
+      sleep 0.5s
+    done
+  else
+    echo "%{F#1ABB9B}BATRI%{F-} -$bat0%"
+  fi
 fi
-
