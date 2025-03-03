@@ -25,7 +25,7 @@ XTerm.ttyModes: erase ^?
 
 XTerm.vt100.translations: #override \
 	Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
-	Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
+	Ctrl Shift <Key>C:    copy-selection(CLIPBOARD) \n\
 
 ! Defining custom keybindings
 ! see xterm(1) KEY_BINDINGS for list of actions
