@@ -14,6 +14,7 @@ alias time='date +"%T"'
 # Disaster protection --- not a replacement for judicious use of rm!
 alias rm='rm -I --preserve-root'
 
+# Prompt if overwriting
 alias cp='cp -i'
 alias mv='mv -i'
 
@@ -34,7 +35,7 @@ alias open='xdg-open'
 alias sonic-pi='qjackctl -s & sonic-pi'
 alias du='du -h'
 alias ll='~/python/playground/tkinter-practice/tutorial/examples/apps/text-editor/main.py'
-alias pico8='~/programs/pico-8/pico8 & disown & exit'
+alias pico8='~/programs/pico-8/pico8'
 alias p8=pico8
 alias pico=pico8
 alias pandas="cd ~/python/tutorials/learn-to-code-for-data-analysis/; jupyter-notebook; cd -"
@@ -47,7 +48,9 @@ alias kiwix='~/kiwix/kiwix.appimage & disown'
 alias mac='cd ~/mac; ./Mini\ vMac\ 26 Workstation\ \(Boot\).dsk; cd -'
 alias pres='cd ~/documents/presentations'
 alias dict='sdcv --color'
-alias lst='ls -lh --sort=time'
+alias lt='ls -lh --sort=time'
+alias lc='ls -FN --color=never'  # Suppress colour
+alias lr='ls -R'  # List dirs recursively
 
 ## GAMES
 alias sethian='cd ~/games/sethian/Sethian/; wine Sethian.exe; cd -'
@@ -57,13 +60,6 @@ alias rw='cd ~/games/roadwarden/; ./start.sh & disown & exit; cd -'
 alias quakespasm='quakespasm -basedir /usr/local/games/'
 alias psx='~/games/DuckStation-x64.AppImage'
 alias cotw='cd ~/games/castle-of-the-winds/; wine CASTLE1.EXE; cd -'
-
-## SSH
-alias oki='ssh -p 9967 wil@oki.nohost.me'
-alias akira='ssh osmc@192.168.178.32'
-alias yojimbo='ssh pi@pi-hole.local'
-alias akira-film='echo osmc@192.168.178.32:/media/Crucial\ X8/media/video/film/'
-alias akira-tv='echo osmc@192.168.178.32:/media/Crucial\ X8/media/video/tv/'
 
 ## WORK
 alias lothian='firefox --private-window --kiosk https://ntxgateway.luht.scot.nhs.uk/portal/webclient/index.html & disown & exit'
@@ -139,5 +135,11 @@ alias betty='~/programs/betty/main.rb'
 alias shazam='songrec'
 
 # NOSON (SONOS APP)
+# Specifies device (lounge) to which should connect to avoid issues with VPN
 alias noson='noson-app --deviceurl=http://192.168.178.57:1400 & disown & exit'
-alias sonos='noson'
+# Removed as clashes with soco-cli (see below)
+# alias sonos='noson'
+
+# SOCO-CLI (SONOS COMMAND LINE CLIENT)
+alias r3='sonos lounge volume 15 : kitchen volume 25 : roam volume 40 : kitchen group roam : roam group lounge : _all_ play_favourite "Radio 3"'
+alias r6='sonos lounge volume 10 : kitchen volume 15 : roam volume 35 : kitchen group roam : roam group lounge : _all_ play_favourite "Radio 6"'

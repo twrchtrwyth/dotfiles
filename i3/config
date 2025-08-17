@@ -52,7 +52,6 @@ bindsym $mod+d exec "rofi -modi window#filebrowser#drun#run#ssh -show drun -show
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
-
 bindsym XF86TouchpadToggle exec --no-startup-id ~/touchpad.sh
 
 ################################################################################################
@@ -520,10 +519,11 @@ mode "$mode_gaps_outer" {
 # Additions
 
 # Run my startup scripts
-exec_always --no-startup-id ~/startup.sh
+exec_always --no-startup-id ~/.startup.sh
 
 # Set US keyboard layout if external monitor detected (proxy for when my 
-#  little 60% keyboard is being used)
+#  little 60% keyboard is being used, because I always connect via the
+#  ultrabase)
 exec_always --no-startup-id ~/setuskeyboard.sh
 
 # Start Polybar on launch.
@@ -533,7 +533,7 @@ bindsym $mod+c move position center
 
 # Write new email.
 bindsym $mod+m exec sylpheed
-bindsym $mod+Shift+m exec terminal -e 'thunderbird -compose'
+bindsym $mod+Shift+m exec terminal -e 'sylpheed --compose'
 
 # Open Mandelbrot's Fractal book... Because why not
 bindsym $mod+Shift+f exec xdg-open /home/wil/books/mandelbrot_fractals.epub
